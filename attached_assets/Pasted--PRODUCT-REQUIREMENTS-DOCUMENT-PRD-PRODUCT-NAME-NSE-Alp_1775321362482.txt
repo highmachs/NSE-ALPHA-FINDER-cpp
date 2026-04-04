@@ -1,0 +1,363 @@
+# PRODUCT REQUIREMENTS DOCUMENT (PRD)
+
+## PRODUCT NAME
+
+NSE Alpha Engine
+
+---
+
+## 1. PRODUCT OVERVIEW
+
+NSE Alpha Engine is a high-performance, low-latency C++ quantitative analysis library designed for equities trading on the NSE.
+The system focuses on fast computation of technical indicators, deterministic signal generation, and lightweight backtesting, with strict emphasis on performance, memory efficiency, and correctness.
+
+This is not a visualization tool.
+This is not a beginner analytics library.
+This is a **performance-first quant core system** intended to simulate components used inside proprietary trading infrastructure.
+
+---
+
+## 2. OBJECTIVES
+
+* Build a reusable C++ library for equity analysis
+* Achieve sub-millisecond computation for standard indicators on large datasets
+* Ensure deterministic and reproducible outputs
+* Support NSE equity datasets without reliance on paid APIs
+* Provide benchmarkable performance metrics for all computations
+* Maintain strict control over memory allocations and data flow
+
+---
+
+## 3. NON-GOALS
+
+* No GUI or frontend layer
+* No broker integration or live trading execution
+* No reliance on external paid data APIs
+* No Python-first design, Python bindings optional later
+* No over-engineered abstractions that sacrifice performance
+
+---
+
+## 4. TARGET USERS
+
+* Quantitative researchers
+* Algorithmic trading developers
+* Systems programmers targeting finance roles
+* Candidates preparing for firms like Jane Street, Citadel Securities
+
+---
+
+## 5. CORE FEATURES
+
+### 5.1 DATA INGESTION ENGINE
+
+#### Functional Requirements
+
+* Load OHLCV data from CSV files
+* Support schema:
+
+  * timestamp (ISO 8601 or epoch)
+  * open
+  * high
+  * low
+  * close
+  * volume
+* Handle datasets with minimum 100,000 rows efficiently
+* Validate schema strictly, reject malformed rows
+
+#### Performance Requirements
+
+* File load time must scale linearly O(n)
+* Zero redundant copies during ingestion
+* Memory layout must be cache-friendly
+
+#### Data Storage Model
+
+* Use contiguous memory storage
+* Prefer struct-of-arrays for performance-critical paths
+* Ensure alignment for SIMD optimization (future-ready)
+
+---
+
+### 5.2 INDICATOR ENGINE
+
+#### Supported Indicators (MANDATORY)
+
+1. Simple Moving Average (SMA)
+2. Exponential Moving Average (EMA)
+3. Relative Strength Index (RSI)
+4. Moving Average Convergence Divergence (MACD)
+5. Bollinger Bands
+
+#### Functional Requirements
+
+* All indicators must operate in O(n)
+* No recomputation of overlapping windows
+* Support variable window sizes
+* Deterministic output for identical inputs
+
+#### Mathematical Correctness
+
+* SMA: rolling mean over window
+* EMA: exponential smoothing with alpha = 2 / (n + 1)
+* RSI: Wilder’s smoothing method
+* MACD: EMA(12) minus EMA(26), signal = EMA(9)
+* Bollinger Bands: SMA ± (k * standard deviation)
+
+#### Performance Requirements
+
+* Must process 1 million data points under 50 ms on standard hardware
+* No dynamic allocations inside core loops
+* Use preallocated buffers
+
+---
+
+### 5.3 SIGNAL ENGINE
+
+#### Functional Requirements
+
+* Generate discrete trading signals:
+
+  * BUY
+  * SELL
+  * HOLD
+
+#### Supported Strategies (MANDATORY)
+
+1. SMA Crossover
+
+   * BUY when short SMA crosses above long SMA
+   * SELL when short SMA crosses below long SMA
+
+2. RSI Strategy
+
+   * BUY when RSI < 30
+   * SELL when RSI > 70
+
+3. MACD Signal
+
+   * BUY on MACD crossing above signal line
+   * SELL on crossing below
+
+#### Output Format
+
+* Vector of signals with:
+
+  * timestamp
+  * signal type
+  * price at signal
+
+---
+
+### 5.4 BACKTEST ENGINE
+
+#### Functional Requirements
+
+* Simulate trades based on generated signals
+* Track:
+
+  * Entry price
+  * Exit price
+  * Position type (long only)
+  * Trade duration
+
+#### Metrics (MANDATORY)
+
+* Total return
+* Win rate
+* Number of trades
+* Maximum drawdown
+
+#### Execution Rules
+
+* No slippage initially
+* No transaction cost initially
+* One position at a time
+
+#### Performance Requirements
+
+* Backtest must run in O(n)
+* Must handle 100k signals without degradation
+
+---
+
+### 5.5 PERFORMANCE & BENCHMARK MODULE
+
+#### Functional Requirements
+
+* Measure execution time for:
+
+  * Data loading
+  * Each indicator
+  * Signal generation
+  * Backtesting
+
+#### Metrics
+
+* Time in microseconds
+* Throughput (data points per second)
+
+#### Requirements
+
+* Use high-resolution clock
+* Output must be reproducible across runs
+
+---
+
+## 6. DATA SOURCES (CRITICAL SECTION)
+
+### 6.1 PRIMARY FREE SOURCES
+
+#### 1. National Stock Exchange of India
+
+* Website: https://www.nseindia.com
+* Data Available:
+
+  * Historical equity data
+* Method:
+
+  * Download manually via “Historical Data” section
+* Format:
+
+  * CSV
+* Limitation:
+
+  * Rate-limited
+  * Requires manual extraction or session handling
+
+---
+
+#### 2. Yahoo Finance
+
+* Access via:
+
+  * https://finance.yahoo.com
+* Example ticker format:
+
+  * RELIANCE.NS
+  * TCS.NS
+* Data:
+
+  * Historical OHLCV
+* Method:
+
+  * Direct CSV download
+  * Or scripted HTTP requests
+
+---
+
+#### 3. Stooq
+
+* Website: https://stooq.com
+* Data:
+
+  * Free historical price data
+* Advantage:
+
+  * No authentication required
+* Limitation:
+
+  * NSE coverage not exhaustive
+
+---
+
+#### 4. Alpha Vantage
+
+* Free API (limited)
+* Provides:
+
+  * Daily time series
+* Limitation:
+
+  * Rate limits
+
+---
+
+### 6.2 DATA STANDARDIZATION REQUIREMENTS
+
+* All datasets must be converted into unified schema:
+  timestamp, open, high, low, close, volume
+
+* Timezone normalization required
+
+* Missing values must be explicitly handled:
+
+  * Either drop or forward-fill (configurable)
+
+---
+
+## 7. SYSTEM CONSTRAINTS
+
+* Must compile with:
+
+  * GCC / Clang
+* Target standard:
+
+  * C++17 or higher
+* No dependency on heavy frameworks
+* Cross-platform compatibility (Linux preferred)
+
+---
+
+## 8. PERFORMANCE REQUIREMENTS
+
+* Indicator computation: < 50 ms for 1M rows
+* Memory usage: linear with dataset size
+* No memory leaks
+* No unnecessary heap allocations
+
+---
+
+## 9. TESTING REQUIREMENTS
+
+* Unit tests for:
+
+  * Each indicator
+  * Signal logic
+  * Backtest correctness
+
+* Validation:
+
+  * Compare outputs with known reference values
+
+---
+
+## 10. EXTENSIBILITY ROADMAP
+
+* Add multithreading (parallel indicator computation)
+* Add real-time streaming support
+* Add order book simulation
+* Add options pricing when data becomes available
+* Add Python bindings via pybind11
+
+---
+
+## 11. SUCCESS CRITERIA
+
+* Library processes large datasets faster than Python equivalents
+* All indicators produce mathematically correct outputs
+* Signals generate consistent results across runs
+* Backtest outputs match expected logical outcomes
+* Benchmark outputs demonstrate measurable performance advantage
+
+---
+
+## 12. RISKS
+
+* Poor data quality from free sources
+* Over-engineering early abstractions
+* Ignoring performance bottlenecks
+* Lack of validation against real-world results
+
+---
+
+## 13. FINAL POSITIONING
+
+This system represents:
+
+* A foundational quant engine
+* A performance-focused C++ showcase
+* A stepping stone toward institutional-grade trading systems
+
+Failure to prioritize performance and correctness reduces this to a basic indicator library.
+Execution with discipline turns this into a **portfolio-defining system**.
