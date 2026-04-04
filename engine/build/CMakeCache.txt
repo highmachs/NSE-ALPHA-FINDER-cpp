@@ -364,6 +364,8 @@ _Python3_INCLUDE_DIR:INTERNAL=/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;12;11;64;<none>;cpython-312-x86_64-linux-gnu;abi3;/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/lib/python3.12;/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/lib/python3.12;/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/lib/python3.12/site-packages;/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/lib/python3.12/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=a31508e6de536901a5bab80532344222
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //Path to a library.
 _Python3_LIBRARY_RELEASE:INTERNAL=/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/lib/libpython3.12.so
 //NumPy reason failure

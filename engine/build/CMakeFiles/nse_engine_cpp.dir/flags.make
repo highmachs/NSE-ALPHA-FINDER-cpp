@@ -6,5 +6,5 @@ CXX_DEFINES = -Dnse_engine_cpp_EXPORTS
 
 CXX_INCLUDES = -I/home/runner/workspace/engine/cpp/include -isystem /nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12
 
-CXX_FLAGS = -O3 -march=native -DNDEBUG -std=c++17 -fPIC -fvisibility=hidden -Wall -Wextra -O3 -flto -fno-fat-lto-objects
+CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -fPIC -fvisibility=hidden -Wall -Wextra -O3 -flto -fno-fat-lto-objects
 

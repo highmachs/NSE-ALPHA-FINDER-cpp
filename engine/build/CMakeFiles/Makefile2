@@ -64,10 +64,14 @@ CMAKE_BINARY_DIR = /home/runner/workspace/engine/build
 
 # The main recursive "all" target.
 all: CMakeFiles/nse_engine_cpp.dir/all
+all: CMakeFiles/nse_engine.dir/all
+all: CMakeFiles/nse_tests.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/nse_engine_cpp.dir/codegen
+codegen: CMakeFiles/nse_engine.dir/codegen
+codegen: CMakeFiles/nse_tests.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -76,6 +80,8 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/nse_engine_cpp.dir/clean
+clean: CMakeFiles/nse_engine.dir/clean
+clean: CMakeFiles/nse_tests.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -85,7 +91,7 @@ clean: CMakeFiles/nse_engine_cpp.dir/clean
 CMakeFiles/nse_engine_cpp.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine_cpp.dir/build.make CMakeFiles/nse_engine_cpp.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine_cpp.dir/build.make CMakeFiles/nse_engine_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target nse_engine_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=8,9,10,11,12,13,14 "Built target nse_engine_cpp"
 .PHONY : CMakeFiles/nse_engine_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -102,13 +108,77 @@ nse_engine_cpp: CMakeFiles/nse_engine_cpp.dir/rule
 # codegen rule for target.
 CMakeFiles/nse_engine_cpp.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine_cpp.dir/build.make CMakeFiles/nse_engine_cpp.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target nse_engine_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=8,9,10,11,12,13,14 "Finished codegen for target nse_engine_cpp"
 .PHONY : CMakeFiles/nse_engine_cpp.dir/codegen
 
 # clean rule for target.
 CMakeFiles/nse_engine_cpp.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine_cpp.dir/build.make CMakeFiles/nse_engine_cpp.dir/clean
 .PHONY : CMakeFiles/nse_engine_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/nse_engine.dir
+
+# All Build rule for target.
+CMakeFiles/nse_engine.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine.dir/build.make CMakeFiles/nse_engine.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine.dir/build.make CMakeFiles/nse_engine.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target nse_engine"
+.PHONY : CMakeFiles/nse_engine.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/nse_engine.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/workspace/engine/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/nse_engine.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/workspace/engine/build/CMakeFiles 0
+.PHONY : CMakeFiles/nse_engine.dir/rule
+
+# Convenience name for target.
+nse_engine: CMakeFiles/nse_engine.dir/rule
+.PHONY : nse_engine
+
+# codegen rule for target.
+CMakeFiles/nse_engine.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine.dir/build.make CMakeFiles/nse_engine.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target nse_engine"
+.PHONY : CMakeFiles/nse_engine.dir/codegen
+
+# clean rule for target.
+CMakeFiles/nse_engine.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine.dir/build.make CMakeFiles/nse_engine.dir/clean
+.PHONY : CMakeFiles/nse_engine.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/nse_tests.dir
+
+# All Build rule for target.
+CMakeFiles/nse_tests.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=15,16,17,18,19,20,21,22,23,24,25,26 "Built target nse_tests"
+.PHONY : CMakeFiles/nse_tests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/nse_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/workspace/engine/build/CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/nse_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/workspace/engine/build/CMakeFiles 0
+.PHONY : CMakeFiles/nse_tests.dir/rule
+
+# Convenience name for target.
+nse_tests: CMakeFiles/nse_tests.dir/rule
+.PHONY : nse_tests
+
+# codegen rule for target.
+CMakeFiles/nse_tests.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=15,16,17,18,19,20,21,22,23,24,25,26 "Finished codegen for target nse_tests"
+.PHONY : CMakeFiles/nse_tests.dir/codegen
+
+# clean rule for target.
+CMakeFiles/nse_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/clean
+.PHONY : CMakeFiles/nse_tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

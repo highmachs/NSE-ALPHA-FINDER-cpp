@@ -1,3 +1,6 @@
 /home/runner/workspace/engine/build/CMakeFiles/nse_engine_cpp.dir
+/home/runner/workspace/engine/build/CMakeFiles/nse_engine.dir
+/home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir
+/home/runner/workspace/engine/build/CMakeFiles/test.dir
 /home/runner/workspace/engine/build/CMakeFiles/edit_cache.dir
 /home/runner/workspace/engine/build/CMakeFiles/rebuild_cache.dir
