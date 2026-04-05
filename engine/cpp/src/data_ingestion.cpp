@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cctype>
 #include <cmath>
+#include <charconv>
 
 static std::string toLower(std::string s) {
     std::transform(s.begin(), s.end(), s.begin(),
@@ -89,14 +90,27 @@ OHLCVData DataIngestionEngine::parseStream(std::istream& stream,
     OHLCVData data;
     std::string line;
 
-    if (!std::getline(stream, line)) {
-        throw std::runtime_error("CSV is empty: no header row found");
-    }
+    if (!std::getline(stream, line)) throw std::runtime_error("CSV is empty");
+    
+    auto split_views = [](std::string_view s) {
+        std::vector<std::string_view> tokens;
+        tokens.reserve(16);
+        std::size_t start = 0;
+        bool in_quotes = false;
+        for (std::size_t i = 0; i < s.size(); ++i) {
+            if (s[i] == '"') in_quotes = !in_quotes;
+            else if (s[i] == ',' && !in_quotes) {
+                tokens.push_back(s.substr(start, i - start));
+                start = i + 1;
+            }
+        }
+        tokens.push_back(s.substr(start));
+        return tokens;
+    };
 
-    auto headers = splitLine(line, ',');
-    if (headers.empty()) {
-        throw std::runtime_error("CSV header is empty");
-    }
+    auto headers_sv = split_views(line);
+    std::vector<std::string> headers;
+    for (auto sv : headers_sv) headers.push_back(std::string(sv));
 
     int ts_col    = findColumn(headers, {"timestamp", "date", "datetime", "time"});
     int open_col  = findColumn(headers, {"open"});
@@ -111,31 +125,57 @@ OHLCVData DataIngestionEngine::parseStream(std::istream& stream,
     if (low_col < 0)   throw std::runtime_error("CSV missing 'low' column");
     if (close_col < 0) throw std::runtime_error("CSV missing 'close' column");
 
-    data.reserve(131072);
+    data.reserve(500000); // Reserve large buffer for performance
 
     std::string last_ts;
     double last_open = 0.0, last_high = 0.0, last_low = 0.0, last_close = 0.0, last_vol = 0.0;
     bool has_prev = false;
 
-    std::size_t row = 1;
+    // Fast float parser
+    auto parse_double = [](std::string_view sv, double& out) -> bool {
+        while (!sv.empty() && (sv.front() == ' ' || sv.front() == '"')) sv.remove_prefix(1);
+        while (!sv.empty() && (sv.back() == ' ' || sv.back() == '\r' || sv.back() == '\n' || sv.back() == '"')) sv.remove_suffix(1);
+        if (sv.empty() || sv == "-" || sv == "null" || sv == "nan" || sv == "N/A") return false;
+        
+        #if __cpp_lib_to_chars >= 201611L || defined(_GLIBCXX_RELEASE)
+            auto [ptr, ec] = std::from_chars(sv.data(), sv.data() + sv.size(), out);
+            return ec == std::errc();
+        #else
+            try {
+                out = std::stod(std::string(sv));
+                return true;
+            } catch (...) { return false; }
+        #endif
+    };
+
     while (std::getline(stream, line)) {
-        ++row;
         if (line.empty() || line[0] == '#') continue;
 
-        std::string ts;
-        double o, h, l, c, v = 0.0;
+        auto tokens = split_views(line);
+        int max_col = std::max({ts_col, open_col, high_col, low_col, close_col, vol_col});
+        if (max_col >= static_cast<int>(tokens.size())) continue;
 
-        bool ok = parseLine(line, ts_col, open_col, high_col, low_col, close_col, vol_col,
-                            ts, o, h, l, c, v);
+        std::string ts = std::string(tokens[ts_col]);
+        while (!ts.empty() && (ts.front() == '"' || ts.front() == ' ')) ts.erase(0, 1);
+        while (!ts.empty() && (ts.back() == '"' || ts.back() == '\r' || ts.back() == ' ')) ts.pop_back();
+
+        double o, h, l, c, v = 0.0;
+        bool ok = true;
+        if (!ts.empty()) {
+            ok &= parse_double(tokens[open_col], o);
+            ok &= parse_double(tokens[high_col], h);
+            ok &= parse_double(tokens[low_col], l);
+            ok &= parse_double(tokens[close_col], c);
+            if (vol_col >= 0) parse_double(tokens[vol_col], v); // volume optional
+        } else {
+            ok = false;
+        }
 
         if (!ok) {
-            if (policy == MissingValuePolicy::DROP) {
-                continue;
-            } else {
-                if (!has_prev) continue;
-                if (ts.empty()) ts = last_ts;
-                o = last_open; h = last_high; l = last_low; c = last_close; v = last_vol;
-            }
+            if (policy == MissingValuePolicy::DROP) continue;
+            if (!has_prev) continue;
+            if (ts.empty()) ts = last_ts;
+            o = last_open; h = last_high; l = last_low; c = last_close; v = last_vol;
         }
 
         data.timestamp.push_back(ts);
@@ -149,10 +189,7 @@ OHLCVData DataIngestionEngine::parseStream(std::istream& stream,
         has_prev = true;
     }
 
-    if (data.size() == 0) {
-        throw std::runtime_error("CSV contained no valid data rows after parsing");
-    }
-
+    if (data.size() == 0) throw std::runtime_error("CSV contained no valid data rows");
     return data;
 }
 

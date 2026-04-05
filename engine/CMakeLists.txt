@@ -9,7 +9,7 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -march=native -mtune=native -ffast-math -ftree-vectorize -funroll-loops -flto")
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 find_package(pybind11 REQUIRED)
@@ -40,7 +40,7 @@ set_target_properties(nse_engine_cpp PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build_output
 )
 if(WIN32)
-    target_link_options(nse_engine_cpp PRIVATE -static -static-libstdc++ -static-libgcc)
+    target_link_options(nse_engine_cpp PRIVATE -static-libstdc++ -static-libgcc)
 endif()
 
 # ── 2. Standalone CLI executable ──────────────────────────────────────────────

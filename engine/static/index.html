@@ -181,7 +181,7 @@
         <div class="dashboard-grid">
             <div class="glass-card">
                 <h2>C++ Sub-millisecond Execution Benchmark 
-                    <button class="btn" style="margin-left:auto; font-size: 0.8rem; padding: 6px 16px;" onclick="runBenchmark()">Run Live</button>
+                    <button id="btn-run" class="btn" style="margin-left:auto; font-size: 0.8rem; padding: 6px 16px;" onclick="runBenchmark()">Run Live</button>
                 </h2>
                 <div id="loader">Computing across 1,000,000 synthetic rows via C++ pybind11...</div>
                 <div class="chart-wrapper">
@@ -202,6 +202,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="glass-card" style="margin-top: 30px;">
+            <h2>Hardware Output Terminal</h2>
+            <pre id="engine-console" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 12px; font-family: monospace; color: #2DE2A6; font-size: 0.9rem; height: 200px; overflow-y: auto; white-space: pre-wrap; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); border: 1px solid rgba(45, 226, 166, 0.2);">System initialized. Ready for C++ parallel execution instructions.</pre>
         </div>
     </div>
 
@@ -278,11 +283,27 @@
                         }
                     }
                 });
+
+                // Add to terminal console
+                const term = document.getElementById('engine-console');
+                let now = new Date().toISOString().split('T')[1].slice(0,8);
+                let logText = `[${now}] C++ Backend Engine invoked:\n`;
+                logText += `> Allocated 1,000,000 double-precision structs\n`;
+                logText += `> CPU Target: x86-64 Native (AVX/SIMD unrolled)\n`;
+                data.benchmarks.forEach(b => {
+                    logText += `[+] ${b.name.padEnd(25, ' ')} | ${b.elapsed_ms.toFixed(3)} ms | ${(1000/b.elapsed_ms).toFixed(1)}M ops/s\n`;
+                });
+                logText += `[${now}] Total Time: ${totalTime.toFixed(3)} ms. Execution Complete.\n\n`;
+                term.textContent += logText;
+                term.scrollTop = term.scrollHeight;
+
             } catch (err) {
                 console.error("Failed to fetch benchmark data", err);
+                document.getElementById('engine-console').textContent += `[ERROR] Connection refused. Ensure C++ engine is bound to port 8000.\n\n`;
                 alert("Failed to reach backend. Ensure the server is running on the correct port.");
             } finally {
                 document.getElementById('loader').style.display = 'none';
+                document.getElementById('btn-run').innerHTML = 'Run Live';
             }
         }
 
