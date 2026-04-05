@@ -1,22 +1,3 @@
-"""
-NSE Alpha Engine — C++ vs Pure Python Speed Comparison.
-
-Implements each indicator in pure Python (no numpy, no pandas) then runs
-the same computation through the C++ engine and reports the speedup.
-
-This is the definitive demonstration of why the C++ core exists.
-
-Usage
------
-    python3 engine/python/compare.py [rows] [--no-color] [--csv output.csv]
-
-Examples
---------
-    python3 engine/python/compare.py
-    python3 engine/python/compare.py 500000
-    python3 engine/python/compare.py 100000 --csv results.csv
-"""
-
 from __future__ import annotations
 
 import sys
@@ -27,18 +8,14 @@ import csv as _csv
 import argparse
 from typing import List, Optional
 
-# ── C++ engine ─────────────────────────────────────────────────────────────────
 _ENGINE = os.path.join(os.path.dirname(__file__), "..", "build_output")
 sys.path.insert(0, os.path.abspath(_ENGINE))
 import nse_engine_cpp as _cpp
 
-# ── ANSI colours ───────────────────────────────────────────────────────────────
 _USE_COLOR = sys.stdout.isatty()
-
 
 def _c(code: str, s: str) -> str:
     return f"\033[{code}m{s}\033[0m" if _USE_COLOR else s
-
 
 def red(s):     return _c("31",    s)
 def green(s):   return _c("32",    s)
@@ -53,22 +30,16 @@ def bcyan(s):   return _c("1;36",  s)
 def byellow(s): return _c("1;33",  s)
 def bmagenta(s):return _c("1;35",  s)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Pure-Python implementations (deliberately naive — no numpy)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def py_sma(close: List[float], window: int) -> List[Optional[float]]:
-    """Rolling arithmetic mean — O(n×window) naive inner loop."""
-    out = [None] * len(close)
+        out = [None] * len(close)
     for i in range(window - 1, len(close)):
         out[i] = sum(close[i - window + 1 : i + 1]) / window
     return out
 
-
 def py_ema(close: List[float], window: int) -> List[Optional[float]]:
-    """EMA — alpha=2/(n+1), SMA-seeded. O(n) but pure Python."""
-    out = [None] * len(close)
+        out = [None] * len(close)
     if len(close) < window:
         return out
     alpha = 2.0 / (window + 1)
@@ -81,10 +52,8 @@ def py_ema(close: List[float], window: int) -> List[Optional[float]]:
         out[i] = prev
     return out
 
-
 def py_rsi(close: List[float], window: int = 14) -> List[Optional[float]]:
-    """RSI — Wilder's smoothing. Pure Python."""
-    out  = [None] * len(close)
+        out  = [None] * len(close)
     n    = len(close)
     if n < window + 1:
         return out
@@ -109,13 +78,11 @@ def py_rsi(close: List[float], window: int = 14) -> List[Optional[float]]:
         out[i] = _rsi_val(avg_g, avg_l)
     return out
 
-
 def py_macd(close: List[float],
             fast: int = 12,
             slow: int = 26,
             signal: int = 9):
-    """MACD — pure Python."""
-    fast_ema   = py_ema(close, fast)
+        fast_ema   = py_ema(close, fast)
     slow_ema   = py_ema(close, slow)
     n          = len(close)
     macd_line  = [None] * n
@@ -144,10 +111,8 @@ def py_macd(close: List[float],
 
     return {"macd_line": macd_line, "signal_line": sig_line, "histogram": hist}
 
-
 def py_bollinger(close: List[float], window: int = 20, k: float = 2.0):
-    """Bollinger Bands — naive O(n×window) variance."""
-    n      = len(close)
+        n      = len(close)
     upper  = [None] * n
     middle = [None] * n
     lower  = [None] * n
@@ -161,27 +126,18 @@ def py_bollinger(close: List[float], window: int = 20, k: float = 2.0):
         lower[i]  = mu - k * sd
     return {"upper": upper, "middle": middle, "lower": lower}
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Timing helper
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _timed(fn) -> float:
-    """Return elapsed seconds for a single call to fn()."""
-    t0 = time.perf_counter()
+        t0 = time.perf_counter()
     fn()
     return time.perf_counter() - t0
 
-
 def _timed_cpp(fn, n: int) -> float:
-    """Return elapsed seconds using BenchmarkModule for the C++ call."""
-    r = _cpp.BenchmarkModule.measure("_", n, fn)
+        r = _cpp.BenchmarkModule.measure("_", n, fn)
     return r.elapsed_us / 1e6
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Speedup bar
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _speedup_bar(x: float, max_x: float, width: int = 22) -> str:
     fill = int(round(x / max_x * width)) if max_x > 0 else 1
@@ -189,13 +145,10 @@ def _speedup_bar(x: float, max_x: float, width: int = 22) -> str:
     bar  = "#" * fill + "." * (width - fill)
     return bgreen(bar)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Main comparison runner
-# ─────────────────────────────────────────────────────────────────────────────
 
 def run_comparison(rows: int, csv_out: Optional[str] = None) -> None:
-    # ── Banner ─────────────────────────────────────────────────────────────────
+    
     w = 74
     print()
     print(bcyan("═" * w))
@@ -206,13 +159,13 @@ def run_comparison(rows: int, csv_out: Optional[str] = None) -> None:
     print(dim(f"  {rows:,} synthetic rows  •  pure Python (no numpy)  vs  C++17 -O3 -pybind11"))
     print()
 
-    # ── Generate data ──────────────────────────────────────────────────────────
+    
     print(dim("  Generating synthetic price series..."))
     close  = [100.0 + 50.0 * math.sin(i * 0.001) + i * 0.0001 for i in range(rows)]
     ts_str = [f"T{i}" for i in range(rows)]
     print(dim(f"  {rows:,} bars ready.\n"))
 
-    # ── Indicators to compare ──────────────────────────────────────────────────
+    
     comparisons = [
         ("SMA(20)",
          lambda: py_sma(close, 20),
@@ -231,7 +184,7 @@ def run_comparison(rows: int, csv_out: Optional[str] = None) -> None:
          lambda: _cpp.IndicatorEngine.bollinger_bands(close, 20, 2.0)),
     ]
 
-    # ── Run timings ────────────────────────────────────────────────────────────
+    
     results = []
     print(dim("  Timing Python implementations..."))
     for name, py_fn, cpp_fn in comparisons:
@@ -246,7 +199,7 @@ def run_comparison(rows: int, csv_out: Optional[str] = None) -> None:
         sys.stdout.flush()
         results.append((name, py_s, cpp_s, speedup))
 
-    # ── Print table ────────────────────────────────────────────────────────────
+    
     max_speedup = max(r[3] for r in results)
 
     print()
@@ -295,7 +248,7 @@ def run_comparison(rows: int, csv_out: Optional[str] = None) -> None:
           f"  {bgreen(f'{total_cp_ms:.1f} ms')}  for all 5 indicators")
     print()
 
-    # ── Multi-scale comparison table ──────────────────────────────────────────
+    
     print(bcyan("═" * w))
     print(bold(white("  SMA(20) Speedup Across Row Counts".center(w))))
     print(bcyan("═" * w))
@@ -326,7 +279,7 @@ def run_comparison(rows: int, csv_out: Optional[str] = None) -> None:
     print(bcyan("═" * w))
     print()
 
-    # ── CSV export ─────────────────────────────────────────────────────────────
+    
     if csv_out:
         with open(csv_out, "w", newline="") as f:
             w2 = _csv.writer(f)
@@ -338,10 +291,7 @@ def run_comparison(rows: int, csv_out: Optional[str] = None) -> None:
                               round(speedup, 2)])
         print(f"  {bgreen('✔')} Comparison table exported → {csv_out}\n")
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # CLI
-# ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(

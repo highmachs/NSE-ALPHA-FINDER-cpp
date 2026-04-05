@@ -1,26 +1,3 @@
-"""
-NSE Alpha Engine — OHLCV Data Fetcher.
-
-Downloads historical equity data from multiple sources and outputs a
-standardised CSV with columns: timestamp, open, high, low, close, volume.
-
-Supported sources
------------------
-yahoo     : Yahoo Finance via yfinance. Append ``.NS`` for NSE tickers.
-stooq     : Stooq.com plain-text CSV feed. Appends ``.IN`` suffix.
-alpha     : Alpha Vantage TIME_SERIES_DAILY_ADJUSTED (requires API key).
-auto      : Try Yahoo Finance first; fall back to Stooq on failure.
-
-CLI usage
----------
-python3 data_fetcher.py RELIANCE 2020-01-01 2024-12-31 [source] [output_dir]
-python3 data_fetcher.py RELIANCE,TCS,INFY 2020-01-01 2024-12-31 auto data/
-
-Environment variables
----------------------
-ALPHA_VANTAGE_KEY : Required for the ``alpha`` source.
-"""
-
 from __future__ import annotations
 
 import csv
@@ -31,7 +8,6 @@ import time
 from datetime import datetime
 from typing import List, Optional
 
-# ── Optional dependencies — imported lazily to avoid import errors ─────────────
 try:
     import yfinance as yf
     _HAS_YFINANCE = True
@@ -50,15 +26,11 @@ try:
 except ImportError:
     _HAS_REQUESTS = False
 
-# ── Constants ──────────────────────────────────────────────────────────────────
 _STOOQ_BASE = "https://stooq.com/q/d/l/"
 _AV_BASE    = "https://www.alphavantage.co/query"
 _STANDARD_HEADER = ["timestamp", "open", "high", "low", "close", "volume"]
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Public API
-# ─────────────────────────────────────────────────────────────────────────────
 
 def fetch(
     symbol:     str,
@@ -137,7 +109,6 @@ def fetch(
 
     return csv_text
 
-
 def fetch_multiple(
     symbols:    List[str],
     start:      str,
@@ -180,10 +151,7 @@ def fetch_multiple(
             time.sleep(delay_sec)
     return results
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Source-specific fetchers (internal)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _fetch_yahoo(symbol: str, start: str, end: str) -> Optional[str]:
     """
@@ -212,7 +180,8 @@ def _fetch_yahoo(symbol: str, start: str, end: str) -> Optional[str]:
             df.columns = [c.lower().replace(" ", "_") for c in df.columns]
 
         df = df.reset_index()
-        df.rename(columns={"date": "timestamp", "adj_close": "close"}, inplace=True)
+        # The index is usually 'Date' or 'Datetime', case-sensitive
+        df.rename(columns={"date": "timestamp", "Date": "timestamp", "Datetime": "timestamp", "adj_close": "close"}, inplace=True)
 
         if "close" not in df.columns and "adj_close" in df.columns:
             df["close"] = df["adj_close"]
@@ -225,7 +194,6 @@ def _fetch_yahoo(symbol: str, start: str, end: str) -> Optional[str]:
     except Exception as exc:
         print(f"[data_fetcher] Yahoo failed for {symbol}: {exc}", file=sys.stderr)
         return None
-
 
 def _fetch_stooq(symbol: str, start: str, end: str) -> Optional[str]:
     """
@@ -275,7 +243,6 @@ def _fetch_stooq(symbol: str, start: str, end: str) -> Optional[str]:
     except Exception as exc:
         print(f"[data_fetcher] Stooq failed for {symbol}: {exc}", file=sys.stderr)
         return None
-
 
 def _fetch_alpha_vantage(symbol: str, start: str, end: str) -> Optional[str]:
     """
@@ -353,7 +320,6 @@ def _fetch_alpha_vantage(symbol: str, start: str, end: str) -> Optional[str]:
         print(f"[data_fetcher] Alpha Vantage failed for {symbol}: {exc}", file=sys.stderr)
         return None
 
-
 def _fetch_auto(symbol: str, start: str, end: str) -> Optional[str]:
     """
     Try Yahoo Finance first; fall back to Stooq on any failure.
@@ -367,10 +333,7 @@ def _fetch_auto(symbol: str, start: str, end: str) -> Optional[str]:
     print(f"[data_fetcher] Yahoo failed for {symbol}; trying Stooq ...", file=sys.stderr)
     return _fetch_stooq(symbol, start, end)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Data standardisation (internal)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _standardise_csv(csv_text: str) -> str:
     """
@@ -430,7 +393,6 @@ def _standardise_csv(csv_text: str) -> str:
     writer.writerows(rows)
     return out.getvalue()
 
-
 def _validate_dates(start: str, end: str) -> None:
     """
     Raise ValueError if start or end are not valid YYYY-MM-DD strings,
@@ -445,15 +407,11 @@ def _validate_dates(start: str, end: str) -> None:
     if s > e:
         raise ValueError(f"start ({start}) must be <= end ({end})")
 
-
 def _in_range(date_str: str, start: str, end: str) -> bool:
     """Return True iff date_str falls within [start, end] (string comparison)."""
     return start <= date_str[:10] <= end
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # CLI entry point
-# ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     import argparse

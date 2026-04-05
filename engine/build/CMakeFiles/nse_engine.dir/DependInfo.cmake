@@ -8,14 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/runner/workspace/engine/cpp/src/backtest.cpp" "CMakeFiles/nse_engine.dir/cpp/src/backtest.cpp.o" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/backtest.cpp.o.d"
-  "/home/runner/workspace/engine/cpp/src/benchmark.cpp" "CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.o" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.o.d"
-  "/home/runner/workspace/engine/cpp/src/data_ingestion.cpp" "CMakeFiles/nse_engine.dir/cpp/src/data_ingestion.cpp.o" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/data_ingestion.cpp.o.d"
-  "/home/runner/workspace/engine/cpp/src/data_utils.cpp" "CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.o" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.o.d"
-  "/home/runner/workspace/engine/cpp/src/indicators.cpp" "CMakeFiles/nse_engine.dir/cpp/src/indicators.cpp.o" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/indicators.cpp.o.d"
-  "/home/runner/workspace/engine/cpp/src/main.cpp" "CMakeFiles/nse_engine.dir/cpp/src/main.cpp.o" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/main.cpp.o.d"
-  "/home/runner/workspace/engine/cpp/src/signals.cpp" "CMakeFiles/nse_engine.dir/cpp/src/signals.cpp.o" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/signals.cpp.o.d"
-  "" "/home/runner/workspace/engine/build_output/nse_engine" "gcc" "CMakeFiles/nse_engine.dir/link.d"
+  "C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/cpp/src/backtest.cpp" "CMakeFiles/nse_engine.dir/cpp/src/backtest.cpp.obj" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/backtest.cpp.obj.d"
+  "C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/cpp/src/benchmark.cpp" "CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.obj" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.obj.d"
+  "C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/cpp/src/data_ingestion.cpp" "CMakeFiles/nse_engine.dir/cpp/src/data_ingestion.cpp.obj" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/data_ingestion.cpp.obj.d"
+  "C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/cpp/src/data_utils.cpp" "CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.obj" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.obj.d"
+  "C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/cpp/src/indicators.cpp" "CMakeFiles/nse_engine.dir/cpp/src/indicators.cpp.obj" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/indicators.cpp.obj.d"
+  "C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/cpp/src/main.cpp" "CMakeFiles/nse_engine.dir/cpp/src/main.cpp.obj" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/main.cpp.obj.d"
+  "C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/cpp/src/signals.cpp" "CMakeFiles/nse_engine.dir/cpp/src/signals.cpp.obj" "gcc" "CMakeFiles/nse_engine.dir/cpp/src/signals.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

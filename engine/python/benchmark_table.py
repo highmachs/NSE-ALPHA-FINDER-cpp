@@ -1,17 +1,3 @@
-"""
-NSE Alpha Engine — Comprehensive Benchmark Table.
-
-Runs every indicator at multiple row counts and multiple window sizes,
-prints a rich coloured terminal table with ASCII throughput bars, and
-shows how performance scales with data size.
-
-Usage
------
-    python3 engine/python/benchmark_table.py
-    python3 engine/python/benchmark_table.py --max-rows 2000000
-    python3 engine/python/benchmark_table.py --csv bench.csv
-"""
-
 from __future__ import annotations
 
 import sys
@@ -24,9 +10,7 @@ _ENGINE = os.path.join(os.path.dirname(__file__), "..", "build_output")
 sys.path.insert(0, os.path.abspath(_ENGINE))
 import nse_engine_cpp as _cpp
 
-# ── ANSI ───────────────────────────────────────────────────────────────────────
 _USE_COLOR = sys.stdout.isatty()
-
 
 def _c(code, s):
     return f"\033[{code}m{s}\033[0m" if _USE_COLOR else s
@@ -43,7 +27,6 @@ def byellow(s):  return _c("1;33", s)
 def bmagenta(s): return _c("1;35", s)
 def white(s):    return _c("97",   s)
 
-
 def _prd(ms):
     return bgreen("PASS") if ms < 50 else (byellow("WARN") if ms < 500 else bred("FAIL"))
 
@@ -57,13 +40,11 @@ def _bar(ms, max_ms, width=18):
     col  = bgreen if ms < 50 else (byellow if ms < 200 else bred)
     return col("#" * fill) + dim("." * (width - fill))
 
-
 def _fmt_comma(n):
     s = str(n)
     for i in range(len(s) - 3, 0, -3):
         s = s[:i] + "," + s[i:]
     return s
-
 
 def _bench(name, n, fn):
     r = _cpp.BenchmarkModule.measure(name, n, fn)
@@ -73,9 +54,6 @@ def _bench(name, n, fn):
         "ms":   round(r.elapsed_us / 1000, 3),
         "mpts": round(r.throughput_per_sec / 1e6, 1),
     }
-
-
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _print_ind_row(r, max_ms, bar_width=22):
     bar    = _bar(r["ms"], max_ms, bar_width)
@@ -88,7 +66,6 @@ def _print_ind_row(r, max_ms, bar_width=22):
         f"  {dim(mpts_s)}"
         f"  {bar}"
     )
-
 
 def _print_op_row(r, max_ms, bar_width=20):
     bar    = _bar(r["ms"], max_ms, bar_width)
@@ -104,7 +81,6 @@ def _print_op_row(r, max_ms, bar_width=20):
         f"  {bar}"
     )
 
-
 def _print_window_row(label, r, max_ms, bar_width=20):
     bar    = _bar(r["ms"], max_ms, bar_width)
     ms_str = f"{r['ms']:>7.1f}"
@@ -116,9 +92,6 @@ def _print_window_row(label, r, max_ms, bar_width=20):
         f"  {dim(mpts_s)}"
         f"  {bar}"
     )
-
-
-# ─────────────────────────────────────────────────────────────────────────────
 
 def run_benchmark_table(max_rows=1_000_000, csv_out=None):
     ROW_COUNTS = [1_000, 10_000, 50_000, 100_000, 250_000, 500_000]
@@ -136,7 +109,7 @@ def run_benchmark_table(max_rows=1_000_000, csv_out=None):
     print(bcyan("=" * W))
     print()
 
-    # ── Build data caches ──────────────────────────────────────────────────────
+    
     caches = {}
     print(dim("  Building synthetic data caches..."))
     for rc in ROW_COUNTS:
@@ -156,7 +129,7 @@ def run_benchmark_table(max_rows=1_000_000, csv_out=None):
 
     all_rows_for_csv = []
 
-    # ── Indicator scaling tables ───────────────────────────────────────────────
+    
     for ind_name, ind_fn in INDICATORS:
         sep_len = W - 6 - len(ind_name)
         print(bold(f"  -- {cyan(ind_name)} ") + dim("-" * max(0, sep_len)))
@@ -180,7 +153,7 @@ def run_benchmark_table(max_rows=1_000_000, csv_out=None):
 
         print()
 
-    # ── SMA window sweep ───────────────────────────────────────────────────────
+    
     c100k   = caches.get(100_000, [
         100.0 + 50.0 * math.sin(i * 0.001) for i in range(100_000)
     ])
@@ -203,7 +176,7 @@ def run_benchmark_table(max_rows=1_000_000, csv_out=None):
     for w, r in sw_res:
         _print_window_row(f"SMA({w})", r, max_sw)
 
-    # ── RSI window sweep ──────────────────────────────────────────────────────
+    
     print()
     print(bcyan("-" * W))
     print(bold(f"  RSI Window Sweep -- {_fmt_comma(100_000)} rows"))
@@ -223,7 +196,7 @@ def run_benchmark_table(max_rows=1_000_000, csv_out=None):
     for w, r in rw_res:
         _print_window_row(f"RSI({w})", r, max_rw)
 
-    # ── Full pipeline timing ───────────────────────────────────────────────────
+    
     rc  = min(500_000, max_rows)
     c   = caches.get(rc, [100.0 + 50.0 * math.sin(i * 0.001) for i in range(rc)])
     tss = [f"T{i}" for i in range(rc)]
@@ -281,7 +254,7 @@ def run_benchmark_table(max_rows=1_000_000, csv_out=None):
     print(bcyan("=" * W))
     print()
 
-    # ── CSV export ─────────────────────────────────────────────────────────────
+    
     if csv_out:
         with open(csv_out, "w", newline="") as f:
             w2 = _csv.writer(f)
@@ -289,9 +262,6 @@ def run_benchmark_table(max_rows=1_000_000, csv_out=None):
             for r in all_rows_for_csv:
                 w2.writerow([r["name"], r["rows"], r["ms"], r["mpts"]])
         print(f"  {bgreen('OK')} Benchmark data exported -> {csv_out}\n")
-
-
-# ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(

@@ -158,29 +158,39 @@ BollingerBandsResult IndicatorEngine::bollingerBands(const std::vector<double>& 
 
     if (static_cast<std::size_t>(window) > n) return result;
 
-    // O(n) incremental variance using running sum and sum-of-squares
-    double sum    = 0.0;
-    double sum_sq = 0.0;
     const std::size_t w = static_cast<std::size_t>(window);
 
+    double rolling_sum = 0.0;
+    double rolling_sq_sum = 0.0;
+
+    // Warm-up loop
     for (std::size_t i = 0; i < w; ++i) {
-        sum    += close[i];
-        sum_sq += close[i] * close[i];
+        rolling_sum += close[i];
+        rolling_sq_sum += close[i] * close[i];
     }
 
-    for (std::size_t i = w - 1; i < n; ++i) {
-        if (i >= w) {
-            double removed = close[i - w];
-            sum    += close[i] - removed;
-            sum_sq += close[i] * close[i] - removed * removed;
-        }
-        double mean     = sum / window;
-        double variance = (sum_sq / window) - (mean * mean);
-        if (variance < 0.0) variance = 0.0;
+    auto calc_bands = [&](std::size_t idx) {
+        double mean = rolling_sum / window;
+        double variance = (rolling_sq_sum / window) - (mean * mean);
+        if (variance < 0.0) variance = 0.0; // Correct floating-point inaccuracies
         double sd = std::sqrt(variance);
-        result.middle[i] = mean;
-        result.upper[i]  = mean + k * sd;
-        result.lower[i]  = mean - k * sd;
+        result.middle[idx] = mean;
+        result.upper[idx]  = mean + k * sd;
+        result.lower[idx]  = mean - k * sd;
+    };
+
+    calc_bands(w - 1);
+
+    // Main sliding window loop - O(1) per step regardless of window size
+    #pragma GCC ivdep
+    for (std::size_t i = w; i < n; ++i) {
+        double out_val = close[i - w];
+        double in_val  = close[i];
+        
+        rolling_sum += in_val - out_val;
+        rolling_sq_sum += (in_val * in_val) - (out_val * out_val);
+        
+        calc_bands(i);
     }
 
     return result;

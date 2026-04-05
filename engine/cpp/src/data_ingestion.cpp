@@ -133,7 +133,7 @@ OHLCVData DataIngestionEngine::parseStream(std::istream& stream,
                 continue;
             } else {
                 if (!has_prev) continue;
-                ts = last_ts;
+                if (ts.empty()) ts = last_ts;
                 o = last_open; h = last_high; l = last_low; c = last_close; v = last_vol;
             }
         }

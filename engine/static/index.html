@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSE Alpha Engine Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        :root {
+            --bg-grad: linear-gradient(135deg, #090B10, #141824);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent: #2DE2A6;
+            --accent-glow: rgba(45, 226, 166, 0.3);
+            --text-main: #FFFFFF;
+            --text-muted: #8E9BAE;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg-grad);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(to right, #ffffff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .glass-card h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .glass-card h2::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            border-top: 1px solid var(--card-border);
+            padding-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            background: rgba(45, 226, 166, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        #loader {
+            color: var(--accent);
+            font-weight: 600;
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NSE Alpha Engine</h1>
+            <p class="subtitle">High-Fidelity C++ Quantitative Backend Analytics</p>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="glass-card">
+                <h2>C++ Sub-millisecond Execution Benchmark 
+                    <button class="btn" style="margin-left:auto; font-size: 0.8rem; padding: 6px 16px;" onclick="runBenchmark()">Run Live</button>
+                </h2>
+                <div id="loader">Computing across 1,000,000 synthetic rows via C++ pybind11...</div>
+                <div class="chart-wrapper">
+                    <canvas id="benchmarkChart"></canvas>
+                </div>
+                <div class="stats-row">
+                    <div class="stat">
+                        <div class="stat-value" id="stat-points">1,000,000</div>
+                        <div class="stat-label">Data Points</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="stat-fastest">0.0ms</div>
+                        <div class="stat-label">Fastest Indicator (SMA)</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="stat-total">0.0ms</div>
+                        <div class="stat-label">Total Execution Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let myChart = null;
+
+        async function runBenchmark() {
+            document.getElementById('loader').style.display = 'block';
+            if (myChart) myChart.destroy();
+            
+            try {
+                const response = await fetch('/api/engine/benchmark?rows=1000000');
+                const data = await response.json();
+                
+                const labels = data.benchmarks.map(b => b.name);
+                const times = data.benchmarks.map(b => b.elapsed_ms);
+                
+                let totalTime = times.reduce((a, b) => a + b, 0);
+                let fastestTime = Math.min(...times.filter(t => t > 0)); // filter out 0 if any
+
+                document.getElementById('stat-total').innerText = totalTime.toFixed(1) + 'ms';
+                document.getElementById('stat-fastest').innerText = fastestTime.toFixed(1) + 'ms';
+
+                const ctx = document.getElementById('benchmarkChart').getContext('2d');
+                
+                Chart.defaults.color = '#8E9BAE';
+                Chart.defaults.font.family = 'Inter';
+
+                myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Execution Time (ms) - Lower is better',
+                            data: times,
+                            backgroundColor: 'rgba(45, 226, 166, 0.7)',
+                            borderColor: '#2DE2A6',
+                            borderWidth: 1,
+                            borderRadius: 6,
+                            barPercentage: 0.6
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: { color: '#fff' }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0,0,0,0.8)',
+                                titleFont: { size: 14, family: 'Inter' },
+                                bodyFont: { size: 14, family: 'monospace' },
+                                padding: 12,
+                                displayColors: false,
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.raw.toFixed(2) + ' ms';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                title: { display: true, text: 'Execution Time (Milliseconds)' }
+                            },
+                            y: {
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            } catch (err) {
+                console.error("Failed to fetch benchmark data", err);
+                alert("Failed to reach backend. Ensure the server is running on the correct port.");
+            } finally {
+                document.getElementById('loader').style.display = 'none';
+            }
+        }
+
+        // Run automatically on load
+        window.addEventListener('load', runBenchmark);
+    </script>
+</body>
+</html>

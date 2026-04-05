@@ -39,6 +39,9 @@ target_compile_options(nse_engine_cpp PRIVATE -Wall -Wextra -O3)
 set_target_properties(nse_engine_cpp PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build_output
 )
+if(WIN32)
+    target_link_options(nse_engine_cpp PRIVATE -static -static-libstdc++ -static-libgcc)
+endif()
 
 # ── 2. Standalone CLI executable ──────────────────────────────────────────────
 add_executable(nse_engine

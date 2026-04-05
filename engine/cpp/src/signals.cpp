@@ -26,7 +26,7 @@ std::vector<SignalPoint> SignalEngine::smaCrossover(
     bool prev_short_above = false;
     bool initialized = false;
 
-    std::size_t start = static_cast<std::size_t>(long_window);
+    std::size_t start = static_cast<std::size_t>(long_window - 1);
 
     for (std::size_t i = start; i < n; ++i) {
         if (std::isnan(short_sma[i]) || std::isnan(long_sma[i])) continue;

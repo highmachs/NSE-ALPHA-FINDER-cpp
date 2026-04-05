@@ -1,11 +1,3 @@
-"""
-NSE Alpha Engine — Python High-Level Wrapper
-
-Provides a clean, Pythonic interface on top of the C++ pybind11 bindings.
-All heavy computation runs in C++; this module handles type conversion,
-result formatting, and convenience methods.
-"""
-
 import sys
 import os
 import math
@@ -16,77 +8,36 @@ sys.path.insert(0, os.path.abspath(_BUILD_OUTPUT))
 
 import nse_engine_cpp as _cpp
 
-
-# ── Re-export enums ───────────────────────────────────────────────────────────
-
 MissingValuePolicy = _cpp.MissingValuePolicy
 Signal             = _cpp.Signal
-
-
-# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _clean(v: float) -> Optional[float]:
     return None if (math.isnan(v) or math.isinf(v)) else v
 
-
 def _clean_list(lst) -> List[Optional[float]]:
     return [_clean(v) for v in lst]
 
-
-# ── Data Loading ──────────────────────────────────────────────────────────────
-
 def load_csv(filepath: str,
              missing_policy: Literal["drop", "forward_fill"] = "drop") -> Dict[str, Any]:
-    """
-    Load OHLCV data from a CSV file.
-
-    Parameters
-    ----------
-    filepath : str
-        Path to CSV file. Must contain: timestamp, open, high, low, close, volume.
-    missing_policy : "drop" | "forward_fill"
-        How to handle malformed rows.
-
-    Returns
-    -------
-    dict with keys: timestamp, open, high, low, close, volume, rows
-    """
-    policy = (MissingValuePolicy.FORWARD_FILL
+        policy = (MissingValuePolicy.FORWARD_FILL
               if missing_policy == "forward_fill"
               else MissingValuePolicy.DROP)
     data = _cpp.DataIngestionEngine.load_from_csv(filepath, policy)
     return _ohlcv_to_dict(data)
 
-
 def load_string(csv_content: str,
                 missing_policy: Literal["drop", "forward_fill"] = "drop") -> Dict[str, Any]:
-    """
-    Load OHLCV data from a raw CSV string.
-
-    Parameters
-    ----------
-    csv_content : str
-        Full CSV text including header row.
-    missing_policy : "drop" | "forward_fill"
-        How to handle malformed rows.
-
-    Returns
-    -------
-    dict with keys: timestamp, open, high, low, close, volume, rows
-    """
-    policy = (MissingValuePolicy.FORWARD_FILL
+        policy = (MissingValuePolicy.FORWARD_FILL
               if missing_policy == "forward_fill"
               else MissingValuePolicy.DROP)
     data = _cpp.DataIngestionEngine.load_from_string(csv_content, policy)
     return _ohlcv_to_dict(data)
-
 
 def _load_raw(csv_content: str, missing_policy: str) -> _cpp.OHLCVData:
     policy = (MissingValuePolicy.FORWARD_FILL
               if missing_policy == "forward_fill"
               else MissingValuePolicy.DROP)
     return _cpp.DataIngestionEngine.load_from_string(csv_content, policy)
-
 
 def _ohlcv_to_dict(data: _cpp.OHLCVData) -> Dict[str, Any]:
     return {
@@ -99,57 +50,35 @@ def _ohlcv_to_dict(data: _cpp.OHLCVData) -> Dict[str, Any]:
         "rows":      data.size(),
     }
 
-
-# ── Indicators ────────────────────────────────────────────────────────────────
-
 def sma(close: List[float], window: int) -> List[Optional[float]]:
-    """Simple Moving Average — O(n), rolling mean over window."""
-    return _clean_list(_cpp.IndicatorEngine.sma(close, window))
-
+        return _clean_list(_cpp.IndicatorEngine.sma(close, window))
 
 def ema(close: List[float], window: int) -> List[Optional[float]]:
-    """Exponential Moving Average — alpha = 2 / (n + 1)."""
-    return _clean_list(_cpp.IndicatorEngine.ema(close, window))
-
+        return _clean_list(_cpp.IndicatorEngine.ema(close, window))
 
 def rsi(close: List[float], window: int = 14) -> List[Optional[float]]:
-    """Relative Strength Index — Wilder's smoothing method."""
-    return _clean_list(_cpp.IndicatorEngine.rsi(close, window))
-
+        return _clean_list(_cpp.IndicatorEngine.rsi(close, window))
 
 def macd(close: List[float],
          fast: int = 12,
          slow: int = 26,
          signal: int = 9) -> Dict[str, List[Optional[float]]]:
-    """
-    MACD — EMA(fast) minus EMA(slow), signal = EMA(signal) of MACD.
-
-    Returns dict: { macd_line, signal_line, histogram }
-    """
-    r = _cpp.IndicatorEngine.macd(close, fast, slow, signal)
+        r = _cpp.IndicatorEngine.macd(close, fast, slow, signal)
     return {
         "macd_line":   _clean_list(r.macd_line),
         "signal_line": _clean_list(r.signal_line),
         "histogram":   _clean_list(r.histogram),
     }
 
-
 def bollinger_bands(close: List[float],
                     window: int = 20,
                     k: float = 2.0) -> Dict[str, List[Optional[float]]]:
-    """
-    Bollinger Bands — SMA ± (k × std).
-    Uses O(n) incremental variance.
-
-    Returns dict: { upper, middle, lower }
-    """
-    r = _cpp.IndicatorEngine.bollinger_bands(close, window, k)
+        r = _cpp.IndicatorEngine.bollinger_bands(close, window, k)
     return {
         "upper":  _clean_list(r.upper),
         "middle": _clean_list(r.middle),
         "lower":  _clean_list(r.lower),
     }
-
 
 def all_indicators(close: List[float],
                    sma_window: int = 20,
@@ -160,19 +89,13 @@ def all_indicators(close: List[float],
                    macd_signal: int = 9,
                    bb_window: int = 20,
                    bb_k: float = 2.0) -> Dict[str, Any]:
-    """
-    Compute all indicators in one call. Returns nested dict.
-    """
-    return {
+        return {
         "sma":             sma(close, sma_window),
         "ema":             ema(close, ema_window),
         "rsi":             rsi(close, rsi_window),
         "macd":            macd(close, macd_fast, macd_slow, macd_signal),
         "bollinger_bands": bollinger_bands(close, bb_window, bb_k),
     }
-
-
-# ── Signals ───────────────────────────────────────────────────────────────────
 
 def _signal_to_dict(sp: _cpp.SignalPoint) -> Dict[str, Any]:
     return {
@@ -181,37 +104,28 @@ def _signal_to_dict(sp: _cpp.SignalPoint) -> Dict[str, Any]:
         "price":     _clean(sp.price),
     }
 
-
 def sma_crossover_signals(close: List[float],
                            timestamps: List[str],
                            short_window: int = 10,
                            long_window: int = 50) -> List[Dict[str, Any]]:
-    """SMA Crossover: BUY when short crosses above long, SELL when below."""
-    raw = _cpp.SignalEngine.sma_crossover(close, timestamps, short_window, long_window)
+        raw = _cpp.SignalEngine.sma_crossover(close, timestamps, short_window, long_window)
     return [_signal_to_dict(s) for s in raw]
-
 
 def rsi_signals(close: List[float],
                 timestamps: List[str],
                 window: int = 14,
                 oversold: float = 30.0,
                 overbought: float = 70.0) -> List[Dict[str, Any]]:
-    """RSI Strategy: BUY when RSI < oversold, SELL when RSI > overbought."""
-    raw = _cpp.SignalEngine.rsi_strategy(close, timestamps, window, oversold, overbought)
+        raw = _cpp.SignalEngine.rsi_strategy(close, timestamps, window, oversold, overbought)
     return [_signal_to_dict(s) for s in raw]
-
 
 def macd_signals(close: List[float],
                  timestamps: List[str],
                  fast: int = 12,
                  slow: int = 26,
                  signal: int = 9) -> List[Dict[str, Any]]:
-    """MACD Crossover: BUY when MACD crosses above signal, SELL when below."""
-    raw = _cpp.SignalEngine.macd_strategy(close, timestamps, fast, slow, signal)
+        raw = _cpp.SignalEngine.macd_strategy(close, timestamps, fast, slow, signal)
     return [_signal_to_dict(s) for s in raw]
-
-
-# ── Backtest ──────────────────────────────────────────────────────────────────
 
 def _raw_signals(close: List[float],
                  timestamps: List[str],
@@ -237,26 +151,11 @@ def _raw_signals(close: List[float],
     else:
         raise ValueError(f"Unknown strategy: {strategy!r}. Choose: sma_crossover | rsi | macd")
 
-
 def backtest(close: List[float],
              timestamps: List[str],
              strategy: Literal["sma_crossover", "rsi", "macd"] = "sma_crossover",
              **strategy_kwargs) -> Dict[str, Any]:
-    """
-    Run a backtest using the given strategy.
-
-    Parameters
-    ----------
-    close : list of float
-    timestamps : list of str
-    strategy : "sma_crossover" | "rsi" | "macd"
-    **strategy_kwargs : forwarded to the signal generator
-
-    Returns
-    -------
-    dict: { num_trades, total_return_pct, win_rate_pct, max_drawdown_pct, trades }
-    """
-    signals = _raw_signals(close, timestamps, strategy, **strategy_kwargs)
+        signals = _raw_signals(close, timestamps, strategy, **strategy_kwargs)
     result  = _cpp.BacktestEngine.run(signals, close, timestamps)
 
     trades_out = [
@@ -281,16 +180,8 @@ def backtest(close: List[float],
         "trades":            trades_out,
     }
 
-
-# ── Benchmark ─────────────────────────────────────────────────────────────────
-
 def benchmark(rows: int = 1_000_000) -> List[Dict[str, Any]]:
-    """
-    Run the full benchmark suite against N synthetic rows.
-
-    Returns list of { name, elapsed_us, elapsed_ms, throughput_per_sec }.
-    """
-    close = [100.0 + 50.0 * math.sin(i * 0.001) for i in range(rows)]
+        close = [100.0 + 50.0 * math.sin(i * 0.001) for i in range(rows)]
     timestamps = [f"T{i}" for i in range(rows)]
 
     def _b(name, fn):

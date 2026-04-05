@@ -55,6 +55,14 @@ BacktestResult BacktestEngine::run(
         if (it == ts_to_idx.end()) continue;
         std::size_t bar = it->second;
 
+        if (in_position) {
+            double current_price = close[bar];
+            double pnl_pct = ((current_price - entry_price) / entry_price) * 100.0;
+            equity_curve.push_back(cumulative_return * (1.0 + pnl_pct / 100.0));
+        } else {
+            equity_curve.push_back(cumulative_return);
+        }
+
         if (!in_position && sp.signal == Signal::BUY) {
             in_position  = true;
             entry_ts     = sp.timestamp;
@@ -80,10 +88,31 @@ BacktestResult BacktestEngine::run(
             result.trades.push_back(trade);
 
             cumulative_return *= (1.0 + pnl_pct / 100.0);
-            equity_curve.push_back(cumulative_return);
-
             in_position = false;
         }
+    }
+
+    if (in_position) {
+        auto last_sp = signals.back();
+        std::size_t bar = ts_to_idx[last_sp.timestamp];
+        double exit_price = last_sp.price;
+        double pnl_pct = ((exit_price - entry_price) / entry_price) * 100.0;
+        int duration = static_cast<int>(bar) - static_cast<int>(entry_bar);
+        
+        Trade trade;
+        trade.entry_timestamp = entry_ts;
+        trade.exit_timestamp = last_sp.timestamp;
+        trade.entry_price = entry_price;
+        trade.exit_price = exit_price;
+        trade.duration_bars = duration;
+        trade.pnl_pct = pnl_pct;
+        trade.is_win = (pnl_pct > 0.0);
+        
+        if (trade.is_win) ++wins;
+        result.trades.push_back(trade);
+        
+        cumulative_return *= (1.0 + pnl_pct / 100.0);
+        in_position = false;
     }
 
     result.num_trades = static_cast<int>(result.trades.size());
@@ -91,8 +120,8 @@ BacktestResult BacktestEngine::run(
     if (result.num_trades > 0) {
         result.total_return_pct = cumulative_return - 100.0;
         result.win_rate         = static_cast<double>(wins) / result.num_trades * 100.0;
-        result.max_drawdown_pct = computeMaxDrawdown(equity_curve);
     }
+    result.max_drawdown_pct = computeMaxDrawdown(equity_curve);
 
     return result;
 }

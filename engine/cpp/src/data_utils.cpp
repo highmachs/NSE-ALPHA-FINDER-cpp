@@ -67,7 +67,9 @@ std::string DataUtils::normaliseOneTimestamp(const std::string& ts) {
         static const std::regex us_re(R"((\d{1,2})/(\d{1,2})/(\d{4}))");
         std::smatch m;
         if (std::regex_search(s, m, us_re)) {
-            return m[3].str() + "-" + pad2(std::stoi(m[1])) + "-" + pad2(std::stoi(m[2]));
+            if (std::stoi(m[1]) <= 12) {
+                return m[3].str() + "-" + pad2(std::stoi(m[1])) + "-" + pad2(std::stoi(m[2]));
+            }
         }
     }
 

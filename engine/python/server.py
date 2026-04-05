@@ -1,36 +1,8 @@
-"""
-NSE Alpha Engine — FastAPI REST Server.
-
-Exposes the C++ engine over HTTP on the port specified by the PORT
-environment variable (default 8080 for the Replit workflow).
-
-All heavy computation is delegated to the pybind11 C++ module
-``nse_engine_cpp``.  The server adds:
-  - Input validation via Pydantic models.
-  - NaN / Inf sanitisation before JSON serialisation.
-  - Per-endpoint microsecond timing headers.
-  - CORS wide-open for development (restrict in production).
-
-Endpoints
----------
-GET  /api/healthz                 Engine health check.
-POST /api/engine/load             Parse CSV → OHLCV struct.
-POST /api/engine/validate         OHLC consistency + price-sanity check.
-POST /api/engine/standardise      Normalise timestamps + drop invalid rows.
-POST /api/engine/indicators       All 5 indicators in one call.
-POST /api/engine/signals          BUY/SELL/HOLD signal stream.
-POST /api/engine/backtest         Full backtest with PnL metrics.
-GET  /api/engine/benchmark?rows=N Performance report.
-
-Interactive docs: http://localhost:{PORT}/docs
-"""
-
 import sys
 import os
 import math
 import time
 
-# ── C++ module path ────────────────────────────────────────────────────────────
 BUILD_OUTPUT = os.path.join(os.path.dirname(__file__), "..", "build_output")
 sys.path.insert(0, os.path.abspath(BUILD_OUTPUT))
 
@@ -42,7 +14,6 @@ from pydantic import BaseModel, Field
 from typing import List, Literal, Optional
 import uvicorn
 
-# ── App setup ──────────────────────────────────────────────────────────────────
 app = FastAPI(
     title="NSE Alpha Engine API",
     description=(
@@ -62,20 +33,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# ── JSON sanitisation helpers ──────────────────────────────────────────────────
-
 def _sanitize(v: float) -> Optional[float]:
     """Return None for NaN/Inf (not JSON-serialisable), else v."""
     if math.isnan(v) or math.isinf(v):
         return None
     return v
 
-
 def _san_list(lst) -> list:
     """Sanitise an entire vector, replacing NaN/Inf with None."""
     return [_sanitize(v) for v in lst]
-
 
 def _ohlcv_to_dict(data: engine.OHLCVData) -> dict:
     """Serialise an OHLCVData struct to a plain dict for JSON response."""
@@ -89,9 +55,6 @@ def _ohlcv_to_dict(data: engine.OHLCVData) -> dict:
         "rows":      data.size(),
     }
 
-
-# ── Pydantic request models ────────────────────────────────────────────────────
-
 class LoadCSVRequest(BaseModel):
     """Request body for POST /api/engine/load."""
     csv_content: str = Field(
@@ -103,7 +66,6 @@ class LoadCSVRequest(BaseModel):
         description="'drop' discards bad rows; 'forward_fill' reuses previous values.",
     )
 
-
 class ValidateRequest(BaseModel):
     """Request body for POST /api/engine/validate."""
     csv_content: str = Field(..., description="Raw CSV text to validate.")
@@ -113,7 +75,6 @@ class ValidateRequest(BaseModel):
         description="If true, normalise timestamps before validation.",
     )
 
-
 class StandardiseRequest(BaseModel):
     """Request body for POST /api/engine/standardise."""
     csv_content: str = Field(..., description="Raw CSV text to standardise.")
@@ -122,7 +83,6 @@ class StandardiseRequest(BaseModel):
         True,
         description="If true, remove rows that fail OHLC consistency checks.",
     )
-
 
 class IndicatorsRequest(BaseModel):
     """Request body for POST /api/engine/indicators."""
@@ -136,7 +96,6 @@ class IndicatorsRequest(BaseModel):
     macd_signal: int   = Field(9,    ge=2,  description="MACD signal EMA period.")
     bb_window:   int   = Field(20,   ge=2,  description="Bollinger Bands window.")
     bb_k:        float = Field(2.0,  gt=0,  description="Bollinger Bands std-dev multiplier.")
-
 
 class SignalsRequest(BaseModel):
     """Request body for POST /api/engine/signals."""
@@ -154,7 +113,6 @@ class SignalsRequest(BaseModel):
     macd_slow:      int   = Field(26,   ge=2)
     macd_signal:    int   = Field(9,    ge=2)
 
-
 class BacktestRequest(BaseModel):
     """Request body for POST /api/engine/backtest."""
     csv_content:    str   = Field(..., description="Raw CSV text.")
@@ -169,9 +127,6 @@ class BacktestRequest(BaseModel):
     macd_slow:      int   = Field(26,   ge=2)
     macd_signal:    int   = Field(9,    ge=2)
 
-
-# ── Internal helpers ───────────────────────────────────────────────────────────
-
 def _load_data(csv_content: str, missing_policy: str) -> engine.OHLCVData:
     """Parse CSV string → OHLCVData, raising HTTP 422 on failure."""
     policy = (
@@ -183,7 +138,6 @@ def _load_data(csv_content: str, missing_policy: str) -> engine.OHLCVData:
         return engine.DataIngestionEngine.load_from_string(csv_content, policy)
     except Exception as exc:
         raise HTTPException(status_code=422, detail=f"CSV parse error: {exc}")
-
 
 def _generate_signals(
     data:           engine.OHLCVData,
@@ -214,14 +168,10 @@ def _generate_signals(
     except Exception as exc:
         raise HTTPException(status_code=422, detail=f"Signal generation error: {exc}")
 
-
-# ── Endpoints ──────────────────────────────────────────────────────────────────
-
 @app.get("/api/healthz", summary="Engine health check")
 def health():
     """Return engine status. Always 200 when the server is up."""
     return {"status": "ok", "engine": "NSE Alpha Engine v1.0.0"}
-
 
 @app.post("/api/engine/load", summary="Parse CSV → OHLCV struct")
 def load_csv(req: LoadCSVRequest):
@@ -236,7 +186,6 @@ def load_csv(req: LoadCSVRequest):
     result = _ohlcv_to_dict(data)
     result["load_time_us"] = elapsed_us
     return result
-
 
 @app.post("/api/engine/validate", summary="OHLCV consistency + price-sanity check")
 def validate_ohlcv(req: ValidateRequest):
@@ -265,7 +214,6 @@ def validate_ohlcv(req: ValidateRequest):
         "validation_time_us": elapsed_us,
     }
 
-
 @app.post("/api/engine/standardise", summary="Normalise timestamps + drop invalid rows")
 def standardise_ohlcv(req: StandardiseRequest):
     """
@@ -290,7 +238,6 @@ def standardise_ohlcv(req: StandardiseRequest):
     result["rows_dropped"] = rows_before - data.size()
     result["standardise_time_us"] = elapsed_us
     return result
-
 
 @app.post("/api/engine/indicators", summary="Compute all 5 technical indicators")
 def compute_indicators(req: IndicatorsRequest):
@@ -358,7 +305,6 @@ def compute_indicators(req: IndicatorsRequest):
         "computation_time_us":  timings,
     }
 
-
 @app.post("/api/engine/signals", summary="Generate BUY/SELL/HOLD signal stream")
 def generate_signals(req: SignalsRequest):
     """
@@ -397,7 +343,6 @@ def generate_signals(req: SignalsRequest):
         "signals":             signal_list,
         "generation_time_us":  elapsed_us,
     }
-
 
 @app.post("/api/engine/backtest", summary="Run full backtest with PnL metrics")
 def run_backtest(req: BacktestRequest):
@@ -447,7 +392,6 @@ def run_backtest(req: BacktestRequest):
         "trades":           trades_out,
         "backtest_time_us": elapsed_us,
     }
-
 
 @app.get("/api/engine/benchmark", summary="Performance report for N data points")
 def run_benchmark(rows: int = 1000000):
@@ -505,8 +449,9 @@ def run_benchmark(rows: int = 1000000):
         "benchmarks":  results,
     }
 
+from fastapi.staticfiles import StaticFiles
 
-# ── Entry point ────────────────────────────────────────────────────────────────
+app.mount("/", StaticFiles(directory=os.path.join(os.path.dirname(__file__), "..", "static"), html=True), name="static")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8080"))
