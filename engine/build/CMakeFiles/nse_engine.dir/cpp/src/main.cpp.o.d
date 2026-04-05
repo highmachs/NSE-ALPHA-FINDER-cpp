@@ -209,6 +209,27 @@ CMakeFiles/nse_engine.dir/cpp/src/main.cpp.o: \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/quoted_string.h \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/sstream \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/sstream.tcc \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/fstream \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/basic_file.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++io.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/fstream.tcc \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/vector \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_uninitialized.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_vector.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_bvector.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/vector.tcc \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/functional \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_function.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/unordered_map \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_map.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable_policy.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/aligned_buffer.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/enable_special_members.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/node_handle.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/erase_if.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/array \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/compare \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/algorithm \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algo.h \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/algorithmfwd.h \
@@ -217,6 +238,9 @@ CMakeFiles/nse_engine.dir/cpp/src/main.cpp.o: \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_tempbuf.h \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_algorithm_defs.h \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/execution_defs.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/numeric \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_numeric.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_numeric_defs.h \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cmath \
  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/math.h \
  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/math-vector.h \
@@ -242,34 +266,35 @@ CMakeFiles/nse_engine.dir/cpp/src/main.cpp.o: \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/poly_hermite.tcc \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/poly_laguerre.tcc \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/riemann_zeta.tcc \
- /home/runner/workspace/engine/cpp/include/data_ingestion.hpp \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/vector \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_uninitialized.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_vector.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_bvector.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/vector.tcc \
- /home/runner/workspace/engine/cpp/include/indicators.hpp \
- /home/runner/workspace/engine/cpp/include/signals.hpp \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstring \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/string.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/strings.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/strings_fortified.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/string_fortified.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/chrono \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/chrono.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ratio \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdint \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdint.h \
  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdint.h \
  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-uintn.h \
  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-least.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/parse_numbers.h \
+ /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cassert \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/assert.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/unistd.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/posix_opt.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/environments.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/confname.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/getopt_posix.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/getopt_core.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd-decl.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd_ext.h \
+ /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/close_range.h \
+ /home/runner/workspace/engine/cpp/include/data_ingestion.hpp \
+ /home/runner/workspace/engine/cpp/include/data_utils.hpp \
+ /home/runner/workspace/engine/cpp/include/indicators.hpp \
+ /home/runner/workspace/engine/cpp/include/signals.hpp \
  /home/runner/workspace/engine/cpp/include/backtest.hpp \
- /home/runner/workspace/engine/cpp/include/benchmark.hpp \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/functional \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_function.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/unordered_map \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_map.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable_policy.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/aligned_buffer.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/enable_special_members.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/node_handle.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/erase_if.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/array \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/compare \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/chrono \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/chrono.h \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ratio \
- /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/parse_numbers.h
+ /home/runner/workspace/engine/cpp/include/benchmark.hpp

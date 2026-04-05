@@ -20,12 +20,14 @@
   CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o \
+  CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/tests/test_data_ingestion.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/tests/test_indicators.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/tests/test_main.cpp.o \
+  CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/tests/test_runner.cpp.o \
   CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o
 
@@ -2939,8 +2941,6 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o: /home/runner/workspace/en
 
 /home/runner/workspace/engine/cpp/tests/test_signals.cpp:
 
-/home/runner/workspace/engine/cpp/tests/test_runner.cpp:
-
 /home/runner/workspace/engine/cpp/tests/test_reference_values.cpp:
 
 /home/runner/workspace/engine/cpp/tests/test_indicators.cpp:
@@ -3040,6 +3040,8 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o: /home/runner/workspace/en
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/pthread.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/setjmp.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthread_stack_min-dynamic.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bit:
 
@@ -3161,34 +3163,6 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o: /home/runner/workspace/en
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-least.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/math.h:
-
-CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o:
-
-/home/runner/workspace/engine/cpp/src/benchmark.cpp:
-
-/home/runner/workspace/engine/cpp/tests/test_data_ingestion.cpp:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__FILE.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_bvector.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.h:
-
-/home/runner/workspace/engine/cpp/tests/test_backtest.cpp:
-
-/home/runner/workspace/engine/cpp/include/data_utils.hpp:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/alloc_traits.h:
-
-/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libgcc_s.so:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stringfwd.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib:
-
 CMakeFiles/nse_tests.dir/cpp/tests/test_data_ingestion.cpp.o:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator_base_types.h:
@@ -3199,12 +3173,6 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.o:
 
 CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timeval.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__locale_t.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/crti.o:
-
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/sched.h:
 
 CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o:
@@ -3212,6 +3180,26 @@ CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o:
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_numeric_defs.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/special_function_util.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/math.h:
+
+CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timeval.h:
+
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/crti.o:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__locale_t.h:
+
+/home/runner/workspace/engine/cpp/src/benchmark.cpp:
+
+/home/runner/workspace/engine/cpp/tests/test_data_ingestion.cpp:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__FILE.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_bvector.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types.h:
 
@@ -3247,6 +3235,18 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_runner.cpp.o:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/crtbegin.o:
 
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/atomic_wide_counter.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex.tcc:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/errno.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wchar.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algobase.h:
+
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_error.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_rwlock.h:
@@ -3256,12 +3256,6 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_runner.cpp.o:
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uses_allocator.h:
 
 CMakeFiles/nse_tests.dir/cpp/tests/test_indicators.cpp.o:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex.tcc:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/atomic_wide_counter.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/atomicity.h:
 
@@ -3289,13 +3283,19 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/iosfwd:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_scanner.h:
+/home/runner/workspace/engine/cpp/tests/test_backtest.cpp:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_defines.h:
+/home/runner/workspace/engine/cpp/include/data_utils.hpp:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_map.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/alloc_traits.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++allocator.h:
+/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libgcc_s.so:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stringfwd.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_mutex.h:
 
@@ -3311,7 +3311,13 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o:
 
 CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o:
 
+/home/runner/workspace/engine/cpp/tests/test_runner.cpp:
+
+CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o:
+
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthreadtypes-arch.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_numeric.h:
 
@@ -3335,11 +3341,11 @@ CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/clock_t.h:
 
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/chrono:
+
 /home/runner/workspace/engine/cpp/src/backtest.cpp:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwchar:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/chrono:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_stack.h:
 
@@ -3375,15 +3381,11 @@ CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/string_conversions.h:
 
+CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o:
+
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wctype-wchar.h:
 
 /nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/crtn.o:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/errno.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wchar.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algobase.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/endian.h:
 
@@ -3395,8 +3397,6 @@ CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls-helper-functions.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h:
-
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/iscanonical.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/fp-fast.h:
@@ -3404,6 +3404,14 @@ CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o:
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/libm-simd-decl-stubs.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_scanner.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_defines.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_map.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++allocator.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.tcc:
 
@@ -3626,5 +3634,3 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_main.cpp.o:
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/functional:
 
 /home/runner/workspace/engine/cpp/src/data_ingestion.cpp:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthread_stack_min-dynamic.h:

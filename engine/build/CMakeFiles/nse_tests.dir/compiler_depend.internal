@@ -21,12 +21,14 @@
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o
+ /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/tests/test_data_ingestion.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/tests/test_indicators.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/tests/test_main.cpp.o
+ /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/tests/test_runner.cpp.o
  /home/runner/workspace/engine/build/CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o
 
