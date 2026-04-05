@@ -496,6 +496,7 @@ CMakeFiles/nse_engine_cpp.dir/cpp/bindings/bindings.cpp.o: \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/istream \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/istream.tcc \
  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/sstream.tcc \
+ /home/runner/workspace/engine/cpp/include/data_utils.hpp \
  /home/runner/workspace/engine/cpp/include/indicators.hpp \
  /home/runner/workspace/engine/cpp/include/signals.hpp \
  /home/runner/workspace/engine/cpp/include/backtest.hpp \

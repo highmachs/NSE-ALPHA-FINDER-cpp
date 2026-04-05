@@ -24,6 +24,7 @@ set(ENGINE_SOURCES
     cpp/src/signals.cpp
     cpp/src/backtest.cpp
     cpp/src/benchmark.cpp
+    cpp/src/data_utils.cpp
 )
 
 # ── 1. Python extension module (pybind11) ─────────────────────────────────────
@@ -60,6 +61,7 @@ add_executable(nse_tests
     cpp/tests/test_indicators.cpp
     cpp/tests/test_signals.cpp
     cpp/tests/test_backtest.cpp
+    cpp/tests/test_reference_values.cpp
     ${ENGINE_SOURCES}
 )
 

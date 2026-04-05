@@ -1,336 +1,495 @@
 """
-NSE Alpha Engine — Data Fetcher
+NSE Alpha Engine — OHLCV Data Fetcher.
 
-Downloads historical OHLCV data from free public sources for NSE equities:
-  1. Yahoo Finance  (ticker: SYMBOL.NS)
-  2. Stooq          (no authentication required)
+Downloads historical equity data from multiple sources and outputs a
+standardised CSV with columns: timestamp, open, high, low, close, volume.
 
-Outputs standardized CSV: timestamp,open,high,low,close,volume
-Compatible directly with DataIngestionEngine.load_from_csv()
+Supported sources
+-----------------
+yahoo     : Yahoo Finance via yfinance. Append ``.NS`` for NSE tickers.
+stooq     : Stooq.com plain-text CSV feed. Appends ``.IN`` suffix.
+alpha     : Alpha Vantage TIME_SERIES_DAILY_ADJUSTED (requires API key).
+auto      : Try Yahoo Finance first; fall back to Stooq on failure.
+
+CLI usage
+---------
+python3 data_fetcher.py RELIANCE 2020-01-01 2024-12-31 [source] [output_dir]
+python3 data_fetcher.py RELIANCE,TCS,INFY 2020-01-01 2024-12-31 auto data/
+
+Environment variables
+---------------------
+ALPHA_VANTAGE_KEY : Required for the ``alpha`` source.
 """
 
-import urllib.request
-import urllib.parse
-import urllib.error
-import os
-import time
-import datetime
+from __future__ import annotations
+
 import csv
 import io
-from typing import Optional, Literal
+import os
+import sys
+import time
+from datetime import datetime
+from typing import List, Optional
+
+# ── Optional dependencies — imported lazily to avoid import errors ─────────────
+try:
+    import yfinance as yf
+    _HAS_YFINANCE = True
+except ImportError:
+    _HAS_YFINANCE = False
+
+try:
+    import pandas as pd
+    _HAS_PANDAS = True
+except ImportError:
+    _HAS_PANDAS = False
+
+try:
+    import requests as _requests
+    _HAS_REQUESTS = True
+except ImportError:
+    _HAS_REQUESTS = False
+
+# ── Constants ──────────────────────────────────────────────────────────────────
+_STOOQ_BASE = "https://stooq.com/q/d/l/"
+_AV_BASE    = "https://www.alphavantage.co/query"
+_STANDARD_HEADER = ["timestamp", "open", "high", "low", "close", "volume"]
 
 
-# ── Constants ─────────────────────────────────────────────────────────────────
-
-YAHOO_BASE  = "https://query1.finance.yahoo.com/v8/finance/chart"
-STOOQ_BASE  = "https://stooq.com/q/d/l"
-
-USER_AGENT  = (
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-)
-
-# Standard output schema
-OUTPUT_COLUMNS = ["timestamp", "open", "high", "low", "close", "volume"]
-
-
-# ── HTTP Utility ──────────────────────────────────────────────────────────────
-
-def _get(url: str, headers: dict = None, timeout: int = 30) -> str:
-    req = urllib.request.Request(url)
-    req.add_header("User-Agent", USER_AGENT)
-    if headers:
-        for k, v in headers.items():
-            req.add_header(k, v)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return resp.read().decode("utf-8")
-    except urllib.error.HTTPError as e:
-        raise RuntimeError(f"HTTP {e.code} fetching {url}: {e.reason}")
-    except urllib.error.URLError as e:
-        raise RuntimeError(f"URL error fetching {url}: {e.reason}")
-
-
-# ── Timestamp Utilities ───────────────────────────────────────────────────────
-
-def _to_epoch(date_str: str) -> int:
-    """Convert YYYY-MM-DD to UTC epoch seconds."""
-    dt = datetime.datetime.strptime(date_str, "%Y-%m-%d")
-    return int(dt.replace(tzinfo=datetime.timezone.utc).timestamp())
-
-
-def _epoch_to_date(epoch: int) -> str:
-    """Convert epoch seconds to YYYY-MM-DD."""
-    return datetime.datetime.utcfromtimestamp(epoch).strftime("%Y-%m-%d")
-
-
-# ── Yahoo Finance ─────────────────────────────────────────────────────────────
-
-def _fetch_yahoo(symbol_ns: str, start: str, end: str) -> str:
-    """
-    Fetch OHLCV from Yahoo Finance v8 API.
-
-    Parameters
-    ----------
-    symbol_ns : str
-        Yahoo Finance ticker, e.g. "RELIANCE.NS"
-    start, end : str
-        Date range in YYYY-MM-DD format.
-
-    Returns
-    -------
-    str
-        Standardized CSV text (timestamp,open,high,low,close,volume).
-    """
-    t1 = _to_epoch(start)
-    t2 = _to_epoch(end) + 86400  # include end date
-
-    params = urllib.parse.urlencode({
-        "interval": "1d",
-        "period1":  t1,
-        "period2":  t2,
-        "events":   "history",
-    })
-    url = f"{YAHOO_BASE}/{urllib.parse.quote(symbol_ns)}?{params}"
-
-    import json
-    raw = _get(url, headers={"Accept": "application/json"})
-    data = json.loads(raw)
-
-    try:
-        result = data["chart"]["result"][0]
-        timestamps = result["timestamp"]
-        indicators  = result["indicators"]["quote"][0]
-        opens   = indicators["open"]
-        highs   = indicators["high"]
-        lows    = indicators["low"]
-        closes  = indicators["close"]
-        volumes = indicators["volume"]
-    except (KeyError, IndexError, TypeError) as e:
-        raise RuntimeError(f"Yahoo Finance API response parse error: {e}")
-
-    rows = [OUTPUT_COLUMNS]
-    for i, ts in enumerate(timestamps):
-        o = opens[i]
-        h = highs[i]
-        l = lows[i]
-        c = closes[i]
-        v = volumes[i]
-        if any(x is None for x in [o, h, l, c]):
-            continue
-        date = _epoch_to_date(ts)
-        rows.append([
-            date,
-            f"{o:.4f}",
-            f"{h:.4f}",
-            f"{l:.4f}",
-            f"{c:.4f}",
-            str(v if v is not None else 0),
-        ])
-
-    output = io.StringIO()
-    writer = csv.writer(output)
-    writer.writerows(rows)
-    return output.getvalue()
-
-
-# ── Stooq ─────────────────────────────────────────────────────────────────────
-
-def _fetch_stooq(symbol: str, start: str, end: str) -> str:
-    """
-    Fetch OHLCV from Stooq (no authentication required).
-
-    Parameters
-    ----------
-    symbol : str
-        Stooq symbol, e.g. "RELIANCE.IN" or "TCS.IN"
-    start, end : str
-        Date range in YYYY-MM-DD format.
-
-    Returns
-    -------
-    str
-        Standardized CSV text (timestamp,open,high,low,close,volume).
-    """
-    s_fmt = start.replace("-", "")
-    e_fmt = end.replace("-", "")
-    params = urllib.parse.urlencode({
-        "s": symbol,
-        "d1": s_fmt,
-        "d2": e_fmt,
-        "i": "d",
-    })
-    url = f"{STOOQ_BASE}/?{params}"
-    raw = _get(url)
-
-    if "No data" in raw or len(raw.strip()) < 50:
-        raise RuntimeError(f"Stooq returned no data for symbol '{symbol}'")
-
-    # Stooq CSV format: Date,Open,High,Low,Close,Volume
-    reader = csv.DictReader(io.StringIO(raw))
-    output = io.StringIO()
-    writer = csv.writer(output)
-    writer.writerow(OUTPUT_COLUMNS)
-
-    for row in reader:
-        date  = row.get("Date", "").strip()
-        open_ = row.get("Open", "").strip()
-        high  = row.get("High", "").strip()
-        low   = row.get("Low",  "").strip()
-        close = row.get("Close","").strip()
-        vol   = row.get("Volume", "0").strip() or "0"
-        if not all([date, open_, high, low, close]):
-            continue
-        writer.writerow([date, open_, high, low, close, vol])
-
-    return output.getvalue()
-
-
-# ── Public API ────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Public API
+# ─────────────────────────────────────────────────────────────────────────────
 
 def fetch(
-    symbol: str,
-    start: str,
-    end: Optional[str] = None,
-    source: Literal["yahoo", "stooq", "auto"] = "auto",
+    symbol:     str,
+    start:      str,
+    end:        str,
+    source:     str = "auto",
     output_dir: Optional[str] = None,
 ) -> str:
     """
-    Download historical OHLCV data for an NSE equity.
+    Download historical OHLCV data for a single NSE symbol.
+
+    The output is a CSV string with the standardised header::
+
+        timestamp,open,high,low,close,volume
+
+    and is optionally written to ``{output_dir}/{symbol}.csv``.
 
     Parameters
     ----------
-    symbol : str
-        NSE symbol. For Yahoo Finance: "RELIANCE.NS", "TCS.NS".
-        For Stooq: "RELIANCE.IN", "TCS.IN".
-        For auto mode: pass the base symbol (e.g. "RELIANCE") and the
-        correct suffix is appended per source.
-    start : str
-        Start date in YYYY-MM-DD format.
-    end : str, optional
-        End date in YYYY-MM-DD format. Defaults to today.
-    source : "yahoo" | "stooq" | "auto"
-        Data source. "auto" tries Yahoo Finance first, then Stooq.
-    output_dir : str, optional
-        If provided, saves the CSV to this directory and returns the filepath.
-        Otherwise, returns the CSV text.
+    symbol:
+        NSE ticker without exchange suffix (e.g. ``"RELIANCE"``).
+        The appropriate suffix is appended automatically per source.
+    start:
+        Start date in ``"YYYY-MM-DD"`` format (inclusive).
+    end:
+        End date in ``"YYYY-MM-DD"`` format (inclusive).
+    source:
+        One of ``"yahoo"``, ``"stooq"``, ``"alpha"``, or ``"auto"``.
+        ``"auto"`` tries Yahoo Finance first; falls back to Stooq.
+    output_dir:
+        If provided, write the result CSV to ``{output_dir}/{symbol}.csv``.
 
     Returns
     -------
     str
-        CSV text (or file path if output_dir is set).
+        Standardised CSV text (including header row).
 
     Raises
     ------
+    ValueError
+        Unknown source, invalid date format, or symbol not found.
     RuntimeError
-        If data cannot be fetched from any source.
+        All attempted sources failed.
     """
-    if end is None:
-        end = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+    _validate_dates(start, end)
 
-    errors = []
-    csv_text = None
+    csv_text: Optional[str] = None
 
-    if source in ("yahoo", "auto"):
-        ticker = symbol if symbol.endswith(".NS") else f"{symbol}.NS"
-        try:
-            csv_text = _fetch_yahoo(ticker, start, end)
-        except Exception as e:
-            errors.append(f"Yahoo Finance ({ticker}): {e}")
-            csv_text = None
-
-    if csv_text is None and source in ("stooq", "auto"):
-        stooq_sym = symbol if symbol.endswith(".IN") else f"{symbol}.IN"
-        try:
-            csv_text = _fetch_stooq(stooq_sym, start, end)
-        except Exception as e:
-            errors.append(f"Stooq ({stooq_sym}): {e}")
-            csv_text = None
-
-    if csv_text is None:
-        raise RuntimeError(
-            f"Failed to fetch data for '{symbol}':\n" + "\n".join(errors)
+    if source == "yahoo":
+        csv_text = _fetch_yahoo(symbol, start, end)
+    elif source == "stooq":
+        csv_text = _fetch_stooq(symbol, start, end)
+    elif source == "alpha":
+        csv_text = _fetch_alpha_vantage(symbol, start, end)
+    elif source == "auto":
+        csv_text = _fetch_auto(symbol, start, end)
+    else:
+        raise ValueError(
+            f"Unknown source '{source}'. Choose from: yahoo, stooq, alpha, auto."
         )
 
-    # Validate row count
-    lines = [l for l in csv_text.splitlines() if l.strip()]
-    if len(lines) < 2:
-        raise RuntimeError(f"Fetched data for '{symbol}' has no rows")
+    if not csv_text:
+        raise RuntimeError(
+            f"All sources failed to return data for '{symbol}' "
+            f"between {start} and {end}."
+        )
 
-    if output_dir is not None:
+    csv_text = _standardise_csv(csv_text)
+
+    if output_dir:
         os.makedirs(output_dir, exist_ok=True)
-        clean_sym = symbol.replace(".", "_")
-        filename  = f"{clean_sym}_{start}_{end}.csv"
-        filepath  = os.path.join(output_dir, filename)
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(csv_text)
-        print(f"[data_fetcher] Saved {len(lines)-1} rows → {filepath}")
-        return filepath
+        path = os.path.join(output_dir, f"{symbol}.csv")
+        with open(path, "w", newline="") as fh:
+            fh.write(csv_text)
+        print(f"[data_fetcher] Saved {path}")
 
     return csv_text
 
 
 def fetch_multiple(
-    symbols: list,
-    start: str,
-    end: Optional[str] = None,
-    source: Literal["yahoo", "stooq", "auto"] = "auto",
-    output_dir: str = "data",
-    delay_sec: float = 1.0,
+    symbols:    List[str],
+    start:      str,
+    end:        str,
+    source:     str = "auto",
+    output_dir: Optional[str] = None,
+    delay_sec:  float = 0.5,
 ) -> dict:
     """
-    Download data for multiple NSE symbols with rate-limiting.
+    Download OHLCV data for multiple NSE symbols with rate-limiting.
 
     Parameters
     ----------
-    symbols : list of str
-        List of NSE symbols.
-    start, end : str
-        Date range.
-    source : "yahoo" | "stooq" | "auto"
-    output_dir : str
-        Directory to save CSV files.
-    delay_sec : float
-        Seconds to wait between requests (avoid rate-limiting).
+    symbols:
+        List of NSE tickers (e.g. ``["RELIANCE", "TCS", "INFY"]``).
+    start, end:
+        Date range in ``"YYYY-MM-DD"`` format.
+    source:
+        Data source (see :func:`fetch`).
+    output_dir:
+        If provided, write individual CSVs for each symbol.
+    delay_sec:
+        Seconds to sleep between requests (default 0.5) to avoid rate limits.
 
     Returns
     -------
     dict
-        { symbol: filepath_or_error_message }
+        ``{symbol: csv_text}`` for successful downloads;
+        ``{symbol: None}`` for failures.
     """
     results = {}
     for i, sym in enumerate(symbols):
         try:
-            path = fetch(sym, start, end, source=source, output_dir=output_dir)
-            results[sym] = path
-        except Exception as e:
-            results[sym] = f"ERROR: {e}"
-            print(f"[data_fetcher] FAILED {sym}: {e}")
+            print(f"[data_fetcher] Fetching {sym} ({i+1}/{len(symbols)}) ...")
+            results[sym] = fetch(sym, start, end, source, output_dir)
+        except Exception as exc:
+            print(f"[data_fetcher] WARN: {sym} failed — {exc}", file=sys.stderr)
+            results[sym] = None
         if i < len(symbols) - 1:
             time.sleep(delay_sec)
     return results
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Source-specific fetchers (internal)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _fetch_yahoo(symbol: str, start: str, end: str) -> Optional[str]:
+    """
+    Download via yfinance library.
+
+    Appends the ``.NS`` suffix for NSE tickers automatically.
+    Returns standardised CSV text or None on failure.
+    """
+    if not _HAS_YFINANCE:
+        print("[data_fetcher] yfinance not installed; skipping Yahoo.", file=sys.stderr)
+        return None
+    if not _HAS_PANDAS:
+        print("[data_fetcher] pandas not installed; skipping Yahoo.", file=sys.stderr)
+        return None
+
+    ticker_sym = symbol if symbol.endswith(".NS") else f"{symbol}.NS"
+    try:
+        df = yf.download(ticker_sym, start=start, end=end, progress=False, auto_adjust=True)
+        if df.empty:
+            return None
+
+        # Flatten MultiIndex columns if present (yfinance >= 0.2.38)
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = [col[0].lower() for col in df.columns]
+        else:
+            df.columns = [c.lower().replace(" ", "_") for c in df.columns]
+
+        df = df.reset_index()
+        df.rename(columns={"date": "timestamp", "adj_close": "close"}, inplace=True)
+
+        if "close" not in df.columns and "adj_close" in df.columns:
+            df["close"] = df["adj_close"]
+
+        df["timestamp"] = pd.to_datetime(df["timestamp"]).dt.strftime("%Y-%m-%d")
+        out = df[["timestamp", "open", "high", "low", "close", "volume"]]
+        print(f"[data_fetcher] Yahoo: {len(out)} rows for {symbol}")
+        return out.to_csv(index=False)
+
+    except Exception as exc:
+        print(f"[data_fetcher] Yahoo failed for {symbol}: {exc}", file=sys.stderr)
+        return None
+
+
+def _fetch_stooq(symbol: str, start: str, end: str) -> Optional[str]:
+    """
+    Download via Stooq plain-text CSV feed.
+
+    Appends the ``.IN`` suffix for Indian equities and filters the date
+    range client-side since Stooq ignores query params for some tickers.
+    Returns standardised CSV text or None on failure.
+    """
+    if not _HAS_REQUESTS:
+        print("[data_fetcher] requests not installed; skipping Stooq.", file=sys.stderr)
+        return None
+
+    ticker_sym = symbol if symbol.endswith(".IN") else f"{symbol}.IN"
+    url = (
+        f"{_STOOQ_BASE}?s={ticker_sym.lower()}"
+        f"&d1={start.replace('-','')}&d2={end.replace('-','')}&i=d"
+    )
+    try:
+        resp = _requests.get(url, timeout=15)
+        resp.raise_for_status()
+        text = resp.text.strip()
+        if not text or "No data" in text or len(text.splitlines()) < 2:
+            return None
+
+        out_lines = ["timestamp,open,high,low,close,volume"]
+        reader    = csv.DictReader(io.StringIO(text))
+        count     = 0
+        for row in reader:
+            ts = row.get("Date", row.get("date", ""))
+            if not _in_range(ts, start, end):
+                continue
+            out_lines.append(
+                f"{ts},"
+                f"{row.get('Open', row.get('open', ''))},"
+                f"{row.get('High', row.get('high', ''))},"
+                f"{row.get('Low',  row.get('low',  ''))},"
+                f"{row.get('Close',row.get('close',''))},"
+                f"{row.get('Volume', row.get('volume', '0'))}"
+            )
+            count += 1
+        if count == 0:
+            return None
+        print(f"[data_fetcher] Stooq: {count} rows for {symbol}")
+        return "\n".join(out_lines)
+
+    except Exception as exc:
+        print(f"[data_fetcher] Stooq failed for {symbol}: {exc}", file=sys.stderr)
+        return None
+
+
+def _fetch_alpha_vantage(symbol: str, start: str, end: str) -> Optional[str]:
+    """
+    Download via Alpha Vantage TIME_SERIES_DAILY_ADJUSTED endpoint.
+
+    Requires the ``ALPHA_VANTAGE_KEY`` environment variable.
+    Returns standardised CSV text or None on failure.
+
+    Notes
+    -----
+    Alpha Vantage's free tier allows 25 requests/day.
+    The ``outputsize=full`` parameter fetches up to 20 years of history.
+    Adjusted close prices are used (column "5. adjusted close").
+    """
+    if not _HAS_REQUESTS:
+        print("[data_fetcher] requests not installed; skipping Alpha Vantage.",
+              file=sys.stderr)
+        return None
+
+    api_key = os.environ.get("ALPHA_VANTAGE_KEY", "")
+    if not api_key:
+        print(
+            "[data_fetcher] ALPHA_VANTAGE_KEY not set; skipping Alpha Vantage.",
+            file=sys.stderr,
+        )
+        return None
+
+    try:
+        params = {
+            "function":   "TIME_SERIES_DAILY_ADJUSTED",
+            "symbol":     symbol,
+            "outputsize": "full",
+            "datatype":   "json",
+            "apikey":     api_key,
+        }
+        resp = _requests.get(_AV_BASE, params=params, timeout=20)
+        resp.raise_for_status()
+        data = resp.json()
+
+        if "Error Message" in data:
+            print(f"[data_fetcher] Alpha Vantage error: {data['Error Message']}",
+                  file=sys.stderr)
+            return None
+        if "Note" in data:
+            print(f"[data_fetcher] Alpha Vantage rate limit: {data['Note']}",
+                  file=sys.stderr)
+            return None
+
+        ts_key = "Time Series (Daily)"
+        if ts_key not in data:
+            return None
+
+        out_lines = ["timestamp,open,high,low,close,volume"]
+        count     = 0
+        for date_str, vals in sorted(data[ts_key].items()):
+            if not _in_range(date_str, start, end):
+                continue
+            adj_close = vals.get("5. adjusted close", vals.get("4. close", ""))
+            out_lines.append(
+                f"{date_str},"
+                f"{vals.get('1. open',   '')},"
+                f"{vals.get('2. high',   '')},"
+                f"{vals.get('3. low',    '')},"
+                f"{adj_close},"
+                f"{vals.get('6. volume', '0')}"
+            )
+            count += 1
+
+        if count == 0:
+            return None
+        print(f"[data_fetcher] Alpha Vantage: {count} rows for {symbol}")
+        return "\n".join(out_lines)
+
+    except Exception as exc:
+        print(f"[data_fetcher] Alpha Vantage failed for {symbol}: {exc}", file=sys.stderr)
+        return None
+
+
+def _fetch_auto(symbol: str, start: str, end: str) -> Optional[str]:
+    """
+    Try Yahoo Finance first; fall back to Stooq on any failure.
+
+    Alpha Vantage is not tried automatically because it has a strict
+    daily request quota.  Use ``source="alpha"`` explicitly when needed.
+    """
+    result = _fetch_yahoo(symbol, start, end)
+    if result:
+        return result
+    print(f"[data_fetcher] Yahoo failed for {symbol}; trying Stooq ...", file=sys.stderr)
+    return _fetch_stooq(symbol, start, end)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Data standardisation (internal)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _standardise_csv(csv_text: str) -> str:
+    """
+    Ensure the CSV uses the canonical header and sorts rows ascending by date.
+
+    Handles minor schema variations (different column capitalisations, extra
+    columns) by projecting onto the six standard columns.
+
+    Parameters
+    ----------
+    csv_text:
+        Raw CSV text from any supported source.
+
+    Returns
+    -------
+    str
+        Standardised CSV with header: timestamp,open,high,low,close,volume
+    """
+    reader = csv.DictReader(io.StringIO(csv_text.strip()))
+    if reader.fieldnames is None:
+        return csv_text
+
+    col_map = {f.lower().replace(" ", "_"): f for f in reader.fieldnames}
+
+    def _find(names):
+        for n in names:
+            if n in col_map:
+                return col_map[n]
+        return None
+
+    ts_col = _find(["timestamp", "date", "datetime", "time"])
+    o_col  = _find(["open"])
+    h_col  = _find(["high"])
+    l_col  = _find(["low"])
+    c_col  = _find(["close", "adj_close", "adj close"])
+    v_col  = _find(["volume", "vol"])
+
+    if not all([ts_col, o_col, h_col, l_col, c_col]):
+        return csv_text  # Cannot standardise — return as-is
+
+    rows = []
+    for row in reader:
+        rows.append([
+            row.get(ts_col, ""),
+            row.get(o_col,  ""),
+            row.get(h_col,  ""),
+            row.get(l_col,  ""),
+            row.get(c_col,  ""),
+            row.get(v_col,  "0") if v_col else "0",
+        ])
+
+    rows.sort(key=lambda r: r[0])  # ISO 8601 sorts lexicographically
+
+    out = io.StringIO()
+    writer = csv.writer(out)
+    writer.writerow(_STANDARD_HEADER)
+    writer.writerows(rows)
+    return out.getvalue()
+
+
+def _validate_dates(start: str, end: str) -> None:
+    """
+    Raise ValueError if start or end are not valid YYYY-MM-DD strings,
+    or if start > end.
+    """
+    fmt = "%Y-%m-%d"
+    try:
+        s = datetime.strptime(start, fmt)
+        e = datetime.strptime(end, fmt)
+    except ValueError as exc:
+        raise ValueError(f"Invalid date format: {exc}") from exc
+    if s > e:
+        raise ValueError(f"start ({start}) must be <= end ({end})")
+
+
+def _in_range(date_str: str, start: str, end: str) -> bool:
+    """Return True iff date_str falls within [start, end] (string comparison)."""
+    return start <= date_str[:10] <= end
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CLI entry point
+# ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    import sys
+    import argparse
 
-    if len(sys.argv) < 3:
-        print("Usage: python data_fetcher.py <SYMBOL> <START_DATE> [END_DATE] [SOURCE] [OUTPUT_DIR]")
-        print("  SYMBOL     : e.g. RELIANCE or RELIANCE.NS")
-        print("  START_DATE : YYYY-MM-DD")
-        print("  END_DATE   : YYYY-MM-DD (default: today)")
-        print("  SOURCE     : yahoo | stooq | auto (default: auto)")
-        print("  OUTPUT_DIR : directory to save CSV (default: prints to stdout)")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description="NSE Alpha Engine data fetcher — download OHLCV data.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Examples:\n"
+            "  python3 data_fetcher.py RELIANCE 2020-01-01 2024-12-31\n"
+            "  python3 data_fetcher.py RELIANCE,TCS 2020-01-01 2024-12-31 auto data/\n"
+            "  python3 data_fetcher.py RELIANCE 2020-01-01 2024-12-31 alpha data/\n"
+        ),
+    )
+    parser.add_argument("symbols",
+                        help="Symbol or comma-separated list (e.g. RELIANCE or RELIANCE,TCS)")
+    parser.add_argument("start", help="Start date YYYY-MM-DD")
+    parser.add_argument("end",   help="End date YYYY-MM-DD",
+                        nargs="?", default=datetime.today().strftime("%Y-%m-%d"))
+    parser.add_argument("source", help="Data source: yahoo|stooq|alpha|auto",
+                        nargs="?", default="auto")
+    parser.add_argument("output_dir", help="Directory to save CSV files",
+                        nargs="?", default=None)
+    args = parser.parse_args()
 
-    symbol     = sys.argv[1]
-    start_date = sys.argv[2]
-    end_date   = sys.argv[3] if len(sys.argv) > 3 else None
-    src        = sys.argv[4] if len(sys.argv) > 4 else "auto"
-    out_dir    = sys.argv[5] if len(sys.argv) > 5 else None
-
-    result = fetch(symbol, start_date, end_date, source=src, output_dir=out_dir)
-    if out_dir is None:
-        print(result)
+    sym_list = [s.strip() for s in args.symbols.split(",") if s.strip()]
+    if len(sym_list) == 1:
+        try:
+            text = fetch(sym_list[0], args.start, args.end, args.source, args.output_dir)
+            if not args.output_dir:
+                print(text[:2000])
+        except Exception as e:
+            print(f"Error: {e}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        results = fetch_multiple(sym_list, args.start, args.end, args.source, args.output_dir)
+        ok  = sum(1 for v in results.values() if v is not None)
+        err = len(results) - ok
+        print(f"\nCompleted: {ok} OK, {err} failed.")

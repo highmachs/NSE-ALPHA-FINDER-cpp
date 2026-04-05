@@ -1,0 +1,38 @@
+# Doxygen configuration for NSE Alpha Engine C++ documentation.
+# Generate HTML docs: doxygen Doxyfile
+# Output directory: engine/docs/html/index.html
+
+PROJECT_NAME           = "NSE Alpha Engine"
+PROJECT_BRIEF          = "High-performance quantitative analysis library for NSE equities"
+PROJECT_NUMBER         = "1.0.0"
+
+OUTPUT_DIRECTORY       = docs
+INPUT                  = cpp/include cpp/src cpp/bindings cpp/tests
+RECURSIVE              = YES
+FILE_PATTERNS          = *.hpp *.cpp *.h
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+HTML_OUTPUT            = html
+HTML_COLORSTYLE        = AUTO_LIGHT
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = NO
+OPTIMIZE_OUTPUT_FOR_C  = NO
+
+SHOW_INCLUDE_FILES     = YES
+SHOW_NAMESPACES        = YES
+SHOW_FILES             = YES
+
+WARN_IF_UNDOCUMENTED   = YES
+WARN_NO_PARAMDOC       = YES
+
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = NO
+
+HAVE_DOT               = NO
+CLASS_DIAGRAMS         = YES

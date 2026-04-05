@@ -279,6 +279,36 @@ cpp/src/data_ingestion.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.s
 .PHONY : cpp/src/data_ingestion.cpp.s
 
+cpp/src/data_utils.o: cpp/src/data_utils.cpp.o
+.PHONY : cpp/src/data_utils.o
+
+# target to build an object file
+cpp/src/data_utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine_cpp.dir/build.make CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine.dir/build.make CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o
+.PHONY : cpp/src/data_utils.cpp.o
+
+cpp/src/data_utils.i: cpp/src/data_utils.cpp.i
+.PHONY : cpp/src/data_utils.i
+
+# target to preprocess a source file
+cpp/src/data_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine_cpp.dir/build.make CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine.dir/build.make CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.i
+.PHONY : cpp/src/data_utils.cpp.i
+
+cpp/src/data_utils.s: cpp/src/data_utils.cpp.s
+.PHONY : cpp/src/data_utils.s
+
+# target to generate assembly for a file
+cpp/src/data_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine_cpp.dir/build.make CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_engine.dir/build.make CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.s
+.PHONY : cpp/src/data_utils.cpp.s
+
 cpp/src/indicators.o: cpp/src/indicators.cpp.o
 .PHONY : cpp/src/indicators.o
 
@@ -459,6 +489,30 @@ cpp/tests/test_main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/tests/test_main.cpp.s
 .PHONY : cpp/tests/test_main.cpp.s
 
+cpp/tests/test_reference_values.o: cpp/tests/test_reference_values.cpp.o
+.PHONY : cpp/tests/test_reference_values.o
+
+# target to build an object file
+cpp/tests/test_reference_values.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o
+.PHONY : cpp/tests/test_reference_values.cpp.o
+
+cpp/tests/test_reference_values.i: cpp/tests/test_reference_values.cpp.i
+.PHONY : cpp/tests/test_reference_values.i
+
+# target to preprocess a source file
+cpp/tests/test_reference_values.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.i
+.PHONY : cpp/tests/test_reference_values.cpp.i
+
+cpp/tests/test_reference_values.s: cpp/tests/test_reference_values.cpp.s
+.PHONY : cpp/tests/test_reference_values.s
+
+# target to generate assembly for a file
+cpp/tests/test_reference_values.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nse_tests.dir/build.make CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.s
+.PHONY : cpp/tests/test_reference_values.cpp.s
+
 cpp/tests/test_runner.o: cpp/tests/test_runner.cpp.o
 .PHONY : cpp/tests/test_runner.o
 
@@ -531,6 +585,9 @@ help:
 	@echo "... cpp/src/data_ingestion.o"
 	@echo "... cpp/src/data_ingestion.i"
 	@echo "... cpp/src/data_ingestion.s"
+	@echo "... cpp/src/data_utils.o"
+	@echo "... cpp/src/data_utils.i"
+	@echo "... cpp/src/data_utils.s"
 	@echo "... cpp/src/indicators.o"
 	@echo "... cpp/src/indicators.i"
 	@echo "... cpp/src/indicators.s"
@@ -552,6 +609,9 @@ help:
 	@echo "... cpp/tests/test_main.o"
 	@echo "... cpp/tests/test_main.i"
 	@echo "... cpp/tests/test_main.s"
+	@echo "... cpp/tests/test_reference_values.o"
+	@echo "... cpp/tests/test_reference_values.i"
+	@echo "... cpp/tests/test_reference_values.s"
 	@echo "... cpp/tests/test_runner.o"
 	@echo "... cpp/tests/test_runner.i"
 	@echo "... cpp/tests/test_runner.s"

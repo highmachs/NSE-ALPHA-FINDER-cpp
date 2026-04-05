@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.o.d"
   "CMakeFiles/nse_engine.dir/cpp/src/data_ingestion.cpp.o"
   "CMakeFiles/nse_engine.dir/cpp/src/data_ingestion.cpp.o.d"
+  "CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.o"
+  "CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.o.d"
   "CMakeFiles/nse_engine.dir/cpp/src/indicators.cpp.o"
   "CMakeFiles/nse_engine.dir/cpp/src/indicators.cpp.o.d"
   "CMakeFiles/nse_engine.dir/cpp/src/main.cpp.o"

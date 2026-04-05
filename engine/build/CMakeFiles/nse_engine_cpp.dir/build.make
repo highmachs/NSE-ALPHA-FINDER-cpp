@@ -156,6 +156,20 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.s"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/workspace/engine/cpp/src/benchmark.cpp -o CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.s
 
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o: CMakeFiles/nse_engine_cpp.dir/flags.make
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o: /home/runner/workspace/engine/cpp/src/data_utils.cpp
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o: CMakeFiles/nse_engine_cpp.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o -MF CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o.d -o CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o -c /home/runner/workspace/engine/cpp/src/data_utils.cpp
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.i"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/workspace/engine/cpp/src/data_utils.cpp > CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.i
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.s"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/workspace/engine/cpp/src/data_utils.cpp -o CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.s
+
 # Object files for target nse_engine_cpp
 nse_engine_cpp_OBJECTS = \
 "CMakeFiles/nse_engine_cpp.dir/cpp/bindings/bindings.cpp.o" \
@@ -163,7 +177,8 @@ nse_engine_cpp_OBJECTS = \
 "CMakeFiles/nse_engine_cpp.dir/cpp/src/indicators.cpp.o" \
 "CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o" \
 "CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o" \
-"CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.o"
+"CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.o" \
+"CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o"
 
 # External object files for target nse_engine_cpp
 nse_engine_cpp_EXTERNAL_OBJECTS =
@@ -174,10 +189,11 @@ nse_engine_cpp_EXTERNAL_OBJECTS =
 /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so: CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o
 /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so: CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o
 /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so: CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.o
+/home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so: CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o
 /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so: CMakeFiles/nse_engine_cpp.dir/build.make
 /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so: CMakeFiles/nse_engine_cpp.dir/compiler_depend.ts
 /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so: CMakeFiles/nse_engine_cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared module /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared module /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/nse_engine_cpp.dir/link.txt --verbose=$(VERBOSE)
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/strip /home/runner/workspace/engine/build_output/nse_engine_cpp.cpython-312-x86_64-linux-gnu.so
 

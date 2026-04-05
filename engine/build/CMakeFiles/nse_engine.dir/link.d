@@ -8,6 +8,7 @@
   CMakeFiles/nse_engine.dir/cpp/src/signals.cpp.o \
   CMakeFiles/nse_engine.dir/cpp/src/backtest.cpp.o \
   CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.o \
+  CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.o \
   /nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libstdc++.so \
   /nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libm.so \
   /nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libm.so \
@@ -53,6 +54,8 @@ CMakeFiles/nse_engine.dir/cpp/src/signals.cpp.o:
 CMakeFiles/nse_engine.dir/cpp/src/backtest.cpp.o:
 
 CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.o:
+
+CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.o:
 
 /nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libstdc++.so:
 

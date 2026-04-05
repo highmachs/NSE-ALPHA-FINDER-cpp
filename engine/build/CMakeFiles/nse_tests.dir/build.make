@@ -156,10 +156,24 @@ CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.s"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/workspace/engine/cpp/tests/test_backtest.cpp -o CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.s
 
+CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o: CMakeFiles/nse_tests.dir/flags.make
+CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o: /home/runner/workspace/engine/cpp/tests/test_reference_values.cpp
+CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o: CMakeFiles/nse_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o -MF CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o.d -o CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o -c /home/runner/workspace/engine/cpp/tests/test_reference_values.cpp
+
+CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.i"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/workspace/engine/cpp/tests/test_reference_values.cpp > CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.i
+
+CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.s"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/workspace/engine/cpp/tests/test_reference_values.cpp -o CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.s
+
 CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o: CMakeFiles/nse_tests.dir/flags.make
 CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o: /home/runner/workspace/engine/cpp/src/data_ingestion.cpp
 CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o: CMakeFiles/nse_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o -MF CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o.d -o CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o -c /home/runner/workspace/engine/cpp/src/data_ingestion.cpp
 
 CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.s: cmake_force
 CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o: CMakeFiles/nse_tests.dir/flags.make
 CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o: /home/runner/workspace/engine/cpp/src/indicators.cpp
 CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o: CMakeFiles/nse_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o -MF CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o.d -o CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o -c /home/runner/workspace/engine/cpp/src/indicators.cpp
 
 CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.i: cmake_force
@@ -187,7 +201,7 @@ CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.s: cmake_force
 CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o: CMakeFiles/nse_tests.dir/flags.make
 CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o: /home/runner/workspace/engine/cpp/src/signals.cpp
 CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o: CMakeFiles/nse_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o -MF CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o.d -o CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o -c /home/runner/workspace/engine/cpp/src/signals.cpp
 
 CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.i: cmake_force
@@ -201,7 +215,7 @@ CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.s: cmake_force
 CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o: CMakeFiles/nse_tests.dir/flags.make
 CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o: /home/runner/workspace/engine/cpp/src/backtest.cpp
 CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o: CMakeFiles/nse_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o -MF CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o.d -o CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o -c /home/runner/workspace/engine/cpp/src/backtest.cpp
 
 CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.i: cmake_force
@@ -215,7 +229,7 @@ CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.s: cmake_force
 CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o: CMakeFiles/nse_tests.dir/flags.make
 CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o: /home/runner/workspace/engine/cpp/src/benchmark.cpp
 CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o: CMakeFiles/nse_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o -MF CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o.d -o CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o -c /home/runner/workspace/engine/cpp/src/benchmark.cpp
 
 CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.i: cmake_force
@@ -226,6 +240,20 @@ CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.s"
 	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/workspace/engine/cpp/src/benchmark.cpp -o CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.s
 
+CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o: CMakeFiles/nse_tests.dir/flags.make
+CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o: /home/runner/workspace/engine/cpp/src/data_utils.cpp
+CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o: CMakeFiles/nse_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o -MF CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o.d -o CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o -c /home/runner/workspace/engine/cpp/src/data_utils.cpp
+
+CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.i"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/workspace/engine/cpp/src/data_utils.cpp > CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.i
+
+CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.s"
+	/nix/store/a0d7m3zn9p2dfa1h7ag9h2wzzr2w25sn-gcc-wrapper-14.2.1.20250322/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/workspace/engine/cpp/src/data_utils.cpp -o CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.s
+
 # Object files for target nse_tests
 nse_tests_OBJECTS = \
 "CMakeFiles/nse_tests.dir/cpp/tests/test_runner.cpp.o" \
@@ -234,11 +262,13 @@ nse_tests_OBJECTS = \
 "CMakeFiles/nse_tests.dir/cpp/tests/test_indicators.cpp.o" \
 "CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o" \
 "CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.o" \
+"CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o" \
 "CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o" \
 "CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o" \
 "CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o" \
 "CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o" \
-"CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o"
+"CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o" \
+"CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o"
 
 # External object files for target nse_tests
 nse_tests_EXTERNAL_OBJECTS =
@@ -249,15 +279,17 @@ nse_tests_EXTERNAL_OBJECTS =
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/tests/test_indicators.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/tests/test_signals.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/tests/test_backtest.cpp.o
+/home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/tests/test_reference_values.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/src/data_ingestion.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/src/signals.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/src/backtest.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.o
+/home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.o
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/build.make
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/compiler_depend.ts
 /home/runner/workspace/engine/build_output/nse_tests: CMakeFiles/nse_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable /home/runner/workspace/engine/build_output/nse_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/workspace/engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable /home/runner/workspace/engine/build_output/nse_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/nse_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

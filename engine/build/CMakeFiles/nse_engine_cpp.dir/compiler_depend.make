@@ -20,6 +20,7 @@
   CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o \
   CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.o \
   CMakeFiles/nse_engine_cpp.dir/cpp/src/data_ingestion.cpp.o \
+  CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o \
   CMakeFiles/nse_engine_cpp.dir/cpp/src/indicators.cpp.o \
   CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o
 
@@ -27,6 +28,7 @@ CMakeFiles/nse_engine_cpp.dir/cpp/bindings/bindings.cpp.o: /home/runner/workspac
   /home/runner/workspace/engine/cpp/include/backtest.hpp \
   /home/runner/workspace/engine/cpp/include/benchmark.hpp \
   /home/runner/workspace/engine/cpp/include/data_ingestion.hpp \
+  /home/runner/workspace/engine/cpp/include/data_utils.hpp \
   /home/runner/workspace/engine/cpp/include/indicators.hpp \
   /home/runner/workspace/engine/cpp/include/signals.hpp \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/alloca.h \
@@ -557,6 +559,8 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o: /home/runner/workspace/eng
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select2.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-least.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-uintn.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2-decl.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2.h \
@@ -609,6 +613,7 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o: /home/runner/workspace/eng
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/locale.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/math.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdc-predef.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdint.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdio.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/cdefs.h \
@@ -684,6 +689,7 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o: /home/runner/workspace/eng
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cmath \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/concepts \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstddef \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdint \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdio \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwchar \
@@ -728,7 +734,8 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o: /home/runner/workspace/eng
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/cpu_defines.h \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/os_defines.h \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdarg.h \
-  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdint.h
 
 CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.o: /home/runner/workspace/engine/cpp/src/benchmark.cpp \
   /home/runner/workspace/engine/cpp/include/benchmark.hpp \
@@ -951,8 +958,6 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/data_ingestion.cpp.o: /home/runner/workspa
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select2.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/setjmp.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h \
-  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-least.h \
-  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-uintn.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2-decl.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2.h \
@@ -1014,7 +1019,6 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/data_ingestion.cpp.o: /home/runner/workspa
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/pthread.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sched.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdc-predef.h \
-  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdint.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdio.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/cdefs.h \
@@ -1101,7 +1105,6 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/data_ingestion.cpp.o: /home/runner/workspa
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cmath \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/concepts \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstddef \
-  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdint \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdio \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwchar \
@@ -1161,8 +1164,259 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/data_ingestion.cpp.o: /home/runner/workspa
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/gthr.h \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/os_defines.h \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdarg.h \
-  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h \
-  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdint.h
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o: /home/runner/workspace/engine/cpp/src/data_utils.cpp \
+  /home/runner/workspace/engine/cpp/include/data_ingestion.hpp \
+  /home/runner/workspace/engine/cpp/include/data_utils.hpp \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/alloca.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/errno-base.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/errno.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/errno.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/atomic_wide_counter.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/byteswap.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/cpu-set.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/endian.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/endianness.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/errno.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn-common.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/libc-header-start.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/locale.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/long-double.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthread_stack_min-dynamic.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthreadtypes-arch.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthreadtypes.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/sched.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select-decl.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select2.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/setjmp.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2-decl.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio_lim.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib-bsearch.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib-float.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_mutex.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_rwlock.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/thread-shared-types.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/time.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/time64.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/timesize.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/timex.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/FILE.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__FILE.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__fpos64_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__fpos_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__locale_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__mbstate_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__sigset_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/clock_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/clockid_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/cookie_io_functions_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/error_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/locale_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/mbstate_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/sigset_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_FILE.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct___jmp_buf_tag.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_itimerspec.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_sched_param.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timespec.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timeval.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_tm.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/time_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/timer_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/wint_t.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/typesizes.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/uintn-identity.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/waitflags.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/waitstatus.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar2-decl.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar2.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wctype-wchar.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wordsize.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/ctype.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/endian.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/errno.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/features-time64.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/features.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/gnu/stubs-64.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/gnu/stubs.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/libintl.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/errno.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/locale.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/pthread.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sched.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdc-predef.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdio.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/cdefs.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/select.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/single_threaded.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/types.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/time.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wchar.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wctype.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/algorithm \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/backward/binders.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bit \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/algorithmfwd.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/alloc_traits.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/allocated_ptr.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/allocator.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_ios.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_ios.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/char_traits.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/charconv.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/codecvt.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/concept_check.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cpp_type_traits.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cxxabi_forced.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cxxabi_init_exception.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/deque.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_defines.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_ptr.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/functexcept.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/functional_hash.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hash_bytes.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/invoke.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ios_base.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/istream.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_classes.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_classes.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_conv.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets_nonio.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets_nonio.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/localefwd.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/memory_resource.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/memoryfwd.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/move.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/nested_exception.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/new_allocator.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/node_handle.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ostream.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ostream_insert.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/postypes.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/predefined_ops.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ptr_traits.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/range_access.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/refwrap.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_automaton.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_automaton.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_compiler.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_compiler.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_constants.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_error.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_executor.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_executor.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_scanner.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_scanner.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/requires_hosted.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr_base.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/sstream.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_abs.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_function.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algo.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algobase.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_bvector.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_construct.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_deque.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_function.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_heap.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator_base_funcs.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator_base_types.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_map.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_pair.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_stack.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_tempbuf.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_tree.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_uninitialized.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_vector.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/streambuf.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/streambuf_iterator.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/string_view.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stringfwd.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uniform_int_dist.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unique_ptr.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uses_allocator.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uses_allocator_args.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/utility.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/vector.tcc \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/version.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bitset \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cctype \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cerrno \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/clocale \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/concepts \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstddef \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdio \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ctime \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwchar \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwctype \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/debug/assertions.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/debug/debug.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/deque \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/exception \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/aligned_buffer.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/alloc_traits.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/atomicity.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/concurrence.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/numeric_traits.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/string_conversions.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/type_traits.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/initializer_list \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ios \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/iosfwd \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/istream \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/locale \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/new \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ostream \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/execution_defs.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_algorithm_defs.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/pstl_config.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/regex \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/sstream \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/stack \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/stdexcept \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/streambuf \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/string \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/string_view \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/system_error \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tuple \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/type_traits \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/typeinfo \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/vector \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/atomic_word.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++allocator.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++config.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++locale.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/cpu_defines.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/ctype_base.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/ctype_inline.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/error_constants.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/gthr-default.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/gthr.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/messages_members.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/os_defines.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/time_members.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdarg.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h
 
 CMakeFiles/nse_engine_cpp.dir/cpp/src/indicators.cpp.o: /home/runner/workspace/engine/cpp/src/indicators.cpp \
   /home/runner/workspace/engine/cpp/include/indicators.hpp \
@@ -1388,6 +1642,8 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o: /home/runner/workspace/engi
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select2.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-least.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-uintn.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2-decl.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2.h \
@@ -1440,6 +1696,7 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o: /home/runner/workspace/engi
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/locale.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/math.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdc-predef.h \
+  /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdint.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdio.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h \
   /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/cdefs.h \
@@ -1503,6 +1760,7 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o: /home/runner/workspace/engi
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cmath \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/concepts \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstddef \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdint \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdio \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwchar \
@@ -1543,1075 +1801,1128 @@ CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o: /home/runner/workspace/engi
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/cpu_defines.h \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/os_defines.h \
   /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdarg.h \
-  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h \
+  /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdint.h
 
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/numeric:
-
-/home/runner/workspace/engine/cpp/src/indicators.cpp:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/fstream.tcc:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/codecvt.h:
-
-/home/runner/workspace/engine/cpp/src/benchmark.cpp:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/warnings.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/unicodeobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/tupleobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/traceback.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/sliceobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pythonrun.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystate.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyport.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymem.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystats.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymath.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pylifecycle.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyerrors.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyconfig.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pycapsule.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pybuffer.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/patchlevel.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/objimpl.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/modsupport.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/listobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/import.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/genericaliasobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/frameobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/enumobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/descrobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/weakrefobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/traceback.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/setobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pytime.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pystate.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyframe.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyerrors.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pydebug.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/object.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/longobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/methodobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/longobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/longintrepr.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/listobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/funcobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/fileutils.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/dictobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/descrobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/context.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/compile.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/bytesobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/bytearrayobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/abstract.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/compile.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/codecs.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/boolobject.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/Python.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/classobject.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/pytypes.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/gil_safe_call_once.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/internals.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/descr.h:
-
-/home/runner/workspace/engine/cpp/src/backtest.cpp:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/cellobject.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/cpp_conduit.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/common.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/object.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/class.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/buffer_info.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/tracemalloc.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/syslimits.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdarg.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/gthr-default.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/cxxabi_tweaks.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/ctype_inline.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/ctype_base.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++locale.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++config.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++allocator.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/atomic_word.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/vector:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/sysmodule.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/variant:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/typeindex:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/type_traits:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_numeric_defs.h:
 
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/attr.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_numeric.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/special_function_util.h:
+/home/runner/workspace/engine/cpp/src/indicators.cpp:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/unordered_map:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/messages_members.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/riemann_zeta.tcc:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/stack:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/poly_laguerre.tcc:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/regex:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/legendre_function.tcc:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_scanner.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymacconfig.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_executor.tcc:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/floatobject.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_executor.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/gamma.tcc:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_error.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdint.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_constants.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/thread:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_function.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/system_error:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/version:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/string_view:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/postypes.h:
 
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/value_and_holder.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstddef:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/gthr.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ostream_insert.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/string:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_classes.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/streambuf:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/limits.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/stdlib.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets_nonio.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/sstream:
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/typing.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/set:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/gslice.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ratio:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/rangeobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/pstl_config.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/forward_list.tcc:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_memory_defs.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/waitflags.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_algorithm_defs.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cmath:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ostream:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/ceval.h:
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/cast.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/new:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cxxabi_init_exception.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/mutex:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/dictobject.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/sysmodule.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cxxabi_forced.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/memory:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/type_traits.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/fileobject.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ostream.tcc:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/list:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/typeinfo:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/iosfwd:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/concept_check.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/initializer_list:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/map:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/functional:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_classes.tcc:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/basic_file.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algo.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/moduleobject.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/mask_array.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/forward_list:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.tcc:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/bessel_function.tcc:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_ptr.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/numeric_traits.h:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/osmodule.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/atomicity.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/long-double.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/aligned_buffer.h:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/floatobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/exception:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/nested_exception.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/code.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/atomic_lockfree_defines.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/deque:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_defines.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/debug/debug.h:
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/type_caster_base.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/debug/assertions.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/allocated_ptr.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cxxabi.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/array:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwctype:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/memory_resource.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwchar:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wchar.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ctime:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/unistd.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/fileutils.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstring:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/ceval.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/strings.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/utility:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/bytesobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/stdexcept:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/istream:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdio:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdio.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdint:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/poly_hermite.tcc:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/exports.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ptr_traits.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/os_defines.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdint.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/concepts:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/memoryobject.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyhash.h:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/unicodeobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/clocale:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdc-predef.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/chrono:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_pair.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cerrno:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_mutex.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/error_constants.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/execution_defs.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cctype:
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/init.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cassert:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymacro.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/version.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/list.tcc:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/genobject.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sched.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/vector.tcc:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/pthread.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_before.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/setjmp.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_array.tcc:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/posix1_lim.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_array.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/compare:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/fstream:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/posix_types.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uses_allocator_args.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_abs.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/valarray:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/typesizes.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uses_allocator.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/gnu/stubs-64.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_map.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/this_thread_sleep.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unique_ptr.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/new_allocator.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unique_lock.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/locale.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stringfwd.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/ctype.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/string_view.tcc:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/setobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/streambuf.tcc:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/xopen_lim.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/exp_integral.tcc:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/functional_hash.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_vector.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/specfun.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/concurrence.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2-decl.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_uninitialized.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wctype-wchar.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_tree.h:
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/crtn.o:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_tempbuf.h:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/bytearrayobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_set.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar2-decl.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystrcmp.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd-decl.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/bltinmodule.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_raw_storage_iter.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/cdefs.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_multiset.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/waitstatus.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_map.h:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pytypedefs.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/complexobject.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator_base_types.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/uio_lim.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/weakrefobject.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_stat.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_after.h:
 
-/home/runner/workspace/engine/cpp/src/signals.cpp:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex.tcc:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/time_t.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/predefined_ops.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-uintn.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/uintn-identity.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_statx_timestamp.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/environments.h:
 
-/home/runner/workspace/engine/cpp/src/data_ingestion.cpp:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/wint_t.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/types.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/iscanonical.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_sched_param.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/range_access.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/iterator:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/mbstate_t.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/thread-shared-types.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/getopt_core.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyfpe.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn-common.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/endian.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/sched.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/features-time64.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_list.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/picklebufobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/locale:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/memoryfwd.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib-float.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/posix_types.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_construct.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pythread.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/math-vector.h:
+
+/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libgcc_s.so.1:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_mutex.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/errno.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/locale.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/statx-generic.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/atomic_wide_counter.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/bitsperlong.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthreadtypes.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/char_traits.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/typeslots.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/fileobject.h:
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/slice_array.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/forward_list.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/getopt_posix.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/iterobject.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/indirect_array.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/parse_numbers.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pythread.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_itimerspec.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/hypergeometric.tcc:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/ld-linux-x86-64.so.2:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar2.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__fpos64_t.h:
-
-CMakeFiles/nse_engine_cpp.dir/cpp/src/data_ingestion.cpp.o:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/ell_integral.tcc:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ios:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/clockid_t.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pylifecycle.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/unordered_set:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/timesize.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__sigset_t.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/stat.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/error_t.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cpp_type_traits.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/time64.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/FILE.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/string_fortified.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyctype.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libc.so:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib-bsearch.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/posix2_lim.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/node_handle.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_multimap.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/locale_t.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/backward/auto_ptr.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/utility.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/localefwd.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls-narrow.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/statx.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++io.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/typeid.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tuple:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stat.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uniform_int_dist.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__mbstate_t.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/clock_t.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/import.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/gil.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/string_conversions.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets.tcc:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_tm.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select2.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select-decl.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthreadtypes-arch.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthread_stack_min-dynamic.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timespec.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls-helper-functions.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/odictobject.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/beta_function.tcc:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr_base.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystrtod.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/bitsperlong.h:
-
-/home/runner/workspace/engine/cpp/include/indicators.hpp:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ios_base.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_set.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__FILE.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_bvector.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libc.so.6:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/invoke.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/libc-header-start.h:
-
-CMakeFiles/nse_engine_cpp.dir/cpp/bindings/bindings.cpp.o:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/align.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/time.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/cookie_io_functions_t.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_relops.h:
-
-/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libgcc_s.so:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/structseq.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/intrcheck.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/functional.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/alloc_traits.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/strings_fortified.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libmvec.so.1:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/errno.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyframe.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/limits.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/alloc_traits.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/time.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__fpos_t.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libm.so.6:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/int-ll64.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/methodobject.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/stat.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/flt-eval-method.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pythonrun.h:
-
-/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libstdc++.so:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/inttypes.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/cpu-set.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/objimpl.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/optional:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/errno.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/select.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/options.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/sstream.tcc:
-
-CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.o:
-
-/home/runner/workspace/engine/cpp/bindings/bindings.cpp:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/crtbeginS.o:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/modsupport.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/sigset_t.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/close_range.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_rwlock.h:
-
-/home/runner/workspace/engine/cpp/include/backtest.hpp:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_ios.tcc:
-
-CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/alloca.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/deque.tcc:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/stl.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/gnu/stubs.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable_policy.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/wint_t.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/endianness.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/crtendS.o:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pymem.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/fp-fast.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/assert.h:
-
-/home/runner/workspace/engine/cpp/include/data_ingestion.hpp:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_statx.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wctype.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/tupleobject.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio_lim.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/errno-base.h:
-
-/home/runner/workspace/engine/cpp/include/signals.hpp:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/errno.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/libgcc.a:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/move.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/timer_t.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/pybind11.h:
-
-/home/runner/workspace/engine/cpp/include/benchmark.hpp:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/functexcept.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/memoryobject.h:
-
-CMakeFiles/nse_engine_cpp.dir/cpp/src/indicators.cpp.o:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libm.so:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/backward/binders.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/atomic_base.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/gslice_array.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timeval.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd_ext.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__locale_t.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/crti.o:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/erase_if.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libc_nonshared.a:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-least.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/iterator:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct___jmp_buf_tag.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stream_iterator.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable_policy.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_FILE.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/gnu/stubs.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/posix_types.h:
-
-CMakeFiles/nse_engine_cpp.dir/cpp/src/backtest.cpp.o:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/typeslots.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/modified_bessel_func.tcc:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthreadtypes.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/bitsperlong.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/atomic_wide_counter.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/statx-generic.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/locale.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/errno.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_mutex.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/limits.h:
-
-/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libgcc_s.so.1:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/math-vector.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pythread.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_construct.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/posix_types.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_numeric.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib-float.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/picklebufobject.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/math.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_list.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/charconv.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/fp-logb.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/features-time64.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/fileobject.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/sched.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/abstract.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/endian.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/confname.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator_base_funcs.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/timex.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/local_lim.h:
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/stl.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hash_bytes.h:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/enable_special_members.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/endian.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/deque.tcc:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/chrono.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn-common.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/alloca.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyfpe.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/getopt_core.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/thread-shared-types.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/mbstate_t.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/range_access.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/iscanonical.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/libm-simd-decl-stubs.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/environments.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/uintn-identity.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/initconfig.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_stat.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/uio_lim.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/types.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_deque.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_thread.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pytypedefs.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/waitstatus.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/cdefs.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd-decl.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar2-decl.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/bytearrayobject.h:
-
-/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/crtn.o:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wctype-wchar.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2-decl.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wordsize.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/setobject.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/ctype.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/this_thread_sleep.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/features.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/gnu/stubs-64.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/posix_types.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/compare:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/posix1_lim.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/stddef.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_ios.tcc:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/math.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/setjmp.h:
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libc_nonshared.a:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/pthread.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/erase_if.h:
 
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/exception_translation.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/bitsperlong.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/char_traits.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/posix_opt.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sched.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/list.tcc:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymacro.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/frameobject.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/init.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/execution_defs.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_mutex.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdc-predef.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/unicodeobject.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdint.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ptr_traits.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/poly_hermite.tcc:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdio.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/memoryfwd.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/istream:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/streambuf_iterator.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/refwrap.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/functional_hash.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/bytesobject.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/strings.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/ceval.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/single_threaded.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algobase.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wchar.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_after.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/memory_resource.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/typesizes.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/types.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/string.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/time.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/array:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/unistd.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bit:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/allocated_ptr.h:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/type_caster_base.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/cpu_defines.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/allocator.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_defines.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/atomic_lockfree_defines.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/nested_exception.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/floatobject.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/long-double.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/slice_array.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/requires_hosted.h:
-
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/osmodule.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_ios.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception_ptr.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.tcc:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algo.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_classes.tcc:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/map:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/limits:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/concept_check.h:
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/crti.o:
 
 /nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/complexobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/typeinfo:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/unistd_ext.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/type_traits.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timeval.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cxxabi_forced.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/gslice_array.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/dictobject.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/backward/binders.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_pair.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/timex.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cxxabi_init_exception.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator_base_funcs.h:
 
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/cast.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/functexcept.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/algorithmfwd.h:
+/home/runner/workspace/engine/cpp/include/benchmark.hpp:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/exception.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wordsize.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/memoryobject.h:
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/pybind11.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cmath:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bitset:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/waitflags.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/forward_list.tcc:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/timer_t.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/rangeobject.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/move.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/gslice.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/libgcc.a:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/types.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/single_threaded.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/istream.tcc:
-
-/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/typing.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/limits.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_classes.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/posix_types_64.h:
-
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/mask_array.h:
-
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/locale.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/errno.h:
 
 /nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/errno.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/new_allocator.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/posix_types.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ostream.tcc:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bit:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_abs.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/charconv.h:
 
-/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/warnings.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stream_iterator.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ostream_insert.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/types.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstddef:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/errno-base.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/postypes.h:
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_automaton.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/predefined_ops.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/endian.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/version:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio_lim.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/byteswap.h:
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/tupleobject.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr_atomic.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/wctype.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_function.h:
+/home/runner/workspace/engine/cpp/include/data_ingestion.hpp:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/specfun.h:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/assert.h:
 
-/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/algorithm:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls.h:
 
-/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/xopen_lim.h:
+/home/runner/workspace/engine/cpp/include/backtest.hpp:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/crtbeginS.o:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/streambuf_iterator.h:
+
+/home/runner/workspace/engine/cpp/bindings/bindings.cpp:
 
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_function.h:
 
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/sstream.tcc:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/select.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/objimpl.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/cpu-set.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystrtod.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/inttypes.h:
+
+/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libstdc++.so:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pythonrun.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/stat.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/methodobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_automaton.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/algorithm:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/memoryobject.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/int-ll64.h:
+
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libm.so.6:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_ios.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__fpos_t.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/time.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/local_lim.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/alloc_traits.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/flt-eval-method.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/limits.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyframe.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/errno.h:
+
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libmvec.so.1:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/basic_string.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/alloc_traits.h:
+
+/home/runner/workspace/engine/cpp/include/data_utils.hpp:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/functional.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/intrcheck.h:
+
+/nix/store/bmi5znnqk4kg2grkrhk6py0irc8phf6l-gcc-14.2.1.20250322-lib/lib/libgcc_s.so:
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.o:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/optional:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/cookie_io_functions_t.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/time.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/sys/types.h:
+
+CMakeFiles/nse_engine_cpp.dir/cpp/bindings/bindings.cpp.o:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/std_thread.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/libc-header-start.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/sigset_t.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/close_range.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/modsupport.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/invoke.h:
+
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libc.so.6:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/crtendS.o:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/fp-fast.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/libm-simd-decl-stubs.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_bvector.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__FILE.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-least.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/floatn.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_set.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/ios_base.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/struct_rwlock.h:
+
+/home/runner/workspace/engine/cpp/include/indicators.hpp:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/confname.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr_base.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/fp-logb.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/odictobject.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls-helper-functions.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_timespec.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select-decl.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_tm.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/allocator.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/string_conversions.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/errno.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/gil.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/frameobject.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/clock_t.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthreadtypes-arch.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-intn.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_statx.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__mbstate_t.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uniform_int_dist.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tuple:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/typeid.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++io.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/statx.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/abstract.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/mathcalls-narrow.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/localefwd.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__locale_t.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/utility.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdio2.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_deque.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/backward/auto_ptr.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/istream.tcc:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/locale_t.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_multimap.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/node_handle.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/requires_hosted.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdlib-bsearch.h:
+
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libc.so:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyctype.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/FILE.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/time64.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/error_t.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__sigset_t.h:
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/indicators.cpp.o:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/timesize.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/unordered_set:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pylifecycle.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/clockid_t.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/beta_function.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ios:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/ell_integral.tcc:
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/data_ingestion.cpp.o:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/wchar2.h:
+
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/ld-linux-x86-64.so.2:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/hypergeometric.tcc:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_itimerspec.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/import.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pythread.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/endianness.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/parse_numbers.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/modified_bessel_func.tcc:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/libintl.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/iterobject.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_sched_param.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/shared_ptr_atomic.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/types.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_statx_timestamp.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stdint-uintn.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/time_t.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator.h:
+
+/home/runner/workspace/engine/cpp/src/data_utils.cpp:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/weakrefobject.h:
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/signals.cpp.o:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_iterator_base_types.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/complexobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_multiset.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/bltinmodule.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystrcmp.h:
+
+/home/runner/workspace/engine/cpp/include/signals.hpp:
+
 /nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_heap.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_set.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_tempbuf.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_compiler.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/posix_opt.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_raw_storage_iter.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_tree.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/options.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_uninitialized.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/concurrence.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/exp_integral.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_compiler.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/streambuf.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/string_view.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stringfwd.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unique_lock.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unique_ptr.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/unordered_map.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uses_allocator.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/valarray:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/uses_allocator_args.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/fstream:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_array.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/time_members.h:
+
+/home/runner/workspace/engine/cpp/src/data_ingestion.cpp:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_array.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/valarray_before.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/stddef.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/indirect_array.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/vector.tcc:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/__fpos64_t.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/genobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/version.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cassert:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cctype:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/error_constants.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/exception_translation.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cerrno:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/clocale:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyhash.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/posix2_lim.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/concepts:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/exports.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdint:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdio:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/stdexcept:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/utility:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/refwrap.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstdlib:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cstring:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/fileutils.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm-generic/types.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ctime:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwchar:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cwctype:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/chrono.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/cxxabi.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/debug/assertions.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/debug/debug.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/algorithmfwd.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/deque:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/code.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/regex_scanner.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/exception:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/aligned_buffer.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/atomicity.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ext/numeric_traits.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/bessel_function.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/forward_list:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/moduleobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/basic_file.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/functional:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/initializer_list:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/byteswap.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/iosfwd:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/cpp_type_traits.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/list:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/fileobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_stack.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/memory:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/math.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/sysmodule.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/mutex:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/new:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/ceval.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ostream:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_algorithm_defs.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/glue_memory_defs.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/pstl/pstl_config.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/ratio:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/set:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/limits.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/string:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/gthr.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/value_and_holder.h:
+
+CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.o:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/string_view:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/system_error:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/thread:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_relops.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdint.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/asm/posix_types_64.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/gamma.tcc:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/floatobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymacconfig.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/legendre_function.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/poly_laguerre.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/sstream:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/riemann_zeta.tcc:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/pthread_stack_min-dynamic.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/unordered_map:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/tr1/special_function_util.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/attr.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/type_traits:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/typeindex:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/sysmodule.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_algobase.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/vector:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/atomic_word.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++allocator.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++config.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/c++locale.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/types/struct_FILE.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/ctype_base.h:
+
+/home/runner/workspace/engine/cpp/src/signals.cpp:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/hashtable.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/ctype_inline.h:
+
+/nix/store/zdpby3l6azi78sl83cpad2qjpfj25aqx-glibc-2.40-66/lib/libm.so:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/cxxabi_tweaks.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/gthr-default.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stdarg.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/stddef.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/lib/gcc/x86_64-unknown-linux-gnu/14.2.1/include/syslimits.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/cpu_defines.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/tracemalloc.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/buffer_info.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/string_fortified.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_map.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/class.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/string.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/object.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/atomic_base.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/stl_vector.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/common.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/select2.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/cpp_conduit.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/features.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/cellobject.h:
+
+/home/runner/workspace/engine/cpp/src/backtest.cpp:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/descr.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/limits:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/detail/internals.h:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/gil_safe_call_once.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/classobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/Python.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/boolobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/warnings.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/stdlib.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/codecs.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/compile.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/abstract.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/variant:
+
+/nix/store/8zhnkvnvxax6i4q5mi9jh0f7808k21ny-python3.12-pybind11-2.13.6/include/pybind11/pytypes.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/bytearrayobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/compile.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/context.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/descrobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/chrono:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/dictobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/fileutils.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/funcobject.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/stat.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/longintrepr.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/bytesobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/longobject.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/numeric:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/methodobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/longobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/object.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pydebug.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyerrors.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pyframe.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pystate.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pytime.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/listobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/setobject.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/bits/strings_fortified.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/traceback.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/weakrefobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/descrobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/enumobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/frameobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/genericaliasobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/import.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/time.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/listobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/modsupport.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/objimpl.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/pymem.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/patchlevel.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pybuffer.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pycapsule.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/structseq.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyconfig.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyerrors.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pylifecycle.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/align.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymath.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystats.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pymem.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/streambuf:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pyport.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_conv.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/x86_64-unknown-linux-gnu/bits/os_defines.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pystate.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/pythonrun.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/sliceobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/cpython/initconfig.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/traceback.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/tupleobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/unicodeobject.h:
+
+/nix/store/h097imm3w6dpx10qynrd2sz9fks2wbq8-python3-3.12.11/include/python3.12/warnings.h:
+
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/linux/stat.h:
+
+/home/runner/workspace/engine/cpp/src/benchmark.cpp:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/codecvt.h:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/fstream.tcc:
+
+/nix/store/6i862vz60awrlsila8vw18rg4d4l66iy-gcc-14.2.1.20250322/include/c++/14.2.1.20250322/bits/locale_facets_nonio.tcc:
