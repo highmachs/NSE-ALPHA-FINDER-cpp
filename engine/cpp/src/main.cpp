@@ -21,6 +21,7 @@
  *   ./nse_engine --help
  */
 
+#define NOMINMAX
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -37,6 +38,10 @@
 
 #ifdef __unix__
 #include <unistd.h>
+#endif
+
+#ifdef _WIN32
+#include <windows.h>
 #endif
 
 #include "data_ingestion.hpp"
@@ -795,6 +800,11 @@ int main(int argc, char* argv[]) {
 #ifdef __unix__
     // Disable colour when not connected to a terminal
     if (!isatty(fileno(stdout))) g_color = false;
+#endif
+
+#ifdef _WIN32
+    // Force UTF-8 in Windows Terminal for ASCII art borders and symbols
+    SetConsoleOutputCP(CP_UTF8);
 #endif
 
     if (argc < 2) {

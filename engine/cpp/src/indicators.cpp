@@ -1,8 +1,10 @@
+#define NOMINMAX
 #include "indicators.hpp"
 
 #include <stdexcept>
-#include <cmath>
 #include <numeric>
+#include <algorithm>
+#include <cmath>
 
 std::vector<double> IndicatorEngine::sma(const std::vector<double>& close, int window) {
     if (window <= 0) throw std::invalid_argument("SMA window must be positive");
@@ -10,13 +12,28 @@ std::vector<double> IndicatorEngine::sma(const std::vector<double>& close, int w
     std::vector<double> result(n, std::numeric_limits<double>::quiet_NaN());
     if (static_cast<std::size_t>(window) > n) return result;
 
+    const double inv_window = 1.0 / window;
+
+    // For large N, we can calculate initial sums and increments in parallel.
+    // However, the sliding window current state depends on 'rolling_sum'.
+    // To parallelize perfectly, we should use a prefix sum, but O(N) sliding is already cache-friendly.
+    // Let's optimize the single-thread loop first with better instruction hints.
+
     double rolling_sum = 0.0;
     for (int i = 0; i < window; ++i) rolling_sum += close[static_cast<std::size_t>(i)];
-    result[static_cast<std::size_t>(window - 1)] = rolling_sum / window;
+    result[static_cast<std::size_t>(window - 1)] = rolling_sum * inv_window;
 
-    for (std::size_t i = static_cast<std::size_t>(window); i < n; ++i) {
-        rolling_sum += close[i] - close[i - static_cast<std::size_t>(window)];
-        result[i] = rolling_sum / window;
+    #pragma omp parallel
+    {
+        // For sub-millisecond, we need to avoid the dependency.
+        // Parallelizing sliding window is only possible if we calculate the sum at the start of each thread's range.
+        #pragma omp master
+        {
+            for (std::size_t i = static_cast<std::size_t>(window); i < n; ++i) {
+                rolling_sum += close[i] - close[i - static_cast<std::size_t>(window)];
+                result[i] = rolling_sum * inv_window;
+            }
+        }
     }
     return result;
 }
@@ -182,16 +199,59 @@ BollingerBandsResult IndicatorEngine::bollingerBands(const std::vector<double>& 
     calc_bands(w - 1);
 
     // Main sliding window loop - O(1) per step regardless of window size
-    #pragma GCC ivdep
-    for (std::size_t i = w; i < n; ++i) {
-        double out_val = close[i - w];
-        double in_val  = close[i];
-        
-        rolling_sum += in_val - out_val;
-        rolling_sq_sum += (in_val * in_val) - (out_val * out_val);
-        
-        calc_bands(i);
+    #pragma omp parallel if(n > 500000)
+    {
+        #pragma omp master
+        {
+            const double inv_w = 1.0 / window;
+            #pragma GCC ivdep
+            #pragma unroll
+            for (std::size_t i = w; i < n; ++i) {
+                double out_val = close[i - w];
+                double in_val  = close[i];
+                
+                rolling_sum += in_val - out_val;
+                rolling_sq_sum += (in_val * in_val) - (out_val * out_val);
+                
+                double mean = rolling_sum * inv_w;
+                double variance = (rolling_sq_sum * inv_w) - (mean * mean);
+                if (variance < 0.0) variance = 0.0;
+                double sd = std::sqrt(variance);
+                result.middle[i] = mean;
+                result.upper[i]  = mean + k * sd;
+                result.lower[i]  = mean - k * sd;
+            }
+        }
     }
 
+    return result;
+}
+
+std::vector<double> IndicatorEngine::atr(const std::vector<double>& high,
+                                         const std::vector<double>& low,
+                                         const std::vector<double>& close,
+                                         int window) {
+    const std::size_t n = close.size();
+    std::vector<double> result(n, std::numeric_limits<double>::quiet_NaN());
+    if (n < static_cast<std::size_t>(window + 1)) return result;
+
+    std::vector<double> tr(n, 0.0);
+    for (std::size_t i = 1; i < n; ++i) {
+        double hl = high[i] - low[i];
+        double hc = std::abs(high[i] - close[i - 1]);
+        double lc = std::abs(low[i] - close[i - 1]);
+        tr[i] = std::max({hl, hc, lc});
+    }
+
+    double tr_sum = 0.0;
+    for (std::size_t i = 1; i <= static_cast<std::size_t>(window); ++i) {
+        tr_sum += tr[i];
+    }
+    result[window] = tr_sum / window;
+
+    // Wilder's Smoothing
+    for (std::size_t i = window + 1; i < n; ++i) {
+        result[i] = (result[i - 1] * (window - 1) + tr[i]) / window;
+    }
     return result;
 }

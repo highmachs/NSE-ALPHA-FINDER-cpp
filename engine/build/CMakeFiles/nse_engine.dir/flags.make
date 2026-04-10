@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/nse_engine.dir/includes_CXX.rsp
 
-CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -Wall -Wextra -O3
+CXX_FLAGS = -O3 -DNDEBUG -march=native -mtune=native -ftree-vectorize -funroll-loops -fopenmp -std=c++17 -Wall -Wextra -O3 -fopenmp
 

@@ -299,6 +299,8 @@ C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: CMakeFi
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: CMakeFiles/nse_tests.dir/cpp/src/benchmark.cpp.obj
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: CMakeFiles/nse_tests.dir/cpp/src/data_utils.cpp.obj
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: CMakeFiles/nse_tests.dir/build.make
+C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: C:/mingw64/lib/libgomp.dll.a
+C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: C:/mingw64/x86_64-w64-mingw32/lib/libmingwthrd.a
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: CMakeFiles/nse_tests.dir/linkLibs.rsp
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: CMakeFiles/nse_tests.dir/objects1.rsp
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_tests.exe: CMakeFiles/nse_tests.dir/link.txt

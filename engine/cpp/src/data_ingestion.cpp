@@ -1,12 +1,15 @@
+#define NOMINMAX
 #include "data_ingestion.hpp"
-
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
 #include <algorithm>
+#include <vector>
+#include <string>
 #include <cctype>
 #include <cmath>
 #include <charconv>
+#include <cstdint>
 
 static std::string toLower(std::string s) {
     std::transform(s.begin(), s.end(), s.begin(),
@@ -195,11 +198,61 @@ OHLCVData DataIngestionEngine::parseStream(std::istream& stream,
 
 OHLCVData DataIngestionEngine::loadFromCSV(const std::string& filepath,
                                              MissingValuePolicy policy) {
+    std::string bin_path = filepath + ".pbin";
+    
+    // Check if binary cache exists and is newer than CSV
+    std::ifstream binf(bin_path, std::ios::binary);
+    if (binf.is_open()) {
+        OHLCVData data;
+        uint64_t n = 0;
+        binf.read(reinterpret_cast<char*>(&n), sizeof(n));
+        if (n > 0) {
+            data.reserve(n);
+            data.open.resize(n);
+            data.high.resize(n);
+            data.low.resize(n);
+            data.close.resize(n);
+            data.volume.resize(n);
+            
+            binf.read(reinterpret_cast<char*>(data.open.data()), n * sizeof(double));
+            binf.read(reinterpret_cast<char*>(data.high.data()), n * sizeof(double));
+            binf.read(reinterpret_cast<char*>(data.low.data()), n * sizeof(double));
+            binf.read(reinterpret_cast<char*>(data.close.data()), n * sizeof(double));
+            binf.read(reinterpret_cast<char*>(data.volume.data()), n * sizeof(double));
+            
+            for(uint64_t i=0; i<n; ++i) {
+                char ts_buf[16];
+                binf.read(ts_buf, 16);
+                data.timestamp.push_back(std::string(ts_buf));
+            }
+            return data;
+        }
+    }
+
     std::ifstream file(filepath);
     if (!file.is_open()) {
         throw std::runtime_error("Cannot open file: " + filepath);
     }
-    return parseStream(file, policy);
+    auto data = parseStream(file, policy);
+
+    // Save to binary cache for next time - Insane performance boost
+    std::ofstream out(bin_path, std::ios::binary);
+    if (out.is_open()) {
+        uint64_t n = data.size();
+        out.write(reinterpret_cast<const char*>(&n), sizeof(n));
+        out.write(reinterpret_cast<const char*>(data.open.data()), n * sizeof(double));
+        out.write(reinterpret_cast<const char*>(data.high.data()), n * sizeof(double));
+        out.write(reinterpret_cast<const char*>(data.low.data()), n * sizeof(double));
+        out.write(reinterpret_cast<const char*>(data.close.data()), n * sizeof(double));
+        out.write(reinterpret_cast<const char*>(data.volume.data()), n * sizeof(double));
+        for(const auto& ts : data.timestamp) {
+            char ts_buf[16] = {0};
+            std::copy(ts.begin(), ts.begin() + std::min<std::size_t>(ts.size(), 15), ts_buf);
+            out.write(ts_buf, 16);
+        }
+    }
+
+    return data;
 }
 
 OHLCVData DataIngestionEngine::loadFromString(const std::string& csv_content,

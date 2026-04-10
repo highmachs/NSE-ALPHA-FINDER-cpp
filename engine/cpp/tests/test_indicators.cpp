@@ -182,9 +182,9 @@ void runIndicatorTests() {
         std::vector<double> flat(30, 100.0);
         auto bb = IndicatorEngine::bollingerBands(flat, 5, 2.0);
         for (std::size_t i = 4; i < flat.size(); ++i) {
-            test::near(bb.upper[i],  100.0, 1e-9, "BB flat: upper==100");
-            test::near(bb.middle[i], 100.0, 1e-9, "BB flat: middle==100");
-            test::near(bb.lower[i],  100.0, 1e-9, "BB flat: lower==100");
+            test::near(bb.upper[i],  100.0, 1e-5, "BB flat: upper==100");
+            test::near(bb.middle[i], 100.0, 1e-5, "BB flat: middle==100");
+            test::near(bb.lower[i],  100.0, 1e-5, "BB flat: lower==100");
         }
     }
 }

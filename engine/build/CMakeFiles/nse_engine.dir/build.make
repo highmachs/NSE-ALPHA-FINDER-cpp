@@ -197,6 +197,8 @@ C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: CMakeF
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: CMakeFiles/nse_engine.dir/cpp/src/benchmark.cpp.obj
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: CMakeFiles/nse_engine.dir/cpp/src/data_utils.cpp.obj
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: CMakeFiles/nse_engine.dir/build.make
+C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: C:/mingw64/lib/libgomp.dll.a
+C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: C:/mingw64/x86_64-w64-mingw32/lib/libmingwthrd.a
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: CMakeFiles/nse_engine.dir/linkLibs.rsp
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: CMakeFiles/nse_engine.dir/objects1.rsp
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine.exe: CMakeFiles/nse_engine.dir/link.txt

@@ -100,3 +100,39 @@ private:
      */
     static double computeMaxDrawdown(const std::vector<double>& equity_curve);
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * @brief High-throughput portfolio scanner for large-scale NSE analysis.
+ *
+ * Scans directories of trade data and runs backtests across all available
+ * tickers using OpenMP for maximum CPU saturation.
+ */
+struct PortfolioScanResult {
+    std::string ticker;           ///< Ticker symbol.
+    double      total_return_pct; ///< Compounded net return.
+    double      win_rate;         ///< % winning trades.
+    int         num_trades;       ///< Count of trades.
+    double      max_drawdown;     ///< % draw-down.
+};
+
+class PortfolioScanner {
+public:
+    /**
+     * @brief Run parallel backtest scan across multiple data files.
+     *
+     * Saturation target: all available CPU cores (i7-14700HX).
+     * Automatically attempts to load binary cache (.pbin) first, falling back
+     * to CSV ingestion if needed.
+     *
+     * @param data_dir       Path to local OHLCV storage.
+     * @param tickers        List of symbols to analyze.
+     * @param strategy_type  "sma", "rsi", or "macd".
+     * @return               Vector of summary results, one per successful ticker.
+     */
+    static std::vector<PortfolioScanResult> scan(
+        const std::string& data_dir,
+        const std::vector<std::string>& tickers,
+        const std::string& strategy_type);
+};

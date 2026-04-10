@@ -91,6 +91,11 @@ public:
                                                 int    window = 20,
                                                 double k      = 2.0);
 
+    [[nodiscard]] static std::vector<double> atr(const std::vector<double>& high,
+                                    const std::vector<double>& low,
+                                    const std::vector<double>& close,
+                                    int window = 14);
+
 private:
     [[nodiscard]] static std::vector<double> emaFromSeed(const std::vector<double>& data,
                                             int    window,

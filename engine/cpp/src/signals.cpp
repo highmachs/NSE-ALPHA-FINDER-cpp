@@ -1,6 +1,9 @@
+#define NOMINMAX
 #include "signals.hpp"
 #include "indicators.hpp"
 
+#include <vector>
+#include <string>
 #include <cmath>
 #include <stdexcept>
 
@@ -12,42 +15,44 @@ std::vector<SignalPoint> SignalEngine::smaCrossover(
 
     if (close.size() != timestamps.size())
         throw std::invalid_argument("close and timestamps size mismatch");
-    if (short_window <= 0 || long_window <= 0)
-        throw std::invalid_argument("SMA windows must be positive");
+    
     if (short_window >= long_window)
-        throw std::invalid_argument("short_window must be less than long_window");
-
+        throw std::invalid_argument("short_window must be < long_window");
+    
     auto short_sma = IndicatorEngine::sma(close, short_window);
     auto long_sma  = IndicatorEngine::sma(close, long_window);
 
     const std::size_t n = close.size();
-    std::vector<SignalPoint> signals;
-
-    bool prev_short_above = false;
-    bool initialized = false;
-
+    std::vector<SignalPoint> signals(n);
     std::size_t start = static_cast<std::size_t>(long_window - 1);
 
+    // Initialize initial range with HOLD/NaN
+    for(std::size_t i=0; i<start; ++i) {
+        signals[i] = {timestamps[i], Signal::HOLD, close[i]};
+    }
+
+    #pragma omp parallel for schedule(static)
     for (std::size_t i = start; i < n; ++i) {
-        if (std::isnan(short_sma[i]) || std::isnan(long_sma[i])) continue;
-
-        bool short_above = short_sma[i] > long_sma[i];
-
-        if (!initialized) {
-            prev_short_above = short_above;
-            initialized = true;
+        if (std::isnan(short_sma[i]) || std::isnan(long_sma[i])) {
+            signals[i] = {timestamps[i], Signal::HOLD, close[i]};
             continue;
         }
 
-        if (!prev_short_above && short_above) {
-            signals.push_back({timestamps[i], Signal::BUY, close[i]});
-        } else if (prev_short_above && !short_above) {
-            signals.push_back({timestamps[i], Signal::SELL, close[i]});
+        bool currently_above = short_sma[i] > long_sma[i];
+        
+        // Check crossover from previous (if not start)
+        if (i > start) {
+            bool previously_above = short_sma[i-1] > long_sma[i-1];
+            if (!previously_above && currently_above) {
+                signals[i] = {timestamps[i], Signal::BUY, close[i]};
+            } else if (previously_above && !currently_above) {
+                signals[i] = {timestamps[i], Signal::SELL, close[i]};
+            } else {
+                signals[i] = {timestamps[i], Signal::HOLD, close[i]};
+            }
         } else {
-            signals.push_back({timestamps[i], Signal::HOLD, close[i]});
+             signals[i] = {timestamps[i], Signal::HOLD, close[i]};
         }
-
-        prev_short_above = short_above;
     }
 
     return signals;
@@ -116,5 +121,72 @@ std::vector<SignalPoint> SignalEngine::macdStrategy(
         prev_macd_above = macd_above;
     }
 
+    return signals;
+}
+
+std::vector<SignalPoint> SignalEngine::bollingerStrategy(
+    const std::vector<double>&      close,
+    const std::vector<std::string>& timestamps,
+    int    window,
+    double k) {
+
+    auto bb = IndicatorEngine::bollingerBands(close, window, k);
+    const std::size_t n = close.size();
+    std::vector<SignalPoint> signals;
+
+    for (std::size_t i = 0; i < n; ++i) {
+        if (std::isnan(bb.upper[i]) || std::isnan(bb.lower[i])) continue;
+
+        Signal sig = Signal::HOLD;
+        if (close[i] < bb.lower[i])     sig = Signal::BUY;
+        else if (close[i] > bb.upper[i]) sig = Signal::SELL;
+
+        if (sig != Signal::HOLD) {
+            signals.push_back({timestamps[i], sig, close[i]});
+        }
+    }
+    return signals;
+}
+
+std::vector<SignalPoint> SignalEngine::supertrendStrategy(
+    const std::vector<double>&      high,
+    const std::vector<double>&      low,
+    const std::vector<double>&      close,
+    const std::vector<std::string>& timestamps,
+    int    period,
+    double multiplier) {
+
+    const std::size_t n = close.size();
+    auto atr = IndicatorEngine::atr(high, low, close, period);
+    std::vector<SignalPoint> signals;
+
+    std::vector<double> upper_band(n, 0.0);
+    std::vector<double> lower_band(n, 0.0);
+    std::vector<int> trend(n, 1); // 1 for UP, -1 for DOWN
+
+    for (std::size_t i = 0; i < n; ++i) {
+        if (std::isnan(atr[i])) continue;
+
+        double mid = (high[i] + low[i]) / 2.0;
+        double basic_upper = mid + (multiplier * atr[i]);
+        double basic_lower = mid - (multiplier * atr[i]);
+
+        if (i == 0) {
+            upper_band[i] = basic_upper;
+            lower_band[i] = basic_lower;
+        } else {
+            upper_band[i] = (basic_upper < upper_band[i-1] || close[i-1] > upper_band[i-1]) ? basic_upper : upper_band[i-1];
+            lower_band[i] = (basic_lower > lower_band[i-1] || close[i-1] < lower_band[i-1]) ? basic_lower : lower_band[i-1];
+            
+            trend[i] = trend[i-1];
+            if (trend[i-1] == 1 && close[i] < lower_band[i]) trend[i] = -1;
+            else if (trend[i-1] == -1 && close[i] > upper_band[i]) trend[i] = 1;
+
+            if (trend[i] != trend[i-1]) {
+                Signal sig = (trend[i] == 1) ? Signal::BUY : Signal::SELL;
+                signals.push_back({timestamps[i], sig, close[i]});
+            }
+        }
+    }
     return signals;
 }

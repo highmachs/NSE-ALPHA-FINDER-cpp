@@ -6,5 +6,5 @@ CXX_DEFINES = -DPy_NO_LINK_LIB -Dnse_engine_cpp_EXPORTS
 
 CXX_INCLUDES = @CMakeFiles/nse_engine_cpp.dir/includes_CXX.rsp
 
-CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -fvisibility=hidden -Wall -Wextra -O3
+CXX_FLAGS = -O3 -DNDEBUG -march=native -mtune=native -ftree-vectorize -funroll-loops -fopenmp -std=c++17 -fvisibility=hidden -Wall -Wextra -O3 -fopenmp
 

@@ -72,26 +72,14 @@ PYBIND11_MODULE(nse_engine_cpp, m) {
             &DataIngestionEngine::loadFromCSV,
             py::arg("filepath"),
             py::arg("policy") = MissingValuePolicy::DROP,
-            "Load OHLCV data from a CSV file on disk.\n\n"
-            "Args:\n"
-            "    filepath: Absolute or relative path to the CSV file.\n"
-            "    policy:   MissingValuePolicy.DROP or FORWARD_FILL.\n"
-            "Returns:\n"
-            "    OHLCVData\n"
-            "Raises:\n"
-            "    RuntimeError: file not found, missing columns, or no valid rows.")
+            py::call_guard<py::gil_scoped_release>(),
+            "Load OHLCV data from a CSV file on disk.\n\n")
         .def_static("load_from_string",
             &DataIngestionEngine::loadFromString,
             py::arg("csv_content"),
             py::arg("policy") = MissingValuePolicy::DROP,
-            "Load OHLCV data from a raw CSV string.\n\n"
-            "Args:\n"
-            "    csv_content: Full CSV text including header row.\n"
-            "    policy:      MissingValuePolicy.DROP or FORWARD_FILL.\n"
-            "Returns:\n"
-            "    OHLCVData\n"
-            "Raises:\n"
-            "    RuntimeError: missing columns, empty input, or no valid rows.");
+            py::call_guard<py::gil_scoped_release>(),
+            "Load OHLCV data from a raw CSV string.\n\n");
 
     // ── ValidationError ───────────────────────────────────────────────────────
     py::class_<ValidationError>(m, "ValidationError",
@@ -159,60 +147,33 @@ PYBIND11_MODULE(nse_engine_cpp, m) {
         .def_static("sma",
             &IndicatorEngine::sma,
             py::arg("close"), py::arg("window"),
-            "Simple Moving Average — rolling arithmetic mean.\n\n"
-            "Warm-up indices [0, window-2] contain NaN.\n\n"
-            "Args:\n"
-            "    close:  Closing price series.\n"
-            "    window: Rolling window length (>= 1).\n"
-            "Returns:\n"
-            "    List[float] of length len(close).")
+            py::call_guard<py::gil_scoped_release>(),
+            "Simple Moving Average")
         .def_static("ema",
             &IndicatorEngine::ema,
             py::arg("close"), py::arg("window"),
-            "Exponential Moving Average — alpha = 2 / (n + 1), seeded with SMA.\n\n"
-            "Warm-up indices [0, window-2] contain NaN.\n\n"
-            "Args:\n"
-            "    close:  Closing price series.\n"
-            "    window: EMA period (>= 1).\n"
-            "Returns:\n"
-            "    List[float] of length len(close).")
+            py::call_guard<py::gil_scoped_release>(),
+            "Exponential Moving Average")
         .def_static("rsi",
             &IndicatorEngine::rsi,
             py::arg("close"), py::arg("window") = 14,
-            "Relative Strength Index — Wilder's smoothing, alpha = 1/n.\n\n"
-            "Warm-up indices [0, window-1] contain NaN. Values in [0, 100].\n\n"
-            "Args:\n"
-            "    close:  Closing price series.\n"
-            "    window: RSI period (default 14).\n"
-            "Returns:\n"
-            "    List[float] of length len(close).")
+            py::call_guard<py::gil_scoped_release>(),
+            "Relative Strength Index")
         .def_static("macd",
             &IndicatorEngine::macd,
             py::arg("close"),
             py::arg("fast_period")   = 12,
             py::arg("slow_period")   = 26,
             py::arg("signal_period") = 9,
-            "Moving Average Convergence Divergence.\n\n"
-            "macd_line = EMA(fast) - EMA(slow); signal = EMA(macd_line).\n\n"
-            "Args:\n"
-            "    close:         Closing price series.\n"
-            "    fast_period:   Fast EMA period (default 12).\n"
-            "    slow_period:   Slow EMA period (default 26).\n"
-            "    signal_period: Signal line EMA period (default 9).\n"
-            "Returns:\n"
-            "    MACDResult with macd_line, signal_line, histogram.")
+            py::call_guard<py::gil_scoped_release>(),
+            "MACD")
         .def_static("bollinger_bands",
             &IndicatorEngine::bollingerBands,
             py::arg("close"),
             py::arg("window") = 20,
             py::arg("k")      = 2.0,
-            "Bollinger Bands — SMA ± k × population SD (O(n) incremental variance).\n\n"
-            "Args:\n"
-            "    close:  Closing price series.\n"
-            "    window: Rolling window (default 20).\n"
-            "    k:      Standard deviation multiplier (default 2.0).\n"
-            "Returns:\n"
-            "    BollingerBandsResult with upper, middle, lower.");
+            py::call_guard<py::gil_scoped_release>(),
+            "Bollinger Bands");
 
     // ── Signal enum ───────────────────────────────────────────────────────────
     py::enum_<Signal>(m, "Signal", "Discrete trading signal type.")
@@ -247,41 +208,24 @@ PYBIND11_MODULE(nse_engine_cpp, m) {
             &SignalEngine::smaCrossover,
             py::arg("close"), py::arg("timestamps"),
             py::arg("short_window"), py::arg("long_window"),
-            "SMA Crossover — trend-following.\n\n"
-            "BUY when short SMA crosses above long SMA; SELL when it crosses below.\n\n"
-            "Args:\n"
-            "    close:        Closing price series.\n"
-            "    timestamps:   Parallel timestamp strings.\n"
-            "    short_window: Fast SMA period.\n"
-            "    long_window:  Slow SMA period.\n"
-            "Returns:\n"
-            "    List[SignalPoint]")
+            py::call_guard<py::gil_scoped_release>(),
+            "SMA Crossover")
         .def_static("rsi_strategy",
             &SignalEngine::rsiStrategy,
             py::arg("close"), py::arg("timestamps"),
             py::arg("window")     = 14,
             py::arg("oversold")   = 30.0,
             py::arg("overbought") = 70.0,
-            "RSI threshold strategy — mean-reversion.\n\n"
-            "BUY when RSI < oversold; SELL when RSI > overbought.\n\n"
-            "Args:\n"
-            "    close:       Closing price series.\n"
-            "    timestamps:  Parallel timestamp strings.\n"
-            "    window:      RSI period (default 14).\n"
-            "    oversold:    Lower threshold (default 30).\n"
-            "    overbought:  Upper threshold (default 70).\n"
-            "Returns:\n"
-            "    List[SignalPoint]")
+            py::call_guard<py::gil_scoped_release>(),
+            "RSI Strategy")
         .def_static("macd_strategy",
             &SignalEngine::macdStrategy,
             py::arg("close"), py::arg("timestamps"),
             py::arg("fast_period")   = 12,
             py::arg("slow_period")   = 26,
             py::arg("signal_period") = 9,
-            "MACD crossover strategy — trend-following + momentum.\n\n"
-            "BUY when MACD line crosses above signal line; SELL when below.\n\n"
-            "Returns:\n"
-            "    List[SignalPoint]");
+            py::call_guard<py::gil_scoped_release>(),
+            "MACD Strategy");
 
     // ── Trade ─────────────────────────────────────────────────────────────────
     py::class_<Trade>(m, "Trade",
@@ -323,15 +267,8 @@ PYBIND11_MODULE(nse_engine_cpp, m) {
         .def_static("run",
             &BacktestEngine::run,
             py::arg("signals"), py::arg("close"), py::arg("timestamps"),
-            "Replay a signal stream against historical close prices.\n\n"
-            "Args:\n"
-            "    signals:    List[SignalPoint] from SignalEngine.\n"
-            "    close:      Original closing price series.\n"
-            "    timestamps: Timestamps parallel to close.\n"
-            "Returns:\n"
-            "    BacktestResult\n"
-            "Raises:\n"
-            "    ValueError: size mismatch between close and timestamps.");
+            py::call_guard<py::gil_scoped_release>(),
+            "Backtest Engine Run");
 
     // ── BenchmarkResult ───────────────────────────────────────────────────────
     py::class_<BenchmarkResult>(m, "BenchmarkResult",
@@ -361,4 +298,30 @@ PYBIND11_MODULE(nse_engine_cpp, m) {
             "    BenchmarkResult")
         .def_static("now_us", &BenchmarkModule::nowUs,
                     "Return the current wall-clock time as microseconds since epoch.");
+
+    // ── PortfolioScanResult ───────────────────────────────────────────────────
+    py::class_<PortfolioScanResult>(m, "PortfolioScanResult",
+            "Summary result for a single ticker in a portfolio scan.")
+        .def(py::init<>())
+        .def_readwrite("ticker",           &PortfolioScanResult::ticker,
+                       "str — ticker symbol.")
+        .def_readwrite("total_return_pct", &PortfolioScanResult::total_return_pct,
+                       "float — compounded net return (%).")
+        .def_readwrite("win_rate",         &PortfolioScanResult::win_rate,
+                       "float — win rate (%).")
+        .def_readwrite("num_trades",       &PortfolioScanResult::num_trades,
+                       "int — number of trades.")
+        .def_readwrite("max_drawdown",     &PortfolioScanResult::max_drawdown,
+                       "float — max drawdown (%).");
+
+    // ── PortfolioScanner ──────────────────────────────────────────────────────
+    py::class_<PortfolioScanner>(m, "PortfolioScanner",
+            "Multi-threaded portfolio scanning engine. Saturation for i7-14700HX.")
+        .def_static("scan",
+            &PortfolioScanner::scan,
+            py::arg("data_dir"),
+            py::arg("tickers"),
+            py::arg("strategy_type"),
+            py::call_guard<py::gil_scoped_release>(),
+            "Run parallel backtest scan across multiple data files.");
 }

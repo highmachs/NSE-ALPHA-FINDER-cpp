@@ -197,6 +197,8 @@ C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-w
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: CMakeFiles/nse_engine_cpp.dir/cpp/src/benchmark.cpp.obj
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: CMakeFiles/nse_engine_cpp.dir/cpp/src/data_utils.cpp.obj
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: CMakeFiles/nse_engine_cpp.dir/build.make
+C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: C:/mingw64/lib/libgomp.dll.a
+C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: C:/mingw64/x86_64-w64-mingw32/lib/libmingwthrd.a
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: C:/Python313/libs/python313.lib
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: CMakeFiles/nse_engine_cpp.dir/linkLibs.rsp
 C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build_output/nse_engine_cpp.cp313-win_amd64.pyd: CMakeFiles/nse_engine_cpp.dir/objects1.rsp

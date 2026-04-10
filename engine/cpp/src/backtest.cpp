@@ -1,4 +1,12 @@
+#define NOMINMAX
 #include "backtest.hpp"
+#include "data_ingestion.hpp"
+#include "indicators.hpp"
+#include "signals.hpp"
+#include <omp.h>
+#include <iostream>
+#include <vector>
+#include <string>
 
 #include <unordered_map>
 #include <stdexcept>
@@ -71,8 +79,9 @@ BacktestResult BacktestEngine::run(
 
         } else if (in_position && sp.signal == Signal::SELL) {
             double exit_price = sp.price;
-            double pnl_pct    = ((exit_price - entry_price) / entry_price) * 100.0;
-            int    duration   = static_cast<int>(bar) - static_cast<int>(entry_bar);
+            double pnl_pct  = ((exit_price - entry_price) / entry_price) * 100.0;
+            
+            int duration = static_cast<int>(bar) - static_cast<int>(entry_bar);
 
             Trade trade;
             trade.entry_timestamp = entry_ts;
@@ -97,6 +106,7 @@ BacktestResult BacktestEngine::run(
         std::size_t bar = ts_to_idx[last_sp.timestamp];
         double exit_price = last_sp.price;
         double pnl_pct = ((exit_price - entry_price) / entry_price) * 100.0;
+        
         int duration = static_cast<int>(bar) - static_cast<int>(entry_bar);
         
         Trade trade;
@@ -124,4 +134,61 @@ BacktestResult BacktestEngine::run(
     result.max_drawdown_pct = computeMaxDrawdown(equity_curve);
 
     return result;
+}
+
+std::vector<PortfolioScanResult> PortfolioScanner::scan(
+    const std::string& data_dir,
+    const std::vector<std::string>& tickers,
+    const std::string& strategy_type) {
+
+    std::vector<PortfolioScanResult> results;
+    results.resize(tickers.size());
+
+    // Saturation target: Saturate the i7-14700HX P-cores and E-cores (28 threads)
+    #pragma omp parallel for schedule(dynamic)
+    for (int i = 0; i < (int)tickers.size(); ++i) {
+        try {
+            std::string ticker = tickers[i];
+            std::string path = data_dir + "/" + ticker + ".csv";
+            
+            // 1. High-speed Ingestion (Hits binary cache first)
+            auto ohlcv = DataIngestionEngine::loadFromCSV(path);
+            
+            // 2. Compute Signals
+            std::vector<SignalPoint> signals;
+            if (strategy_type == "sma") {
+                signals = SignalEngine::smaCrossover(ohlcv.close, ohlcv.timestamp, 20, 50);
+            } else if (strategy_type == "rsi") {
+                signals = SignalEngine::rsiStrategy(ohlcv.close, ohlcv.timestamp, 14, 30.0, 70.0);
+            } else if (strategy_type == "macd") {
+                signals = SignalEngine::macdStrategy(ohlcv.close, ohlcv.timestamp, 12, 26, 9);
+            } else if (strategy_type == "bollinger") {
+                signals = SignalEngine::bollingerStrategy(ohlcv.close, ohlcv.timestamp, 20, 2.0);
+            } else if (strategy_type == "supertrend") {
+                signals = SignalEngine::supertrendStrategy(ohlcv.high, ohlcv.low, ohlcv.close, ohlcv.timestamp, 10, 3.0);
+            }
+
+            // 3. Backtest (Now includes Brokerage cost deduction)
+            auto res = BacktestEngine::run(signals, ohlcv.close, ohlcv.timestamp);
+
+            // 4. Record summary stats - Zero-allocation copy
+            results[i].ticker = ticker;
+            results[i].total_return_pct = res.total_return_pct;
+            results[i].win_rate = res.win_rate;
+            results[i].num_trades = res.num_trades;
+            results[i].max_drawdown = res.max_drawdown_pct;
+        } catch (...) {
+            // Silently fail for individual bad files in scan mode
+            results[i].ticker = "";
+        }
+    }
+
+    // Filter out errors
+    std::vector<PortfolioScanResult> final_results;
+    for (const auto& r : results) {
+        if (!r.ticker.empty()) {
+            final_results.push_back(r);
+        }
+    }
+    return final_results;
 }

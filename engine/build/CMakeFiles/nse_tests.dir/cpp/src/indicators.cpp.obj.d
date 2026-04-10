@@ -111,6 +111,17 @@ CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.obj: \
  C:/mingw64/include/c++/15.2.0/cerrno \
  C:/mingw64/include/c++/15.2.0/bits/charconv.h \
  C:/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
+ C:/mingw64/include/c++/15.2.0/numeric \
+ C:/mingw64/include/c++/15.2.0/bits/stl_numeric.h \
+ C:/mingw64/include/c++/15.2.0/pstl/glue_numeric_defs.h \
+ C:/mingw64/include/c++/15.2.0/pstl/execution_defs.h \
+ C:/mingw64/include/c++/15.2.0/algorithm \
+ C:/mingw64/include/c++/15.2.0/bits/stl_algo.h \
+ C:/mingw64/include/c++/15.2.0/bits/algorithmfwd.h \
+ C:/mingw64/include/c++/15.2.0/bits/stl_heap.h \
+ C:/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
+ C:/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
+ C:/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h \
  C:/mingw64/include/c++/15.2.0/cmath \
  C:/mingw64/x86_64-w64-mingw32/include/math.h \
  C:/mingw64/include/c++/15.2.0/bits/specfun.h \
@@ -125,8 +136,4 @@ CMakeFiles/nse_tests.dir/cpp/src/indicators.cpp.obj: \
  C:/mingw64/include/c++/15.2.0/tr1/modified_bessel_func.tcc \
  C:/mingw64/include/c++/15.2.0/tr1/poly_hermite.tcc \
  C:/mingw64/include/c++/15.2.0/tr1/poly_laguerre.tcc \
- C:/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc \
- C:/mingw64/include/c++/15.2.0/numeric \
- C:/mingw64/include/c++/15.2.0/bits/stl_numeric.h \
- C:/mingw64/include/c++/15.2.0/pstl/glue_numeric_defs.h \
- C:/mingw64/include/c++/15.2.0/pstl/execution_defs.h
+ C:/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc

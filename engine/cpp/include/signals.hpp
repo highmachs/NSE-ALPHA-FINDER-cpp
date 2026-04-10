@@ -156,4 +156,18 @@ public:
         int fast_period   = 12,
         int slow_period   = 26,
         int signal_period = 9);
+
+    static std::vector<SignalPoint> bollingerStrategy(
+        const std::vector<double>&      close,
+        const std::vector<std::string>& timestamps,
+        int    window = 20,
+        double k      = 2.0);
+
+    static std::vector<SignalPoint> supertrendStrategy(
+        const std::vector<double>&      high,
+        const std::vector<double>&      low,
+        const std::vector<double>&      close,
+        const std::vector<std::string>& timestamps,
+        int    period     = 10,
+        double multiplier = 3.0);
 };

@@ -9,7 +9,14 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -march=native -mtune=native -ffast-math -ftree-vectorize -funroll-loops -flto")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -march=native -mtune=native -ftree-vectorize -funroll-loops -fopenmp")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fopenmp")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fopenmp -static-libstdc++ -static-libgcc")
+
+find_package(OpenMP REQUIRED)
+if(OpenMP_CXX_FOUND)
+    link_libraries(OpenMP::OpenMP_CXX)
+endif()
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 find_package(pybind11 REQUIRED)
@@ -27,21 +34,25 @@ set(ENGINE_SOURCES
     cpp/src/data_utils.cpp
 )
 
+# Help IDE find headers
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # ── 1. Python extension module (pybind11) ─────────────────────────────────────
 pybind11_add_module(nse_engine_cpp
     cpp/bindings/bindings.cpp
     ${ENGINE_SOURCES}
 )
 
-target_include_directories(nse_engine_cpp PRIVATE ${ENGINE_INCLUDE_DIR})
+target_include_directories(nse_engine_cpp PUBLIC ${ENGINE_INCLUDE_DIR})
 target_compile_options(nse_engine_cpp PRIVATE -Wall -Wextra -O3)
+
+if(WIN32)
+    target_link_libraries(nse_engine_cpp PRIVATE OpenMP::OpenMP_CXX)
+endif()
 
 set_target_properties(nse_engine_cpp PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build_output
 )
-if(WIN32)
-    target_link_options(nse_engine_cpp PRIVATE -static-libstdc++ -static-libgcc)
-endif()
 
 # ── 2. Standalone CLI executable ──────────────────────────────────────────────
 add_executable(nse_engine
@@ -49,7 +60,7 @@ add_executable(nse_engine
     ${ENGINE_SOURCES}
 )
 
-target_include_directories(nse_engine PRIVATE ${ENGINE_INCLUDE_DIR})
+target_include_directories(nse_engine PUBLIC ${ENGINE_INCLUDE_DIR})
 target_compile_options(nse_engine PRIVATE -Wall -Wextra -O3)
 
 set_target_properties(nse_engine PROPERTIES
