@@ -3,7 +3,7 @@
 ## Overview
 
 High-performance quantitative analysis library for NSE equities.
-Pure C++17 core (no Node.js), pybind11 Python bindings, FastAPI REST server.
+Pure C++17 core, pybind11 Python bindings, FastAPI REST server.
 All Node.js artefacts have been removed from this project.
 
 ## Stack
@@ -14,7 +14,7 @@ All Node.js artefacts have been removed from this project.
 | Bindings | pybind11 2.13.6 |
 | REST API | Python 3.12, FastAPI, uvicorn |
 | Build | CMake 3.31 (3 parallel targets) |
-| Data | Yahoo Finance, Stooq, Alpha Vantage |
+| Data | Yahoo Finance, Alpha Vantage |
 
 ## File Structure
 
