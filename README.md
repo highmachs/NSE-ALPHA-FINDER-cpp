@@ -18,9 +18,10 @@ All Node.js artefacts have been removed from this project.
 
 ## File Structure
 
-```
-engine/
-├── cpp/
+```text
+├── .env.example             # Environment variables template
+├── engine/
+│   ├── cpp/
 │   ├── include/
 │   │   ├── data_ingestion.hpp   # OHLCVData, MissingValuePolicy, DataIngestionEngine
 │   │   ├── data_utils.hpp       # ValidationError, DataUtils (PRD §6.2)
@@ -60,21 +61,21 @@ engine/
 │   └── nse_tests            # Unit test binary (647 tests)
 ├── build/                   # CMake cache
 ├── CMakeLists.txt           # 3 targets: pybind11 module, CLI, test runner
-├── build.sh                 # Quick rebuild script
-├── run.sh                   # Unified CLI: build/test/serve/cli/benchmark/fetch
+├── build.ps1                # Quick rebuild script
+├── run.ps1                  # Unified CLI: build/test/serve/cli/benchmark/fetch
 ├── Doxyfile                 # Doxygen config (doxygen Doxyfile → docs/html/)
 └── requirements.txt         # Python dependencies
 ```
 
 ## Key Commands
 
-```bash
-bash engine/run.sh build           # Rebuild all C++ targets
-bash engine/run.sh test            # Run 647 C++ unit tests
-bash engine/run.sh serve 8000      # Start FastAPI server
-bash engine/run.sh cli engine/data/sample_RELIANCE.csv sma_crossover
-bash engine/run.sh benchmark 1000000
-bash engine/run.sh fetch RELIANCE 2020-01-01 2024-12-31 auto data/
+```powershell
+.\engine\run.ps1 build           # Rebuild all C++ targets
+.\engine\run.ps1 test            # Run 647 C++ unit tests
+.\engine\run.ps1 serve 8000      # Start FastAPI server
+.\engine\run.ps1 cli engine\data\sample_RELIANCE.csv sma_crossover
+.\engine\run.ps1 benchmark 1000000
+.\engine\run.ps1 fetch RELIANCE 2020-01-01 2024-12-31 auto data\
 ```
 
 ## REST API Endpoints (port 8000)
@@ -150,7 +151,7 @@ Interactive docs: `localhost:8000/docs`
 |--------|--------|-------|
 | Yahoo Finance | `yfinance` library | `.NS` suffix, adjusted close |
 | Stooq | HTTP CSV feed | `.IN` suffix, no auth required |
-| Alpha Vantage | REST API | Requires `ALPHA_VANTAGE_KEY` env var, 25 req/day free |
+| Alpha Vantage | REST API | Requires `ALPHA_VANTAGE_KEY` in `.env` (copy from `.env.example`), 25 req/day free |
 | auto | Yahoo → Stooq fallback | Default for `data_fetcher.fetch()` |
 
 ## Documentation

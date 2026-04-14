@@ -19,7 +19,7 @@ def _clean_list(lst) -> List[Optional[float]]:
 
 def load_csv(filepath: str,
              missing_policy: Literal["drop", "forward_fill"] = "drop") -> Dict[str, Any]:
-        policy = (MissingValuePolicy.FORWARD_FILL
+    policy = (MissingValuePolicy.FORWARD_FILL
               if missing_policy == "forward_fill"
               else MissingValuePolicy.DROP)
     data = _cpp.DataIngestionEngine.load_from_csv(filepath, policy)
@@ -27,7 +27,7 @@ def load_csv(filepath: str,
 
 def load_string(csv_content: str,
                 missing_policy: Literal["drop", "forward_fill"] = "drop") -> Dict[str, Any]:
-        policy = (MissingValuePolicy.FORWARD_FILL
+    policy = (MissingValuePolicy.FORWARD_FILL
               if missing_policy == "forward_fill"
               else MissingValuePolicy.DROP)
     data = _cpp.DataIngestionEngine.load_from_string(csv_content, policy)
@@ -51,19 +51,19 @@ def _ohlcv_to_dict(data: _cpp.OHLCVData) -> Dict[str, Any]:
     }
 
 def sma(close: List[float], window: int) -> List[Optional[float]]:
-        return _clean_list(_cpp.IndicatorEngine.sma(close, window))
+    return _clean_list(_cpp.IndicatorEngine.sma(close, window))
 
 def ema(close: List[float], window: int) -> List[Optional[float]]:
-        return _clean_list(_cpp.IndicatorEngine.ema(close, window))
+    return _clean_list(_cpp.IndicatorEngine.ema(close, window))
 
 def rsi(close: List[float], window: int = 14) -> List[Optional[float]]:
-        return _clean_list(_cpp.IndicatorEngine.rsi(close, window))
+    return _clean_list(_cpp.IndicatorEngine.rsi(close, window))
 
 def macd(close: List[float],
          fast: int = 12,
          slow: int = 26,
          signal: int = 9) -> Dict[str, List[Optional[float]]]:
-        r = _cpp.IndicatorEngine.macd(close, fast, slow, signal)
+    r = _cpp.IndicatorEngine.macd(close, fast, slow, signal)
     return {
         "macd_line":   _clean_list(r.macd_line),
         "signal_line": _clean_list(r.signal_line),
@@ -73,7 +73,7 @@ def macd(close: List[float],
 def bollinger_bands(close: List[float],
                     window: int = 20,
                     k: float = 2.0) -> Dict[str, List[Optional[float]]]:
-        r = _cpp.IndicatorEngine.bollinger_bands(close, window, k)
+    r = _cpp.IndicatorEngine.bollinger_bands(close, window, k)
     return {
         "upper":  _clean_list(r.upper),
         "middle": _clean_list(r.middle),
@@ -89,7 +89,7 @@ def all_indicators(close: List[float],
                    macd_signal: int = 9,
                    bb_window: int = 20,
                    bb_k: float = 2.0) -> Dict[str, Any]:
-        return {
+    return {
         "sma":             sma(close, sma_window),
         "ema":             ema(close, ema_window),
         "rsi":             rsi(close, rsi_window),
@@ -108,7 +108,7 @@ def sma_crossover_signals(close: List[float],
                            timestamps: List[str],
                            short_window: int = 10,
                            long_window: int = 50) -> List[Dict[str, Any]]:
-        raw = _cpp.SignalEngine.sma_crossover(close, timestamps, short_window, long_window)
+    raw = _cpp.SignalEngine.sma_crossover(close, timestamps, short_window, long_window)
     return [_signal_to_dict(s) for s in raw]
 
 def rsi_signals(close: List[float],
@@ -116,7 +116,7 @@ def rsi_signals(close: List[float],
                 window: int = 14,
                 oversold: float = 30.0,
                 overbought: float = 70.0) -> List[Dict[str, Any]]:
-        raw = _cpp.SignalEngine.rsi_strategy(close, timestamps, window, oversold, overbought)
+    raw = _cpp.SignalEngine.rsi_strategy(close, timestamps, window, oversold, overbought)
     return [_signal_to_dict(s) for s in raw]
 
 def macd_signals(close: List[float],
@@ -124,7 +124,7 @@ def macd_signals(close: List[float],
                  fast: int = 12,
                  slow: int = 26,
                  signal: int = 9) -> List[Dict[str, Any]]:
-        raw = _cpp.SignalEngine.macd_strategy(close, timestamps, fast, slow, signal)
+    raw = _cpp.SignalEngine.macd_strategy(close, timestamps, fast, slow, signal)
     return [_signal_to_dict(s) for s in raw]
 
 def _raw_signals(close: List[float],
@@ -155,7 +155,7 @@ def backtest(close: List[float],
              timestamps: List[str],
              strategy: Literal["sma_crossover", "rsi", "macd"] = "sma_crossover",
              **strategy_kwargs) -> Dict[str, Any]:
-        signals = _raw_signals(close, timestamps, strategy, **strategy_kwargs)
+    signals = _raw_signals(close, timestamps, strategy, **strategy_kwargs)
     result  = _cpp.BacktestEngine.run(signals, close, timestamps)
 
     trades_out = [
@@ -181,7 +181,7 @@ def backtest(close: List[float],
     }
 
 def benchmark(rows: int = 1_000_000) -> List[Dict[str, Any]]:
-        close = [100.0 + 50.0 * math.sin(i * 0.001) for i in range(rows)]
+    close = [100.0 + 50.0 * math.sin(i * 0.001) for i in range(rows)]
     timestamps = [f"T{i}" for i in range(rows)]
 
     def _b(name, fn):

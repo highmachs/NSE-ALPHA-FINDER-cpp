@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 import sys
 import os
 import math
@@ -33,13 +32,13 @@ def bmagenta(s):return _c("1;35",  s)
 # Pure-Python implementations (deliberately naive — no numpy)
 
 def py_sma(close: List[float], window: int) -> List[Optional[float]]:
-        out = [None] * len(close)
+    out = [None] * len(close)
     for i in range(window - 1, len(close)):
         out[i] = sum(close[i - window + 1 : i + 1]) / window
     return out
 
 def py_ema(close: List[float], window: int) -> List[Optional[float]]:
-        out = [None] * len(close)
+    out = [None] * len(close)
     if len(close) < window:
         return out
     alpha = 2.0 / (window + 1)
@@ -53,7 +52,7 @@ def py_ema(close: List[float], window: int) -> List[Optional[float]]:
     return out
 
 def py_rsi(close: List[float], window: int = 14) -> List[Optional[float]]:
-        out  = [None] * len(close)
+    out  = [None] * len(close)
     n    = len(close)
     if n < window + 1:
         return out
@@ -82,7 +81,7 @@ def py_macd(close: List[float],
             fast: int = 12,
             slow: int = 26,
             signal: int = 9):
-        fast_ema   = py_ema(close, fast)
+    fast_ema   = py_ema(close, fast)
     slow_ema   = py_ema(close, slow)
     n          = len(close)
     macd_line  = [None] * n
@@ -112,7 +111,7 @@ def py_macd(close: List[float],
     return {"macd_line": macd_line, "signal_line": sig_line, "histogram": hist}
 
 def py_bollinger(close: List[float], window: int = 20, k: float = 2.0):
-        n      = len(close)
+    n      = len(close)
     upper  = [None] * n
     middle = [None] * n
     lower  = [None] * n
@@ -129,12 +128,12 @@ def py_bollinger(close: List[float], window: int = 20, k: float = 2.0):
 # Timing helper
 
 def _timed(fn) -> float:
-        t0 = time.perf_counter()
+    t0 = time.perf_counter()
     fn()
     return time.perf_counter() - t0
 
 def _timed_cpp(fn, n: int) -> float:
-        r = _cpp.BenchmarkModule.measure("_", n, fn)
+    r = _cpp.BenchmarkModule.measure("_", n, fn)
     return r.elapsed_us / 1e6
 
 # Speedup bar

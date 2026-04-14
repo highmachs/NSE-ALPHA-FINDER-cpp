@@ -32,7 +32,7 @@ async def lifespan(app: FastAPI):
             path = os.path.join(data_dir, f)
             try:
                 engine.DataIngestionEngine.load_from_csv(path)
-            except:
+            except Exception:
                 pass
         print(f"[Pre-cache] {len(csv_files)} tickers hot-loaded.")
     yield
@@ -649,7 +649,6 @@ def portfolio_scan(req: PortfolioRequest):
         ]
     }
 
-    print(f"[Pre-cache] {len(csv_files)} tickers hot-loaded.")
 
 from fastapi.staticfiles import StaticFiles
 
