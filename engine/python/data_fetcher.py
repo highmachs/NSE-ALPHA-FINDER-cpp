@@ -80,13 +80,13 @@ def fetch(
     csv_text: Optional[str] = None
 
     if source == "yahoo":
-        csv_text = _fetch_yahoo(symbol, start, end)
+        csv_text = _fetch_yahoo(symbol.upper(), start, end)
     elif source == "stooq":
-        csv_text = _fetch_stooq(symbol, start, end)
+        csv_text = _fetch_stooq(symbol.upper(), start, end)
     elif source == "alpha":
-        csv_text = _fetch_alpha_vantage(symbol, start, end)
+        csv_text = _fetch_alpha_vantage(symbol.upper(), start, end)
     elif source == "auto":
-        csv_text = _fetch_auto(symbol, start, end)
+        csv_text = _fetch_auto(symbol.upper(), start, end)
     else:
         raise ValueError(
             f"Unknown source '{source}'. Choose from: yahoo, stooq, alpha, auto."
@@ -102,7 +102,7 @@ def fetch(
 
     if output_dir:
         os.makedirs(output_dir, exist_ok=True)
-        path = os.path.join(output_dir, f"{symbol}.csv")
+        path = os.path.join(output_dir, f"{symbol.upper()}.csv")
         with open(path, "w", newline="") as fh:
             fh.write(csv_text)
         print(f"[data_fetcher] Saved {path}")

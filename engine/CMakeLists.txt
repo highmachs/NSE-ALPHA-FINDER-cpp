@@ -44,7 +44,8 @@ pybind11_add_module(nse_engine_cpp
 )
 
 target_include_directories(nse_engine_cpp PUBLIC ${ENGINE_INCLUDE_DIR})
-target_compile_options(nse_engine_cpp PRIVATE -Wall -Wextra -O3)
+target_compile_options(nse_engine_cpp PRIVATE -Wall -Wextra -O3 -march=native -mtune=native -ftree-vectorize -funroll-loops -ffast-math -fno-finite-math-only -flto)
+target_link_options(nse_engine_cpp PRIVATE -flto)
 
 if(WIN32)
     target_link_libraries(nse_engine_cpp PRIVATE OpenMP::OpenMP_CXX)
@@ -61,7 +62,8 @@ add_executable(nse_engine
 )
 
 target_include_directories(nse_engine PUBLIC ${ENGINE_INCLUDE_DIR})
-target_compile_options(nse_engine PRIVATE -Wall -Wextra -O3)
+target_compile_options(nse_engine PRIVATE -Wall -Wextra -O3 -march=native -mtune=native -ftree-vectorize -funroll-loops -ffast-math -fno-finite-math-only -flto)
+target_link_options(nse_engine PRIVATE -flto)
 
 set_target_properties(nse_engine PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build_output

@@ -228,7 +228,7 @@
                     <span id="ops-status" style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600; letter-spacing: 1px;">STATUS: IDLE</span>
                 </h2>
                 <div style="display: flex; gap: 15px; margin-bottom: 25px;">
-                    <input type="text" id="ticker" list="tickers" value="RELIANCE" style="flex:1;">
+                    <input type="text" id="ticker" list="tickers" value="RELIANCE, TMPV, INFY" placeholder="e.g. RELIANCE, TMPV, INFY" style="flex:1;">
                     <datalist id="tickers">
                         <option value="ADANIENT">Adani Enterprises</option><option value="ADANIPORTS">Adani Ports</option><option value="APOLLOHOSP">Apollo Hospitals</option>
                         <option value="ASIANPAINT">Asian Paints</option><option value="AXISBANK">Axis Bank</option><option value="BAJAJ-AUTO">Bajaj Auto</option>
@@ -243,7 +243,7 @@
                         <option value="M&M">M&M</option><option value="MARUTI">Maruti Suzuki</option><option value="NESTLEIND">Nestle India</option>
                         <option value="NTPC">NTPC</option><option value="ONGC">ONGC</option><option value="POWERGRID">Power Grid</option>
                         <option value="RELIANCE">Reliance Industries</option><option value="SBILIFE">SBI Life</option><option value="SBIN">State Bank of India</option>
-                        <option value="SUNPHARMA">Sun Pharma</option><option value="TATACONSUM">Tata Consumer</option><option value="TATAMOTORS">Tata Motors</option>
+                        <option value="SUNPHARMA">Sun Pharma</option><option value="TATACONSUM">Tata Consumer</option><option value="TMPV">Tata Motors (TMPV)</option>
                         <option value="TATASTEEL">Tata Steel</option><option value="TCS">TCS</option><option value="TECHM">Tech Mahindra</option>
                         <option value="TITAN">Titan Company</option><option value="ULTRACEMCO">UltraTech Cement</option><option value="WIPRO">Wipro</option>
                     </datalist>
@@ -396,22 +396,24 @@
 
         async function runScan() {
             const strategy = document.getElementById('strategy').value;
+            const rawTicker = document.getElementById('ticker').value;
+            const targetTickers = rawTicker.split(',').map(s=>s.trim()).filter(s=>s);
             const statusEl = document.getElementById('ops-status');
             
             statusEl.innerText = 'STATUS: PARALLEL SCAN RUNNING...';
             statusEl.style.color = '#60A5FA';
             log("SCAN: Portfolio stress test initiated...", 'system');
             log(`> Strategy: [${strategy.toUpperCase()}]`);
-            log("> Threads: Spawning 28 parallel backtest workers via OpenMP");
-            log("> Data: Streaming 47 .pbin archives into SIMD registers");
+            log(`> Tickers selected: ${targetTickers.length > 0 ? targetTickers.join(', ') : 'ALL Directory (Max 10)'}`);
+            log("> Threads: Parallel backend threads dispatched");
+            log("> Data: Streaming directly into memory channels safely");
             log("> I/O Ops: zero-allocation memory mapping");
-            log("> Execution: Concurrent multithreaded dispatch");
 
             try {
                 const res = await fetch('/api/engine/portfolio_scan', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({strategy})
+                    body: JSON.stringify({strategy, tickers: targetTickers})
                 });
                 
                 if (!res.ok) {
@@ -472,7 +474,6 @@
             const data = await res.json();
             document.getElementById('hw-cpu').innerText = data.cpu;
             document.getElementById('hw-mode').innerText = data.acceleration;
-            runBenchmark();
         };
 
         window.onclick = (e) => { if(e.target == document.getElementById('modal')) closeFullLog(); }

@@ -35,6 +35,51 @@
 #include "backtest.hpp"
 #include "benchmark.hpp"
 
+#include <cmath>
+#include <cstdio>
+#include <vector>
+
+std::vector<BenchmarkResult> run_native_benchmark(int rows) {
+    if (rows < 1000) rows = 1000;
+    std::vector<double> close(rows);
+    std::vector<std::string> timestamps(rows);
+    
+    for (int i = 0; i < rows; ++i) {
+        close[i] = 100.0 + 50.0 * std::sin(i * 0.001) + i * 0.0001;
+        char buf[32];
+        double f = i; // simple
+        // Use sprint to closely mimic
+        snprintf(buf, sizeof(buf), "2020-01-01T%09d", i);
+        timestamps[i] = buf;
+    }
+
+    std::vector<BenchmarkResult> results;
+    results.reserve(6);
+
+    results.push_back(BenchmarkModule::measure("SMA(20)", rows, [&]() {
+        auto dummy = IndicatorEngine::sma(close, 20);
+    }));
+    results.push_back(BenchmarkModule::measure("EMA(20)", rows, [&]() {
+        auto dummy = IndicatorEngine::ema(close, 20);
+    }));
+    results.push_back(BenchmarkModule::measure("RSI(14)", rows, [&]() {
+        auto dummy = IndicatorEngine::rsi(close, 14);
+    }));
+    results.push_back(BenchmarkModule::measure("MACD(12,26,9)", rows, [&]() {
+        auto dummy = IndicatorEngine::macd(close, 12, 26, 9);
+    }));
+    results.push_back(BenchmarkModule::measure("BollingerBands(20)", rows, [&]() {
+        auto dummy = IndicatorEngine::bollingerBands(close, 20, 2.0);
+    }));
+
+    auto signals = SignalEngine::smaCrossover(close, timestamps, 10, 50);
+    results.push_back(BenchmarkModule::measure("Backtest (SMA signals)", rows, [&]() {
+        auto dummy = BacktestEngine::run(signals, close, timestamps);
+    }));
+
+    return results;
+}
+
 namespace py = pybind11;
 
 PYBIND11_MODULE(nse_engine_cpp, m) {
@@ -225,7 +270,17 @@ PYBIND11_MODULE(nse_engine_cpp, m) {
             py::arg("slow_period")   = 26,
             py::arg("signal_period") = 9,
             py::call_guard<py::gil_scoped_release>(),
-            "MACD Strategy");
+            "MACD Strategy")
+        .def_static("bollinger_strategy",
+            &SignalEngine::bollingerStrategy,
+            py::arg("close"), py::arg("timestamps"),
+            py::arg("window") = 20, py::arg("k") = 2.0,
+            py::call_guard<py::gil_scoped_release>())
+        .def_static("supertrend_strategy",
+            &SignalEngine::supertrendStrategy,
+            py::arg("high"), py::arg("low"), py::arg("close"), py::arg("timestamps"),
+            py::arg("period") = 10, py::arg("multiplier") = 3.0,
+            py::call_guard<py::gil_scoped_release>());
 
     // ── Trade ─────────────────────────────────────────────────────────────────
     py::class_<Trade>(m, "Trade",
@@ -297,7 +352,10 @@ PYBIND11_MODULE(nse_engine_cpp, m) {
             "Returns:\n"
             "    BenchmarkResult")
         .def_static("now_us", &BenchmarkModule::nowUs,
-                    "Return the current wall-clock time as microseconds since epoch.");
+                    "Return the current wall-clock time as microseconds since epoch.")
+        .def_static("run_native_benchmark", &run_native_benchmark, py::arg("rows") = 1000000,
+                    "Run the entire 1M-row benchmark entirely inside C++ skipping pybind boundary overhead",
+                    py::call_guard<py::gil_scoped_release>());
 
     // ── PortfolioScanResult ───────────────────────────────────────────────────
     py::class_<PortfolioScanResult>(m, "PortfolioScanResult",

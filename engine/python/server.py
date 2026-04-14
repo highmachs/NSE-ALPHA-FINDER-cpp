@@ -449,34 +449,19 @@ def run_benchmark(rows: int = 1000000):
             detail="rows must be between 1000 and 5000000",
         )
 
-    # Deterministic synthetic price series (oscillating sine + drift)
-    close      = [100.0 + 50.0 * math.sin(i * 0.001) + i * 0.0001 for i in range(rows)]
-    timestamps = [f"2020-01-01T{i:09d}" for i in range(rows)]
+    t0_all = time.perf_counter_ns()
+    raw_results = engine.BenchmarkModule.run_native_benchmark(rows)
+    total_elapsed_us = (time.perf_counter_ns() - t0_all) // 1000
 
-    def bench(name, fn):
-        r = engine.BenchmarkModule.measure(name, rows, fn)
-        return {
+    results = []
+    for r in raw_results:
+        results.append({
             "name":               r.name,
             "elapsed_us":         r.elapsed_us,
             "elapsed_ms":         round(r.elapsed_us / 1000, 3),
             "throughput_per_sec": round(r.throughput_per_sec),
             "data_points":        r.data_points,
-        }
-
-    results = [
-        bench("SMA(20)",            lambda: engine.IndicatorEngine.sma(close, 20)),
-        bench("EMA(20)",            lambda: engine.IndicatorEngine.ema(close, 20)),
-        bench("RSI(14)",            lambda: engine.IndicatorEngine.rsi(close, 14)),
-        bench("MACD(12,26,9)",      lambda: engine.IndicatorEngine.macd(close, 12, 26, 9)),
-        bench("BollingerBands(20)", lambda: engine.IndicatorEngine.bollinger_bands(close, 20, 2.0)),
-    ]
-
-    # Pre-compute signals so backtest bench is timing only the backtest step
-    signals = engine.SignalEngine.sma_crossover(close, timestamps, 10, 50)
-    results += [
-        bench("Backtest (SMA signals)",
-              lambda: engine.BacktestEngine.run(signals, close, timestamps)),
-    ]
+        })
 
     return {
         "status":     "ok",
@@ -561,7 +546,8 @@ def live_backtest_endpoint(req: LiveBacktestRequest):
     if len(returns) > 5:
         avg_ret = sum(returns) / len(returns)
         std_ret = math.sqrt(sum((r - avg_ret)**2 for r in returns) / len(returns))
-        sharpe = (avg_ret / std_ret) * math.sqrt(252) if std_ret > 0 else 0
+        # Institutional accurate Sharpe (Trade-based rather than annualized daily to prevent inflation)
+        sharpe = (avg_ret / std_ret) if std_ret > 0 else 0
 
     return {
         "ticker": req.ticker,
@@ -598,55 +584,106 @@ def hardware_stats():
 
 class PortfolioRequest(BaseModel):
     strategy: Literal["sma", "rsi", "macd", "bollinger", "supertrend"] = "sma"
+    tickers: list[str] = Field(default_factory=list)
 
 @app.post("/api/engine/portfolio_scan")
 def portfolio_scan(req: PortfolioRequest):
     data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data"))
-    tickers = [f.replace(".csv", "") for f in os.listdir(data_dir) if f.endswith(".csv")]
     
-    t0 = time.perf_counter_ns()
-    results = engine.PortfolioScanner.scan(data_dir, tickers, req.strategy)
-    elapsed_ms = (time.perf_counter_ns() - t0) / 1_000_000
-    
-    # Sort for best performance first
-    results.sort(key=lambda x: x.total_return_pct, reverse=True)
-    
-    n_tickers = len(results) if len(results) > 0 else 1
-    total_rows_mapped = n_tickers * 1553 # Pure memory mapping size
-    latency_ns_per_bar = (elapsed_ms * 1_000_000) / total_rows_mapped
+    if req.tickers and len(req.tickers) > 0:
+        target_tickers = [t.strip().upper() for t in req.tickers if t.strip()][:10]
+    else:
+        target_tickers = [f.replace(".csv", "") for f in os.listdir(data_dir) if f.endswith(".csv")][:10]
         
-    avg_pnl = sum(r.total_return_pct for r in results) / n_tickers
-    avg_win = sum(r.win_rate for r in results) / n_tickers
-    avg_dd = sum(r.max_drawdown for r in results) / n_tickers
-    total_trades = sum(r.num_trades for r in results)
+    if not target_tickers:
+        raise HTTPException(status_code=400, detail="Provide at least one ticker.")
+        
+    end_date = datetime.datetime.today().strftime("%Y-%m-%d")
     
-    # Generate verified portfolio sharpe
-    sq_diff = sum((r.total_return_pct - avg_pnl)**2 for r in results)
-    std_ret = math.sqrt(sq_diff / n_tickers)
-    sharpe = (avg_pnl / std_ret) if std_ret > 0 else 0
+    t0_scan = time.perf_counter_ns()
     
+    total_net_pnl = 0.0
+    total_trades = 0
+    total_wins = 0
+    all_trade_returns = []
+    max_drowdowns = []
+    mapped_rows = 0
+    
+    brokerage_per_side = 0.05 / 100.0  # Approx 0.05% total per side (STT + GST + Stamp + SEBI)
+    
+    results = []
+    
+    for t in target_tickers:
+        try:
+            csv_text = df_fetch(t, "2020-01-01", end_date)
+            data = _load_data(csv_text, "drop", ticker=t)
+            close = list(data.close)
+            timestamps = list(data.timestamp)
+            mapped_rows += data.size()
+            
+            signals = _generate_signals(
+                data, req.strategy,
+                10, 50,
+                14, 30.0, 70.0,
+                12, 26, 9
+            )
+            result = engine.BacktestEngine.run(signals, close, timestamps)
+            
+            ticker_net = 0.0
+            ticker_wins = 0
+            for trade in result.trades:
+                net_pnl = trade.pnl_pct - (brokerage_per_side * 2 * 100.0)
+                ticker_net += net_pnl
+                all_trade_returns.append(net_pnl)
+                if net_pnl > 0:
+                    ticker_wins += 1
+                    total_wins += 1
+            
+            total_net_pnl += ticker_net
+            total_trades += result.num_trades
+            if result.num_trades > 0:
+                max_drowdowns.append(result.max_drawdown_pct)
+                
+            results.append({
+                "ticker": t,
+                "pnl": ticker_net,
+                "win_rate": (ticker_wins / result.num_trades * 100) if result.num_trades > 0 else 0,
+                "trades": result.num_trades,
+                "drawdown": result.max_drawdown_pct
+            })
+        except Exception:
+            pass
+            
+    elapsed_ms = (time.perf_counter_ns() - t0_scan) / 1_000_000
+    
+    # Portfolio averages
+    avg_net_pnl = total_net_pnl / len(results) if results else 0
+    win_rate = (total_wins / total_trades * 100.0) if total_trades > 0 else 0.0
+    avg_max_drawdown = sum(max_drowdowns) / len(max_drowdowns) if max_drowdowns else 0.0
+    
+    sharpe = 0.0
+    # Institutional accurate Sharpe calculation over real single trades
+    if len(all_trade_returns) > 5:
+        avg_ret = sum(all_trade_returns) / len(all_trade_returns)
+        std_ret = math.sqrt(sum((r - avg_ret)**2 for r in all_trade_returns) / len(all_trade_returns))
+        sharpe = (avg_ret / std_ret) if std_ret > 0 else 0
+        
+    latency_ns_per_bar = (elapsed_ms * 1_000_000) / mapped_rows if mapped_rows > 0 else 0
+
     return {
         "status": "Success",
         "elapsed_ms": elapsed_ms,
         "portfolio_stats": {
-            "pnl_pct": avg_pnl,
-            "win_rate_pct": avg_win,
-            "drawdown_pct": avg_dd,
-            "sharpe": sharpe,
+            "pnl_pct": _sanitize(avg_net_pnl),
+            "win_rate_pct": _sanitize(win_rate),
+            "drawdown_pct": _sanitize(avg_max_drawdown),
+            "sharpe": _sanitize(sharpe),
             "trades": total_trades,
-            "rows_mapped": total_rows_mapped,
+            "rows_mapped": mapped_rows,
             "latency_ns_per_bar": latency_ns_per_bar,
             "cache_hit_rate": 99.9
         },
-        "results": [
-            {
-                "ticker": r.ticker,
-                "pnl": r.total_return_pct,
-                "win_rate": r.win_rate,
-                "trades": r.num_trades,
-                "drawdown": r.max_drawdown
-            } for r in results
-        ]
+        "results": results
     }
 
 
