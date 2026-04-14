@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"C:/MAINDOMAIN/PRODUCTS/NSEAlphaFinder/engine/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

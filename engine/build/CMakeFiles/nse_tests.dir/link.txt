@@ -1,3 +1,0 @@
-C:\mingw64\bin\cmake.exe -E rm -f CMakeFiles\nse_tests.dir/objects.a
-C:\mingw64\bin\ar.exe qc CMakeFiles\nse_tests.dir/objects.a @CMakeFiles\nse_tests.dir\objects1.rsp
-C:\mingw64\bin\c++.exe -O3 -DNDEBUG -march=native -mtune=native -ftree-vectorize -funroll-loops -fopenmp  -fopenmp -Wl,--whole-archive CMakeFiles\nse_tests.dir/objects.a -Wl,--no-whole-archive -o C:\MAINDOMAIN\PRODUCTS\NSEAlphaFinder\engine\build_output\nse_tests.exe -Wl,--out-implib,libnse_tests.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\nse_tests.dir\linkLibs.rsp
